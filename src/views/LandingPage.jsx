@@ -6,8 +6,8 @@ export default () => (
   <div>
     <HeroImage image={heroImage} title="Delivery." subtitle="Made simple." />
     <main className="max-width">
-      <h1>Drone Delivery.</h1>
-      <p>Simple and fast</p>
+      <h1>Drone Delivery</h1>
+      <p>brought to you by airlivery™</p>
       <br />
       <p style={{ maxWidth: '30rem' }}>
         <span>

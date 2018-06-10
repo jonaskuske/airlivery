@@ -35,12 +35,22 @@ export default () => (
   <HeaderContainer>
     <Header className="max-width">
       <HeaderPartial>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+        <Link
+          to="/"
+          style={{ display: 'flex', alignItems: 'center' }}
+          className="theme-color"
+        >
           <Logo src={logo} alt="Logo, drone carrying parcel" />airlivery
         </Link>
-        <Link to="/senden">Senden</Link>
-        <Link to="/empfangen">Empfangen</Link>
-        <Link to="/about">About</Link>
+        <Link to="/senden" className="theme-color">
+          Senden
+        </Link>
+        <Link to="/empfangen" className="theme-color">
+          Empfangen
+        </Link>
+        <Link to="/about" className="theme-color">
+          About
+        </Link>
       </HeaderPartial>
       <HeaderPartial style={{ justifyContent: 'flex-end' }}>
         <a href="/#">Login/Registrieren</a>
