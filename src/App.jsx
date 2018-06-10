@@ -1,32 +1,26 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-
-import { Title } from './components/styled'
-import logo from './assets/images/logo.svg'
-
-const Header = styled.header`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-`
-const Logo = styled.img`
-  animation: spin infinite 20s linear;
-  height: 80px;
-`
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import DocumentTitle from 'react-document-title'
+import { LandingPage, Send, Receive, About } from './views'
+import { Header, Footer } from './components'
 
 class App extends Component {
   render() {
     return (
-      <div className="center-text">
-        <Header>
-          <Logo src={logo} alt="logo" />
-          <Title>Welcome to React!</Title>
-        </Header>
-        <p className="font-large">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <DocumentTitle title="airlivery">
+        <Router>
+          <div className="app">
+            <Header />
+            <div className="page-container">
+              <Route path="/" exact component={LandingPage} />
+              <Route path="/senden" component={Send} />
+              <Route path="/empfangen" component={Receive} />
+              <Route path="/about" component={About} />
+            </div>
+            <Footer />
+          </div>
+        </Router>
+      </DocumentTitle>
     )
   }
 }

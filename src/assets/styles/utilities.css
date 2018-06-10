@@ -4,3 +4,10 @@
 .center-text {
   text-align: center;
 }
+.max-width {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  box-sizing: border-box;
+}
