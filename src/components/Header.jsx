@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../assets/icons/drone.svg'
 import search from '../assets/icons/search.svg'
+import LoginState from './header/LoginState'
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -57,17 +58,12 @@ export default () => (
         <Link to="/senden" className="theme-color">
           Senden
         </Link>
-        <Link to="/empfangen" className="theme-color">
-          Empfangen
-        </Link>
         <Link to="/about" className="theme-color">
           About
         </Link>
       </HeaderPartial>
       <HeaderPartial style={{ justifyContent: 'flex-end' }}>
-        <a href="/#" className="mobile-hide">
-          Login/Registrieren
-        </a>
+        <LoginState />
         <a href="/#" className="mobile-hide">
           Hilfe
         </a>
