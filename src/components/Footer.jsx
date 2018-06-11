@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { SocialIcon } from './'
 
 const FooterContainer = styled.div`
   background: #f0f0f0;
@@ -11,47 +12,52 @@ const FooterContainer = styled.div`
 const Footer = styled.footer`
   min-height: 5rem;
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  flex-wrap: wrap-reverse;
 `
 const ImprintContainer = styled.div`
-  > p {
+  padding-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  > a {
     margin: 0.2rem 0;
   }
 `
 const SocialContainer = styled.div`
   display: flex;
-  align-self: flex-start;
-  > p {
-    margin: 0 0.5rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: grey;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 600;
+  margin-bottom: 2rem;
+  > *:first-child {
+    margin-left: 0;
+  }
+  > *:last-child {
+    margin-right: 0;
   }
 `
+
+const imprintItems = [
+  'Geschäftskunden',
+  'Kontakt',
+  'FAQ',
+  'Sicherheitshinweise',
+  'AGB',
+  'Datenschutz',
+  'Impressum',
+]
+
 export default () => (
   <FooterContainer>
     <Footer className="max-width">
       <ImprintContainer>
-        <p>Geschäftskunden</p>
-        <p>Kontakt</p>
-        <p>FAQ</p>
-        <p>Sicherheitshinweise</p>
-        <p>AGB</p>
-        <p>Datenschutz</p>
-        <p>Impressum</p>
+        {imprintItems.map(item => (
+          <a href="/#" key={item}>
+            {item}
+          </a>
+        ))}
       </ImprintContainer>
       <SocialContainer>
-        <p style={{ background: '#4C00FF' }}>f</p>
-        <p style={{ background: '#FF0000' }}>G+</p>
-        <p style={{ background: '#649AEB' }}>🕊</p>
+        <SocialIcon color="#4C00FF">f</SocialIcon>
+        <SocialIcon color="#FF0000">G+</SocialIcon>
+        <SocialIcon color="#649AEB">🕊</SocialIcon>
       </SocialContainer>
     </Footer>
   </FooterContainer>

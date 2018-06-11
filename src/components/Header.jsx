@@ -30,6 +30,17 @@ const HeaderPartial = styled.div`
   > * {
     margin: 0 1rem;
   }
+  @media screen and (max-width: 900px) {
+    > * {
+      margin: 0 0.2rem;
+    }
+  }
+  > *:first-child {
+    margin-left: 0;
+  }
+  > *:last-child {
+    margin-right: 0;
+  }
 `
 export default () => (
   <HeaderContainer>
@@ -40,7 +51,8 @@ export default () => (
           style={{ display: 'flex', alignItems: 'center' }}
           className="theme-color"
         >
-          <Logo src={logo} alt="Logo, drone carrying parcel" />airlivery
+          <Logo src={logo} alt="Logo, drone carrying parcel" />
+          <span className="mobile-hide">airlivery</span>
         </Link>
         <Link to="/senden" className="theme-color">
           Senden
@@ -53,8 +65,12 @@ export default () => (
         </Link>
       </HeaderPartial>
       <HeaderPartial style={{ justifyContent: 'flex-end' }}>
-        <a href="/#">Login/Registrieren</a>
-        <a href="/#">Hilfe</a>
+        <a href="/#" className="mobile-hide">
+          Login/Registrieren
+        </a>
+        <a href="/#" className="mobile-hide">
+          Hilfe
+        </a>
         <a href="/#">
           <Logo src={search} alt="Suche" style={{ width: '1.5rem' }} />
         </a>

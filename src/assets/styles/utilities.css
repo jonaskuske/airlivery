@@ -8,9 +8,27 @@
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
+  transition: padding 300ms ease-out;
   padding: 0 3rem;
   box-sizing: border-box;
 }
 .theme-color {
   color: #6eaffb;
+}
+@media screen and (max-width: 900px) {
+  .mobile-hide {
+    display: none;
+  }
+  .max-width {
+    padding: 0 1rem;
+  }
+  html {
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
 }

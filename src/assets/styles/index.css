@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #505050;
 }
-
 a {
   text-decoration: none;
   color: currentColor;
@@ -19,4 +20,18 @@ a:hover {
 }
 .page-container {
   margin: 4rem 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+button,
+label,
+input,
+textarea {
+  transition: font-size 300ms ease-out;
 }
