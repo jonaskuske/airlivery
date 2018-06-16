@@ -1,6 +1,6 @@
 import React from 'react'
 import heroImage from '../assets/images/drone-hero.jpg'
-import { HeroImage } from '../components'
+import HeroImage from '../components/HeroImage'
 
 export default () => (
   <div>

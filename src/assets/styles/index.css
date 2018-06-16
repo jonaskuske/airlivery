@@ -33,5 +33,6 @@ button,
 label,
 input,
 textarea {
+  font-family: 'Montserrat', sans-serif;
   transition: font-size 300ms ease-out;
 }

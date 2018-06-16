@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SocialIcon } from './'
+import SocialIcon from './SocialIcon'
 
 const FooterContainer = styled.div`
   background: #f0f0f0;
