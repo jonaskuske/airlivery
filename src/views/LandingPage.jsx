@@ -8,7 +8,6 @@ export default () => (
     <main className="max-width">
       <h1>airlivery - Paketzustellung per Drohne</h1>
       <h2>Nie mehr den Paketboten verpassen.</h2>
-      {/* <br /> */}
       <p style={{ maxWidth: '30rem' }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ut,
         inventore, repellendus nesciunt molestiae non eaque voluptate delectus

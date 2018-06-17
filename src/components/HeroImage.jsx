@@ -41,7 +41,7 @@ const HeroTitle = styled.p`
   }
 `
 
-export default ({ image, title, subtitle }) => (
+export default ({ image, title, subtitle, smallSubtitle }) => (
   <HeroContainer>
     <HeroImage image={image} />
 
@@ -50,7 +50,9 @@ export default ({ image, title, subtitle }) => (
         <HeroTitle>
           {title}
           <br />
-          {subtitle}
+          <span style={smallSubtitle && { fontSize: '1.8rem' }}>
+            {subtitle}
+          </span>
         </HeroTitle>
       </HeroTitleContainer>
     )}
