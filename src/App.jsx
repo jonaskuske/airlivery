@@ -16,14 +16,6 @@ import Privacy from './views/Privacy'
 import LegalOverview from './views/LegalOverview'
 import ErrorView from './components/ErrorViewContainer'
 
-const testError = {
-  main: 'Beim Absenden der Bestellung ist ein Fehler aufgetreten.',
-  code: '0x7EV3',
-  new: true,
-  more:
-    'Bitte versuche es noch einmal und melde dich beim Support, falls das Problem erneut auftritt.',
-}
-
 class App extends Component {
   render() {
     const { isMobile } = this.props
@@ -37,7 +29,7 @@ class App extends Component {
                 <CssBaseline />
                 {isMobile ? <HeaderMobile /> : <HeaderNavigation />}
                 <div className="page-container">
-                  <ErrorView error={testError} />
+                  <ErrorView />
                   <Route path="/" exact component={Main} />
                   <Route path="/senden" component={Send} />
                   <Route path="/about" component={About} />
