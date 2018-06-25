@@ -1,5 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import IconLink from '../../assets/icons/link.svg'
+import { withTheme } from '@material-ui/core'
 
 const ButtonContainer = styled.div`
   width: 100%;
@@ -9,33 +11,74 @@ const ButtonContainer = styled.div`
   }
 `
 
-const Button = styled.button`
+const Button = withTheme()(styled.button`
+  position: relative;
   width: 100%;
   border: none;
   margin: 0;
-  padding: 0;
+  padding: 15%;
   cursor: pointer;
   box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.3);
-  background: #eeeeee 50% 20% / contain no-repeat;
-  ${props => css`
-    background-image: url(${props.image});
-  `} ::before {
+  background: #eeeeee center / contain no-repeat;
+  background-origin: content-box;
+  overflow: hidden;
+  ::before {
     content: '';
     display: block;
     margin-top: 100%;
   }
-`
+  @media (max-width: 900px) {
+    padding: 3%;
+    ::before {
+      margin-top: 15%;
+    }
+  }
+  ::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    padding-top: 150%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0;
+    transition: transform 350ms ease-out, opacity 280ms ease-out;
+    ${({ theme }) =>
+      css`
+        background: ${theme.palette.primary.main};
+      `};
+  }
+  :active::after {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  ${props =>
+    css`
+      background-image: url(${props.image || IconLink});
+    `};
+`)
 
-const ButtonText = styled.p`
-  color: #6eaffb;
-  font-size: 1.2rem;
+const ButtonText = withTheme()(styled.p`
+  font-size: 1rem;
   font-weight: 500;
   margin: 0.5rem 0;
-`
+  @media (max-width: 900px) {
+    font-size: 1rem;
+    margin: 0.2rem 0 0.5rem 0;
+  }
+  @media screen and (max-width: 360px) {
+    font-size: 0.8rem;
+  }
+  ${({ theme }) =>
+    css`
+      color: ${theme.palette.primary.main};
+    `};
+`)
 
-export default ({ image, text, onClick }) => (
-  <ButtonContainer onClick={onClick}>
-    <Button image={image} aria-label={text} />
+export default ({ onClick, text = 'Main Button', ...props }) => (
+  <ButtonContainer onClick={onClick} title={text}>
+    <Button aria-label={text} {...props} />
     <ButtonText>{text}</ButtonText>
   </ButtonContainer>
 )

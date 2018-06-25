@@ -3,6 +3,7 @@ import heroImage from '../assets/images/drone-hero.jpg'
 import HeroImage from '../components/HeroImage'
 
 import MainButtons from './startPage/MainButtonContainer'
+import DeliveryDisplay from '../components/DeliveryDisplay'
 
 export default () => (
   <div>
@@ -14,12 +15,7 @@ export default () => (
     />
     <main className="max-width">
       <MainButtons />
-      <h2>Zuletzt versandt/empfangen</h2>
-      <p>Hier</p>
-      <br />
-      <p>Eine</p>
-      <br />
-      <p>Liste</p>
+      <DeliveryDisplay />
     </main>
   </div>
 )

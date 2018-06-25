@@ -1,9 +1,13 @@
 import { createStore, combineReducers, compose } from 'redux'
 
 import auth from './state/auth'
+import deliveries from './state/deliveries'
+import layout from './state/layout'
 
 const reducers = {
   auth,
+  deliveries,
+  layout,
 }
 
 const composeEnhancers =
