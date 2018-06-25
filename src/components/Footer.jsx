@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SocialIcon from './SocialIcon'
 
@@ -40,8 +41,8 @@ const imprintItems = [
   'FAQ',
   'Sicherheitshinweise',
   'AGB',
-  'Datenschutz',
-  'Impressum',
+  { name: 'Datenschutz', href: '/datenschutz' },
+  { name: 'Impressum', href: '/impressum' },
 ]
 
 export default () => (
@@ -49,9 +50,9 @@ export default () => (
     <Footer className="max-width">
       <ImprintContainer>
         {imprintItems.map(item => (
-          <a href="/#" key={item}>
-            {item}
-          </a>
+          <Link to={item.href || '/#'} key={item.href || item}>
+            {item.name || item}
+          </Link>
         ))}
       </ImprintContainer>
       <SocialContainer>

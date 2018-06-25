@@ -1,6 +1,6 @@
 import types from './types'
 
-const authReducer = (state = { isAuth: false }, { type }) => {
+const authReducer = (state = { isAuth: true }, { type }) => {
   switch (type) {
     case types.LOGIN:
       return { isAuth: true }

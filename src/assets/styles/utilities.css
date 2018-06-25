@@ -12,9 +12,6 @@
   padding: 0 3rem;
   box-sizing: border-box;
 }
-.theme-color {
-  color: #6eaffb;
-}
 @media screen and (max-width: 900px) {
   .mobile-hide {
     display: none;
@@ -23,7 +20,7 @@
     padding: 0 1rem;
   }
   html {
-    font-size: 0.9rem;
+    /* font-size: 14px; */
   }
   h1 {
     font-size: 1.8rem;

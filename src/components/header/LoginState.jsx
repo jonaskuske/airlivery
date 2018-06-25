@@ -14,13 +14,9 @@ const mapDispatchToProps = dispatch => ({
 
 const LoginState = ({ isAuth, onLoginClick, onLogoutClick }) =>
   isAuth ? (
-    <Button onClick={onLogoutClick}>
-      Martina<span className="mobile-hide"> Mustermann</span>
-    </Button>
+    <Button onClick={onLogoutClick}>Martina Mustermann</Button>
   ) : (
-    <Button onClick={onLoginClick}>
-      Login<span className="mobile-hide">/Registrieren</span>
-    </Button>
+    <Button onClick={onLoginClick}>Login/Registrieren</Button>
   )
 
 export default connect(

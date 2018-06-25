@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const HeroContainer = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 55vh;
   position: relative;
   overflow: hidden;
   transition: height 300ms ease-out;
@@ -25,11 +25,23 @@ const HeroImage = styled.div`
     `};
 `
 const HeroTitleContainer = styled.div`
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
+  && {
+    position: absolute;
+    bottom: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    transition: bottom 250ms ease-out;
+    @media screen and (max-width: 550px) {
+      bottom: 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      transition: bottom 250ms ease-out, background 300ms 300ms ease-out,
+        backdrop-filter 10ms 300ms;
+    }
+  }
 `
 const HeroTitle = styled.p`
   color: #fff;
@@ -37,11 +49,14 @@ const HeroTitle = styled.p`
   text-align: right;
   margin: 0;
   @media screen and (max-width: 900px) {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
+  }
+  @media screen and (max-width: 350px) {
+    font-size: 1.4rem;
   }
 `
 
-export default ({ image, title, subtitle }) => (
+export default ({ image, title, subtitle, smallSubtitle }) => (
   <HeroContainer>
     <HeroImage image={image} />
 
@@ -50,7 +65,7 @@ export default ({ image, title, subtitle }) => (
         <HeroTitle>
           {title}
           <br />
-          {subtitle}
+          <span style={smallSubtitle && { fontSize: '0.9em' }}>{subtitle}</span>
         </HeroTitle>
       </HeroTitleContainer>
     )}

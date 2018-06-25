@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import logo from '../assets/icons/drone.svg'
-import search from '../assets/icons/search.svg'
+import styled, { css } from 'styled-components'
 import LoginState from './header/LoginState'
+import { Search } from '@material-ui/icons'
+import { IconButton, withTheme } from '@material-ui/core'
+import { Drone } from './icons'
 
 const HeaderContainer = styled.div`
   position: fixed;
@@ -19,10 +20,11 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 60px;
 `
-const Logo = styled.img`
-  width: 3rem;
+const Logo = styled(Drone)`
+  width: 3rem !important;
+  height: auto !important;
 `
 const HeaderPartial = styled.div`
   display: flex;
@@ -31,11 +33,6 @@ const HeaderPartial = styled.div`
   > * {
     margin: 0 1rem;
   }
-  @media screen and (max-width: 900px) {
-    > * {
-      margin: 0 0.2rem;
-    }
-  }
   > *:first-child {
     margin-left: 0;
   }
@@ -43,33 +40,38 @@ const HeaderPartial = styled.div`
     margin-right: 0;
   }
 `
+
+const HeaderLink = withTheme()(styled(Link)`
+  ${({ theme }) => css`
+    color: ${theme.palette.primary.main};
+  `};
+`)
+const HeaderLinkLogo = styled(HeaderLink)`
+  display: flex;
+  align-items: center;
+  > svg {
+    width: 3rem;
+    height: auto;
+  }
+`
 export default () => (
   <HeaderContainer>
     <Header className="max-width">
       <HeaderPartial>
-        <Link
-          to="/"
-          style={{ display: 'flex', alignItems: 'center' }}
-          className="theme-color"
-        >
-          <Logo src={logo} alt="Logo, drone carrying parcel" />
-          <span className="mobile-hide">airlivery</span>
-        </Link>
-        <Link to="/senden" className="theme-color">
-          Senden
-        </Link>
-        <Link to="/about" className="theme-color">
-          About
-        </Link>
+        <HeaderLinkLogo to="/">
+          <Logo />
+          <span>airlivery</span>
+        </HeaderLinkLogo>
+        <HeaderLink to="/senden">Senden</HeaderLink>
+        <HeaderLink to="/about">About</HeaderLink>
       </HeaderPartial>
+
       <HeaderPartial style={{ justifyContent: 'flex-end' }}>
         <LoginState />
-        <a href="/#" className="mobile-hide">
-          Hilfe
-        </a>
-        <a href="/#">
-          <Logo src={search} alt="Suche" style={{ width: '1.5rem' }} />
-        </a>
+        <Link to="/hilfe">Hilfe</Link>
+        <IconButton component={Link} to="/suche">
+          <Search />
+        </IconButton>
       </HeaderPartial>
     </Header>
   </HeaderContainer>
