@@ -6,10 +6,13 @@ const StyledErrorCount = styled.p`
   text-align: right;
   font-size: 0.8rem;
   margin-bottom: 0;
+  height: 1rem;
 `
 
 export default ({ errors }) => {
-  if (!errors || !errors.length) return null
+  if (!errors || errors.length < 2) {
+    return <StyledErrorCount />
+  }
 
-  return <StyledErrorCount>+{errors.length} weitere</StyledErrorCount>
+  return <StyledErrorCount>+{errors.length - 1} weitere</StyledErrorCount>
 }

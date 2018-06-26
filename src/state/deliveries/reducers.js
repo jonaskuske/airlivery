@@ -4,16 +4,20 @@ const mockDelivery = {
   type: 'from',
   from: 'Jonas Kuske',
   to: 'Viktoria Klat',
-  destination: 'Dropoff-Zone XA3',
   date: new Date().toLocaleDateString({ locale: 'de-DE' }),
-  number: 230377588394985,
+  number: 23037758,
   name: 'Amazon Sendung #784E43d',
 }
 
-const initialState = [1, 2, 3, 4, 5].map(() => ({
-  ...mockDelivery,
-  type: Math.random() > 0.5 ? 'from' : 'to',
-}))
+const initialState = [1, 2, 3, 4, 5].map(() => {
+  const type = Math.random() > 0.5 ? 'from' : 'to'
+  return {
+    ...mockDelivery,
+    type,
+    from: type === 'from' ? 'Jonas Kuske' : 'Viktoria Klat',
+    to: type === 'from' ? 'Viktoria Klat' : 'Jonas Kuske',
+  }
+})
 
 const deliveriesReducer = (state = initialState, { type, delivery }) => {
   switch (type) {

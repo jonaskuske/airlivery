@@ -1,5 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import store from '../store'
+
+const showError = () =>
+  store.dispatch({
+    type: 'addError',
+    error: {
+      message: 'Leider ist ein Fehler aufgetreten.',
+      note:
+        'Dies ist nur ein Test. Du kannst diese Meldung mit gutem Gewissen ignorieren.',
+    },
+  })
 
 const HeroContainer = styled.div`
   width: 100%;
@@ -57,7 +68,7 @@ const HeroTitle = styled.p`
 `
 
 export default ({ image, title, subtitle, smallSubtitle }) => (
-  <HeroContainer>
+  <HeroContainer onClick={showError}>
     <HeroImage image={image} />
 
     {title && (
