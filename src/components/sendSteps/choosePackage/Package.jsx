@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 const StyledPackage = styled.div`
   position: relative;
   width: 100%;
@@ -11,11 +12,22 @@ const StyledPackage = styled.div`
   }
 `
 
-const StyledPackageInner = styled.div`
+const StyledPackageInput = styled.input`
+  display: none;
+  :checked + label {
+    border: 2px solid blue;
+  }
+`
+
+const StyledPackageLabel = styled.label`
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.5rem;
+  box-sizing: border-box;
   top: 0;
   left: 0;
   width: 100%;
@@ -29,20 +41,22 @@ const StyledSizeName = styled.p`
   margin: 0;
 `
 export default props => {
-  const { sizeName, price, weight, sizes } = props.package
+  const { name, package: p } = props
+  const { sizeName, price, weight, sizes } = p
   const { width, height, depth } = sizes
   const [euro, cents = ''] = price.toString().split('.')
 
   return (
     <StyledPackage>
-      <StyledPackageInner>
+      <StyledPackageInput type="radio" id={sizeName} name={name} {...props} />
+      <StyledPackageLabel htmlFor={sizeName}>
         <StyledSizeName>{sizeName}</StyledSizeName>
         <p>Bis {weight}kg</p>
         <p>
           max. {width}x{height}x{depth}cm
         </p>
         <p>{`${euro},${cents.padEnd(2, '0')}€`}</p>
-      </StyledPackageInner>
+      </StyledPackageLabel>
     </StyledPackage>
   )
 }
