@@ -40,7 +40,7 @@ export default class extends React.Component {
             onClick={this.handleNext}
             disabled={this.state.activeStep === dots}
           >
-            Weiter
+            {this.state.activeStep === dots - 1 ? 'Fertig' : 'Weiter'}
             <KeyboardArrowRight />
           </Button>
         }

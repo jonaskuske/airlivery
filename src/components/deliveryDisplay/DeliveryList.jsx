@@ -2,7 +2,6 @@ import React from 'react'
 import DeliveryListEntry from './DeliveryListEntry'
 
 export default ({ deliveries }) => {
-  console.log(deliveries)
   return (
     <div>
       {deliveries.length ? (
