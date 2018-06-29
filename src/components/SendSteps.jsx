@@ -2,7 +2,7 @@ import React from 'react'
 
 import ChoosePackage from './sendSteps/ChoosePackage'
 import ChooseDestination from './sendSteps/ChooseDestination'
-import Payment from './sendSteps/Payment'
+import ChoosePayment from './sendSteps/ChoosePayment'
 import ChooseAirspot from './sendSteps/ChooseAirspot'
 import Cart from './sendSteps/Cart'
 import Confirmation from './sendSteps/Confirmation'
@@ -10,7 +10,7 @@ import Confirmation from './sendSteps/Confirmation'
 const steps = [
   ChoosePackage,
   ChooseDestination,
-  Payment,
+  ChoosePayment,
   ChooseAirspot,
   Cart,
   Confirmation,

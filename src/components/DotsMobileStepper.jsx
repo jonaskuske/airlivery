@@ -38,9 +38,9 @@ export default class extends React.Component {
           <Button
             size="small"
             onClick={this.handleNext}
-            disabled={this.state.activeStep === dots}
+            disabled={this.state.activeStep === dots - 1}
           >
-            {this.state.activeStep === dots - 1 ? 'Fertig' : 'Weiter'}
+            {this.state.activeStep >= dots - 2 ? 'Fertig' : 'Weiter'}
             <KeyboardArrowRight />
           </Button>
         }

@@ -26,7 +26,7 @@ export default class extends React.Component {
           <DotsMobileStepper
             onStepChange={this.handleStepChange}
             step={step}
-            dots={5}
+            dots={6}
           />
           <SendSteps step={step} />
         </StyledSend>
