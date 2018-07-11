@@ -7,6 +7,10 @@ const StyledContact = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 1rem;
+  transition: outline-color 0.25s ease-out;
+  outline: 2px solid #d7d7d7;
+  background: #f0f0f0;
 `
 const UserImageWrapper = styled.div`
   position: relative;
@@ -21,7 +25,7 @@ const UserImageInner = styled.div`
   width: 100%;
   background: transparent center / cover no-repeat;
   ${({ image }) => css`
-    background-image: url(${image || womanImage});
+    background-image: url(${image});
   `} border-radius: 50%;
   ::before {
     content: '';
@@ -29,11 +33,15 @@ const UserImageInner = styled.div`
     margin-top: 100%;
   }
 `
-const UserImage = () => (
-  <UserImageWrapper>
-    <UserImageInner />
-  </UserImageWrapper>
-)
+const UserImage = ({ image }) => {
+  if (!image) image = womanImage
+
+  return (
+    <UserImageWrapper>
+      <UserImageInner image={image} />
+    </UserImageWrapper>
+  )
+}
 const UserName = styled.p`
   flex-shrink: 0;
   display: flex;
@@ -52,17 +60,23 @@ const UserAdress = styled.p`
   }
 `
 
-export default props => {
+export default ({ contact }) => {
+  const { name, adress, image } = contact
   return (
     <StyledContact>
-      <UserImage />
+      <UserImage image={image} />
       <UserName>
-        <span>Name</span>Anita Havering
+        <span>Name</span>
+        {name}
       </UserName>
       <UserAdress>
         <span>Adresse</span>
-        <span>Gasstraße 5</span>
-        <span>27568 Bremerhaven</span>
+        <span>
+          {adress.street} {adress.streetNumber}
+        </span>
+        <span>
+          {adress.plz} {adress.city}
+        </span>
       </UserAdress>
     </StyledContact>
   )

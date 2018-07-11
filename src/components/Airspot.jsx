@@ -1,17 +1,16 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { withTheme } from '@material-ui/core'
 
 import defaultMap from '../assets/images/map.jpg'
 
-const StyledAirspot = withTheme()(styled.div`
+const StyledAirspot = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  ${({ theme }) => css`
-    border: 2px solid ${theme.palette.primary.main};
-  `};
-`)
+  background: #f0f0f0;
+  transition: outline-color 0.25s ease-out;
+  outline: 2px solid #d6d6d6;
+`
 const StyledAirspotName = styled.p`
   font-weight: bold;
   margin: 0;
@@ -36,15 +35,24 @@ const StyledAirspotMap = styled.div`
 
 export default props => {
   const {
-    name = 'Airspot 1',
-    adress = 'Lange Straße 1, 27568 Bremerhaven',
+    name = 'Airspot',
+    adress = {
+      street: 'Lange Straße',
+      streetNumber: '1',
+      plz: 27568,
+      city: 'Bremerhaven',
+    },
     map = defaultMap,
   } = props
+
+  const { street, streetNumber, plz, city } = adress
+
+  const adressString = `${street} ${streetNumber}, ${plz} ${city}`
 
   return (
     <StyledAirspot>
       <StyledAirspotName>{name}</StyledAirspotName>
-      <StyledAirspotAdress>{adress}</StyledAirspotAdress>
+      <StyledAirspotAdress>{adressString}</StyledAirspotAdress>
       <StyledAirspotMap map={map} />
     </StyledAirspot>
   )

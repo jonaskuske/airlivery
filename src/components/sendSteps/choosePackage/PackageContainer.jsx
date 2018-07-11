@@ -28,7 +28,9 @@ const StyledPackageContainer = styled.form`
 `
 
 export default props => {
-  const { packages } = props
+  const { packages, actions, selection } = props
+
+  if (!selection.package) actions.setPackage(packages[0])
 
   return (
     <StyledPackageContainer>
@@ -38,6 +40,7 @@ export default props => {
           name="package-select"
           key={i}
           defaultChecked={i === 0}
+          onChange={() => actions.setPackage(p)}
         />
       ))}
     </StyledPackageContainer>

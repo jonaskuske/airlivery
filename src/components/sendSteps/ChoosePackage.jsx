@@ -29,10 +29,15 @@ const packageSizes = [
 ]
 
 export default props => {
+  const { actions, selection } = props
   return (
     <div>
       <h2>Größe auswählen</h2>
-      <PackageContainer packages={packageSizes} />
+      <PackageContainer
+        packages={packageSizes}
+        actions={actions}
+        selection={selection}
+      />
     </div>
   )
 }

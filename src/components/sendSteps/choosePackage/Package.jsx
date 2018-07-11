@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { withTheme } from '@material-ui/core'
 
 const StyledPackage = styled.div`
   position: relative;
@@ -12,12 +13,14 @@ const StyledPackage = styled.div`
   }
 `
 
-const StyledPackageInput = styled.input`
+const StyledPackageInput = withTheme()(styled.input`
   display: none;
   :checked + label {
-    border: 2px solid blue;
+    ${({ theme }) => css`
+      outline: 2px solid ${theme.palette.primary.main};
+    `};
   }
-`
+`)
 
 const StyledPackageLabel = styled.label`
   position: absolute;
@@ -31,6 +34,8 @@ const StyledPackageLabel = styled.label`
   top: 0;
   left: 0;
   width: 100%;
+  transition: outline-color 0.25s ease-out;
+  outline: 2px solid #d7d7d7;
   height: 100%;
   > p {
     margin: 0;
