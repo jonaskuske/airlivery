@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { contactsSelectors } from '../state/contacts'
+// import { airspotsSelectors } from '../state/airspots'
+// import { paymentsSelectors } from '../state/payments'
 
 import ChoosePackage from './sendSteps/ChoosePackage'
 import ChooseDestination from './sendSteps/ChooseDestination'
@@ -21,15 +23,21 @@ const steps = [
 
 class SendSteps extends React.Component {
   state = {
-    package: '',
-    destination: '',
+    package: undefined,
+    destination: undefined,
+    airspot: undefined,
+    payment: undefined,
   }
 
   setDestination = destination => this.setState({ destination })
   setPackage = pack => this.setState({ package: pack })
+  setAirspot = airspot => this.setState({ airspot })
+  setPayment = payment => this.setState({ payment })
   actions = {
     setDestination: this.setDestination,
     setPackage: this.setPackage,
+    setAirspot: this.setAirspot,
+    setPayment: this.setPayment,
   }
 
   render() {
@@ -46,6 +54,8 @@ const mapStateToProps = state => {
   return {
     data: {
       contacts: contactsSelectors.getAllContacts(state),
+      // airspots: airspotSelectors.getAllAirspots(state),
+      // paymentMethods: paymentsSelectors.getAllPaymentMethods(state),
     },
   }
 }
