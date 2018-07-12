@@ -4,6 +4,20 @@ import Airspot from '../Airspot'
 import { withTheme } from '@material-ui/core'
 
 const StyledAirspotContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 901px) {
+    flex-flow: row wrap;
+    > label {
+      width: 40%;
+      flex-grow: 1;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+    > label:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
   > div {
     margin-bottom: 1rem;
   }
@@ -16,29 +30,13 @@ const StyledInput = withTheme()(styled.input`
     `}
 `)
 
-const temp = [
-  {
-    name: 'Garageneinfahrt',
-    adress: {
-      street: 'Lange Gasse',
-      streetNumber: '',
-      plz: '',
-      city: 'Münsingen',
-    },
-  },
-  {
-    name: 'Dachterasse',
-    adress: {
-      street: 'Lange Gasse',
-      streetNumber: '3',
-      plz: 73456,
-      city: 'Münsingen',
-    },
-  },
-]
+const StyledLabel = styled.label`
+  cursor: pointer;
+`
 
-export default ({ data }) => {
-  const { airspots = temp } = data
+export default ({ data, actions }) => {
+  const { airspots } = data
+  const { setAirspot } = actions
 
   return (
     <div>
@@ -53,10 +51,11 @@ export default ({ data }) => {
               key="input"
               id={`airspot-select-${index}`}
               defaultChecked={index === 0}
+              onChange={() => setAirspot(airspot)}
             />,
-            <label htmlFor={`airspot-select-${index}`} key="label">
+            <StyledLabel htmlFor={`airspot-select-${index}`} key="label">
               <Airspot name={airspot.name} adress={airspot.adress} />
-            </label>,
+            </StyledLabel>,
             <br key="br" />,
           ]
         })}

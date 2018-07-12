@@ -1,7 +1,4 @@
-import React from 'react'
-import PackageContainer from './choosePackage/PackageContainer'
-
-const packageSizes = [
+export default [
   {
     sizeName: 'XS',
     price: 2.5,
@@ -27,17 +24,3 @@ const packageSizes = [
     sizes: { width: 60, height: 40, depth: 60 },
   },
 ]
-
-export default props => {
-  const { actions, selection } = props
-  return (
-    <div>
-      <h2>Größe auswählen</h2>
-      <PackageContainer
-        packages={packageSizes}
-        actions={actions}
-        selection={selection}
-      />
-    </div>
-  )
-}
