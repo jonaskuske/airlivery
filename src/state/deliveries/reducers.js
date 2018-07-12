@@ -1,23 +1,18 @@
 import types from './types'
+import { generateId } from '../../utils'
 
-const mockDelivery = {
-  type: 'from',
-  from: 'Jonas Kuske',
-  to: 'Viktoria Klat',
-  date: new Date().toLocaleDateString({ locale: 'de-DE' }),
-  number: 23037758,
-  name: 'Amazon Sendung #784E43d',
+class MockDelivery {
+  constructor() {
+    this.type = Math.random() > 0.5 ? 'from' : 'to'
+    this.date = new Date().toLocaleDateString({ locale: 'de-DE' })
+    this.number = generateId()
+    this.name = 'Amazon Sendung #784E43d'
+    this.from = this.type === 'from' ? 'Jonas Kuske' : 'Viktoria Klat'
+    this.to = this.type === 'from' ? 'Viktoria Klat' : 'Jonas Kuske'
+  }
 }
 
-const initialState = [1, 2, 3, 4, 5].map(() => {
-  const type = Math.random() > 0.5 ? 'from' : 'to'
-  return {
-    ...mockDelivery,
-    type,
-    from: type === 'from' ? 'Jonas Kuske' : 'Viktoria Klat',
-    to: type === 'from' ? 'Viktoria Klat' : 'Jonas Kuske',
-  }
-})
+const initialState = [...Array(7)].map(() => new MockDelivery())
 
 const deliveriesReducer = (state = initialState, { type, delivery }) => {
   switch (type) {
