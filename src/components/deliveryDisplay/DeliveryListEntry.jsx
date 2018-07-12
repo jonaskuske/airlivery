@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons'
 
 const StyledEntry = styled.div`
   display: flex;
@@ -17,12 +18,13 @@ const StyledEntry = styled.div`
 const Column = styled.div`
   min-width: 0;
 `
-const DesktopOnly = Column.extend`
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
+const ColumnNoShrink = Column.extend`
+  flex-shrink: 0;
 `
-const TabletOnly = styled.div`
+const ColumnCenter = ColumnNoShrink.extend`
+  align-self: center;
+`
+const TabletOnly = ColumnNoShrink.extend`
   @media screen and (max-width: 350px) {
     display: none;
   }
@@ -30,46 +32,40 @@ const TabletOnly = styled.div`
 const EntryText = styled.p`
   margin: 0;
 `
+const EntryTextHead = EntryText.extend`
+  font-weight: bold;
+  padding-bottom: 0.3rem;
+`
 const EntryTextTruncated = EntryText.extend`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `
-export default ({ entry: { from, to, destination, date, number, name } }) => (
-  <StyledEntry>
-    <Column>
-      <EntryTextTruncated>
-        <b>Sendungs-Nr.</b>
-      </EntryTextTruncated>
-      <EntryTextTruncated>
-        <span>{name}</span>
-        <br />
-        <span>{number}</span>
-      </EntryTextTruncated>
-    </Column>
-    <TabletOnly>
-      <EntryText>
-        <b>Datum</b>
-      </EntryText>
-      <EntryText>{date}</EntryText>
-    </TabletOnly>
-    <DesktopOnly>
-      <EntryTextTruncated>
-        <b>Abladeort</b>
-      </EntryTextTruncated>
-      <EntryTextTruncated>{destination}</EntryTextTruncated>
-    </DesktopOnly>
-    <Column>
-      <EntryTextTruncated>
-        <b>Empfänger</b>
-      </EntryTextTruncated>
-      <EntryTextTruncated>{to}</EntryTextTruncated>
-    </Column>
-    <DesktopOnly>
-      <EntryTextTruncated>
-        <b>Absender</b>
-      </EntryTextTruncated>
-      <EntryTextTruncated>{from}</EntryTextTruncated>
-    </DesktopOnly>
-  </StyledEntry>
-)
+export default ({ entry: { type, from, to, date, number, name } }) => {
+  const isFrom = type === 'from'
+
+  return (
+    <StyledEntry>
+      <ColumnCenter>
+        {isFrom ? <ArrowDropUp /> : <ArrowDropDown />}
+      </ColumnCenter>
+      <Column>
+        <EntryTextHead>Sendung</EntryTextHead>
+        <EntryTextTruncated>
+          <span style={{ opacity: 0.6 }}>#</span>
+          <span>{number}</span>
+          <br />
+          <span>{name}</span>
+        </EntryTextTruncated>
+      </Column>
+      <TabletOnly>
+        <EntryTextHead>Datum</EntryTextHead>
+        <EntryText>{date}</EntryText>
+      </TabletOnly>
+      <ColumnNoShrink>
+        <EntryTextHead>{isFrom ? 'Empfänger' : 'Absender'}</EntryTextHead>
+        <EntryTextTruncated>{isFrom ? to : from}</EntryTextTruncated>
+      </ColumnNoShrink>
+    </StyledEntry>
+  )
+}
