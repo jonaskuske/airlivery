@@ -59,7 +59,7 @@ class SendSteps extends React.Component {
 const mapStateToProps = state => {
   return {
     data: {
-      contacts: contactsSelectors.getAllContacts(state),
+      contacts: contactsSelectors.getAddedContacts(state),
       airspots: airspotsSelectors.getAllAirspots(state),
       paymentMethods: paymentMethodsSelectors.getAllPaymentMethods(state),
     },

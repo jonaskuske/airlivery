@@ -1,5 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Zoom } from '@material-ui/core'
+import MicroButton from './MicroFloatingActionButton'
+import { Delete, Edit } from '@material-ui/icons'
 
 import defaultMap from '../assets/images/map.jpg'
 
@@ -10,6 +13,20 @@ const StyledAirspot = styled.div`
   background: #f0f0f0;
   transition: outline-color 0.25s ease-out;
   outline: 2px solid #d6d6d6;
+  position: relative;
+`
+const StyledAirspotHeader = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  > button {
+    margin-right: 0.5rem;
+  }
 `
 const StyledAirspotName = styled.p`
   font-weight: bold;
@@ -43,6 +60,7 @@ export default props => {
       city: 'Bremerhaven',
     },
     map = defaultMap,
+    edit = false,
   } = props
 
   const { street, streetNumber, plz, city } = adress
@@ -51,6 +69,19 @@ export default props => {
 
   return (
     <StyledAirspot>
+      <StyledAirspotHeader>
+        <Zoom in={edit}>
+          <MicroButton color="primary">
+            <Edit />
+          </MicroButton>
+        </Zoom>
+        <Zoom in={edit}>
+          <MicroButton color="primary">
+            <Delete />
+          </MicroButton>
+        </Zoom>
+      </StyledAirspotHeader>
+
       <StyledAirspotName>{name}</StyledAirspotName>
       <StyledAirspotAdress>{adressString}</StyledAirspotAdress>
       <StyledAirspotMap map={map} />

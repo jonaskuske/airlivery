@@ -9,7 +9,7 @@ export default () => (
   <div>
     <HeroImage
       image={heroImage}
-      title="Willkommen Martina"
+      title="Willkommen Jonas"
       subtitle="Was wollen Sie tun?"
       smallSubtitle={true}
     />

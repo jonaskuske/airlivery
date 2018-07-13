@@ -37,6 +37,7 @@ export default class extends React.Component {
   }
 
   slideIn = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     this.setState({ render: true })
     setTimeout(() => this.setState({ visible: true }), 50)
   }
@@ -51,7 +52,6 @@ export default class extends React.Component {
 
   render() {
     if (!this.state.render) return null
-
     const { error = this.state.lastError, setAsSeen, errors } = this.props
 
     return (

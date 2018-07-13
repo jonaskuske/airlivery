@@ -1,47 +1,34 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-
-import womanImage from '../assets/images/woman.jpg'
+import styled from 'styled-components'
+import UserImage from './UserImage'
+import { Delete, Add } from '@material-ui/icons'
+import ActionButton from '../components/MicroFloatingActionButton'
 
 const StyledContact = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem 0 1rem;
   transition: outline-color 0.25s ease-out;
   outline: 2px solid #d7d7d7;
   background: #f0f0f0;
-`
-const UserImageWrapper = styled.div`
   position: relative;
+`
+const InteractionHeader = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0.4rem;
+`
+const StyledUserImage = styled(UserImage)`
+  align-self: center;
   max-width: 4rem;
 `
-const UserImageInner = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 100%;
-  background: transparent center / cover no-repeat;
-  ${({ image }) => css`
-    background-image: url(${image});
-  `} border-radius: 50%;
-  ::before {
-    content: '';
-    display: block;
-    margin-top: 100%;
-  }
-`
-const UserImage = ({ image }) => {
-  if (!image) image = womanImage
-
-  return (
-    <UserImageWrapper>
-      <UserImageInner image={image} />
-    </UserImageWrapper>
-  )
-}
 const UserName = styled.p`
   flex-shrink: 0;
   display: flex;
@@ -59,12 +46,32 @@ const UserAdress = styled.p`
     font-weight: bold;
   }
 `
+const DeleteButton = styled(ActionButton)`
+  && {
+    background-color: red;
+    color: #fafafa;
+  }
+`
 
-export default ({ contact }) => {
+export default ({ contact, onDelete, onAdd, allowInteractions, ...props }) => {
   const { name, adress, image } = contact
   return (
-    <StyledContact>
-      <UserImage image={image} />
+    <StyledContact {...props}>
+      {allowInteractions && (
+        <InteractionHeader>
+          {onAdd && (
+            <ActionButton onClick={() => onAdd(contact)} color="secondary">
+              <Add />
+            </ActionButton>
+          )}
+          {onDelete && (
+            <DeleteButton onClick={() => onDelete(contact)} color="inherit">
+              <Delete />
+            </DeleteButton>
+          )}
+        </InteractionHeader>
+      )}
+      <StyledUserImage image={image} />
       <UserName>
         <span>Name</span>
         {name}
