@@ -20,7 +20,7 @@ export default () => {
   return (
     <StyledEditActions className="test">
       <p style={{ textAlign: 'right' }}>
-        Name, Passwort und Mail lassen sich in den Einstellungen ändern.
+        Passwort und Mail-Adresse lassen sich in den Einstellungen ändern.
       </p>
       <Button variant="outlined" size="small" color="primary">
         Bild ändern

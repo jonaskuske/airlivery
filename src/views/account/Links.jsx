@@ -6,18 +6,18 @@ import { Link } from 'react-router-dom'
 const StyledLinkContainer = withTheme()(styled.div`
   display: flex;
   > a {
-    margin-right: 0.7rem;
+    margin-right: 1rem;
     font-weight: 600;
     ${({ theme }) => css`
       color: ${theme.palette.primary.main};
     `};
   }
-  margin: 0.3rem 0 0.7rem 0;
+  margin: 0.7rem 0 1.2rem 0;
 `)
 
 export default props => (
   <StyledLinkContainer>
-    <Link to="/adressbuch">Adressbuch</Link>
-    <Link to="/lieferungen">Lieferungen</Link>
+    <Link to="/adressbuch">Zum Adressbuch</Link>
+    <Link to="/lieferungen">Zur Lieferübersicht</Link>
   </StyledLinkContainer>
 )

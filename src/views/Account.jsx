@@ -11,20 +11,9 @@ import PaymentInfo from './account/PaymentInfo'
 import { Zoom } from '@material-ui/core'
 import EditButton from './account/EditButton'
 
-import profilePicture from '../assets/images/jonas.jpg'
-
-const mockUser = {
-  profilePicture,
-  name: 'Jonas Kuske',
-  email: 'mail@jonaskuske.com',
-  phone: '+491603336948',
-  adress: {
-    street: 'Sielstraße',
-    streetNumber: '5',
-    plz: 27568,
-    city: 'Bremerhaven',
-  },
-}
+import { userSelectors } from '../state/user'
+import { airspotsSelectors } from '../state/airspots'
+import { paymentMethodsSelectors } from '../state/payments/methods'
 
 const Title = styled.h1`
   margin-bottom: 0;
@@ -34,7 +23,7 @@ const Main = styled.main`
 `
 
 class Account extends React.Component {
-  state = { editMode: false, infoType: 'personal' }
+  state = { editMode: false, infoType: 'payment' }
   toggleEditMode = () => {
     this.setState(prevState => ({
       editMode: !prevState.editMode,
@@ -47,7 +36,7 @@ class Account extends React.Component {
   }
 
   render() {
-    const { user = mockUser } = this.props
+    const { user, paymentMethods, airspots } = this.props
     const { editMode, infoType } = this.state
 
     return (
@@ -62,9 +51,13 @@ class Account extends React.Component {
             <InfoTypeSwitcher onClick={this.toggleType} infoType={infoType} />
 
             {infoType === 'personal' ? (
-              <PersonalInfo edit={editMode} user={user} />
+              <PersonalInfo edit={editMode} user={user} airspots={airspots} />
             ) : (
-              <PaymentInfo edit={editMode} user={user} />
+              <PaymentInfo
+                edit={editMode}
+                user={user}
+                paymentMethods={paymentMethods}
+              />
             )}
 
             <Zoom in={!editMode}>
@@ -77,6 +70,12 @@ class Account extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const { getAllPaymentMethods } = paymentMethodsSelectors
+
+const mapStateToProps = state => ({
+  paymentMethods: getAllPaymentMethods(state),
+  user: userSelectors.getUser(state),
+  airspots: airspotsSelectors.getAllAirspots(state),
+})
 
 export default connect(mapStateToProps)(Account)

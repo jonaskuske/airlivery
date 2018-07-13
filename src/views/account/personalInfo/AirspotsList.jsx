@@ -22,7 +22,7 @@ const AirspotContainer = styled.div`
 export default ({ airspots = [!!0, !!0], edit }) => {
   return (
     <AirspotContainer>
-      <h3>Meine Airspots</h3>
+      <h3>Deine Airspots</h3>
       {airspots.map((airspot, index) => (
         <Airspot airspot={airspot} key={index} edit={edit} />
       ))}

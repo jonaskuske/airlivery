@@ -34,7 +34,7 @@ export default class extends React.Component {
 
     return (
       <React.Fragment>
-        <Title>Meine Kontakte</Title>
+        <Title>Deine Kontakte</Title>
         <TextField
           label="Kontakt suchen"
           placeholder="Name oder Adresse..."

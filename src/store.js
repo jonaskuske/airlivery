@@ -7,6 +7,7 @@ import errors from './state/errors'
 import contacts from './state/contacts'
 import airspots from './state/airspots'
 import payments from './state/payments'
+import user from './state/user'
 
 const reducers = {
   auth,
@@ -16,6 +17,7 @@ const reducers = {
   contacts,
   airspots,
   payments,
+  user,
 }
 
 const composeEnhancers =
