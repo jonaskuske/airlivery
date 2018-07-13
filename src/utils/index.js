@@ -5,3 +5,12 @@ export function generateId(a) {
 }
 
 export const wait = time => new Promise(resolve => setTimeout(resolve, time))
+
+export const includesString = (str1 = '', str2, exact) => {
+  if (!(typeof str1 === 'string') && str1.toString) {
+    str1 = str1.toString()
+  }
+
+  if (!exact) return str1.toLowerCase().includes(str2.toLowerCase())
+  else return str1.includes(str2)
+}
