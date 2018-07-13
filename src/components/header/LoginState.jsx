@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 
 const LoginState = ({ isAuth, onLoginClick, onLogoutClick }) =>
   isAuth ? (
-    <Button onClick={onLogoutClick}>Martina Mustermann</Button>
+    <Button onClick={onLogoutClick}>Jonas Kuske</Button>
   ) : (
     <Button onClick={onLoginClick}>Login/Registrieren</Button>
   )

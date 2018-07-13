@@ -8,6 +8,7 @@ import Account from '../views/Account'
 import Imprint from '../views/Imprint'
 import Privacy from '../views/Privacy'
 import LegalOverview from '../views/LegalOverview'
+import Contacts from '../views/Contacts'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -18,6 +19,7 @@ export default () => {
       <Route path="/senden" component={Send} />
       <Route path="/about" component={About} />
       <Route path="/account" component={Account} />
+      <Route path="/adressbuch" component={Contacts} />
       <Route path="/impressum" component={Imprint} />
       <Route path="/datenschutz" component={Privacy} />
       <Route path="/rechtliches" component={LegalOverview} />

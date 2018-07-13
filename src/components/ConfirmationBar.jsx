@@ -14,7 +14,7 @@ const HeaderContainer = withTheme()(styled.div`
   position: fixed;
   ${({ theme }) =>
     css`
-      background: ${theme.palette.primary.dark};
+      background: ${theme.palette.primary.main};
     `};
 `)
 const Header = withTheme()(styled.header`

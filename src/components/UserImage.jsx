@@ -1,27 +1,35 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-import womanImage from '../assets/images/woman.jpg'
+import defaultAvatar from '../assets/images/generic-user.png'
 
-const UserImageWrapper = styled.div`
+const StyledUserImage = styled.div`
   position: relative;
   width: 100%;
-  max-width: 4rem;
-`
-const UserImageInner = styled.div`
-  width: 100%;
-  background: transparent center / cover no-repeat;
-  ${({ image }) => css`
-    background-image: url(${image});
-  `} border-radius: 50%;
   ::before {
     content: '';
     display: block;
-    margin-top: 100%;
+    padding-top: 100%;
   }
 `
-export default ({ image }) => {
-  if (!image) image = womanImage
+const StyledUserImageInner = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent center / cover no-repeat;
+    ${({ image }) => css`
+      background-image: url(${image});
+    `} border-radius: 50%;
+  }
+`
+export default ({ image, ...props }) => {
+  if (!image) image = defaultAvatar
 
-  return <UserImageInner image={image} />
+  return (
+    <StyledUserImage {...props}>
+      <StyledUserImageInner image={image} />
+    </StyledUserImage>
+  )
 }

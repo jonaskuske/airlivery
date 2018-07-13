@@ -8,11 +8,12 @@ const StyledEditButton = styled(Button)`
     position: fixed;
     right: 23px;
     bottom: 79px;
+    z-index: 2;
   }
 `
 
 export default props => (
-  <StyledEditButton variant="fab" color="secondary" {...props}>
+  <StyledEditButton variant="fab" color="primary" {...props}>
     <Edit />
   </StyledEditButton>
 )

@@ -1,11 +1,14 @@
 import React from 'react'
-import DocumentTitle from 'react-document-title'
 import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
-import PersonalPaymentSwitcher from './account/PersonalPaymentSwitcher'
+import { connect } from 'react-redux'
+
+import DocumentTitle from 'react-document-title'
 import ConfirmationBar from '../components/ConfirmationBar'
-import AccountView from './account/AccountView'
-import AccountEdit from './account/AccountEdit'
+import InfoTypeSwitcher from './account/InfoTypeSwitcher'
+import Links from './account/Links'
+import PersonalInfo from './account/PersonalInfo'
+import PaymentInfo from './account/PaymentInfo'
+import { Zoom } from '@material-ui/core'
 import EditButton from './account/EditButton'
 
 import profilePicture from '../assets/images/jonas.jpg'
@@ -26,39 +29,54 @@ const mockUser = {
 const Title = styled.h1`
   margin-bottom: 0;
 `
+const Main = styled.main`
+  margin-bottom: 1rem;
+`
 
-export default withRouter(({ user = mockUser, history }) => {
-  const {
-    location: { pathname, search },
-  } = history
+class Account extends React.Component {
+  state = { editMode: false, infoType: 'personal' }
+  toggleEditMode = () => {
+    this.setState(prevState => ({
+      editMode: !prevState.editMode,
+    }))
+  }
+  toggleType = () => {
+    this.setState(prevState => ({
+      infoType: prevState.infoType === 'personal' ? 'payment' : 'personal',
+    }))
+  }
 
-  const accountMode = pathname.includes('/account/zahlung')
-    ? 'payment'
-    : 'personal'
-  const editMode = search.includes('?edit')
+  render() {
+    const { user = mockUser } = this.props
+    const { editMode, infoType } = this.state
 
-  return (
-    <DocumentTitle title="Account | airlivery">
-      <React.Fragment>
-        {editMode && (
-          <ConfirmationBar onConfirm={() => history.push(pathname)} />
-        )}
+    return (
+      <DocumentTitle title="Account | airlivery">
+        <React.Fragment>
+          {editMode && <ConfirmationBar onConfirm={this.toggleEditMode} />}
 
-        <main className="max-width">
-          <Title>{user.name}</Title>
-          <PersonalPaymentSwitcher history={history} />
+          <Main className="max-width">
+            <Title>{user.name}</Title>
+            <Links />
 
-          {editMode ? (
-            <AccountEdit user={user} mode={accountMode} />
-          ) : (
-            <AccountView user={user} mode={accountMode} />
-          )}
+            <InfoTypeSwitcher onClick={this.toggleType} infoType={infoType} />
 
-          {!editMode && (
-            <EditButton onClick={() => history.push(pathname + '?edit')} />
-          )}
-        </main>
-      </React.Fragment>
-    </DocumentTitle>
-  )
-})
+            {infoType === 'personal' ? (
+              <PersonalInfo edit={editMode} user={user} />
+            ) : (
+              <PaymentInfo edit={editMode} user={user} />
+            )}
+
+            <Zoom in={!editMode}>
+              <EditButton onClick={this.toggleEditMode} />
+            </Zoom>
+          </Main>
+        </React.Fragment>
+      </DocumentTitle>
+    )
+  }
+}
+
+const mapStateToProps = state => ({})
+
+export default connect(mapStateToProps)(Account)

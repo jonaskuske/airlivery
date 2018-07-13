@@ -11,6 +11,10 @@ const StyledContact = styled.div`
   outline: 2px solid #d7d7d7;
   background: #f0f0f0;
 `
+const StyledUserImage = styled(UserImage)`
+  align-self: center;
+  max-width: 4rem;
+`
 const UserName = styled.p`
   flex-shrink: 0;
   display: flex;
@@ -19,9 +23,6 @@ const UserName = styled.p`
   > span {
     font-weight: bold;
   }
-`
-const Image = styled(UserImage)`
-  max-width: 4rem;
 `
 const UserAdress = styled.p`
   margin-left: 1rem;
@@ -36,7 +37,7 @@ export default ({ contact }) => {
   const { name, adress, image } = contact
   return (
     <StyledContact>
-      <Image image={image} />
+      <StyledUserImage image={image} />
       <UserName>
         <span>Name</span>
         {name}
