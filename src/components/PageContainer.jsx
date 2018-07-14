@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
 
 import Main from '../views/Main'
 import Send from '../views/Send'
@@ -9,6 +10,8 @@ import Imprint from '../views/Imprint'
 import Privacy from '../views/Privacy'
 import LegalOverview from '../views/LegalOverview'
 import Contacts from '../views/Contacts'
+import Deliveries from '../views/Deliveries'
+import Login from '../views/Login'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -16,10 +19,12 @@ export default () => {
     <div className="page-container">
       <ErrorView />
       <Route path="/" exact component={Main} />
-      <Route path="/senden" component={Send} />
+      <ProtectedRoute path="/senden" component={Send} />
       <Route path="/about" component={About} />
-      <Route path="/account" component={Account} />
-      <Route path="/adressbuch" component={Contacts} />
+      <ProtectedRoute path="/lieferungen" component={Deliveries} />
+      <ProtectedRoute path="/account" component={Account} />
+      <Route path="/einloggen" component={Login} />
+      <ProtectedRoute path="/adressbuch" component={Contacts} />
       <Route path="/impressum" component={Imprint} />
       <Route path="/datenschutz" component={Privacy} />
       <Route path="/rechtliches" component={LegalOverview} />

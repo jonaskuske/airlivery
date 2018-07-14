@@ -45,8 +45,11 @@ class EditInfo extends React.Component {
       },
     }
   }
-
-  // handleNameChange = ({ target }) => this.setState({ name: target.value })
+  componentWillUnmount() {
+    const { updateUser } = this.props
+    updateUser(this.state)
+  }
+  handleNameChange = ({ target }) => this.setState({ name: target.value })
   handleAdressChange = ({ target }) => {
     this.setState(prevState => ({
       adress: { ...prevState.adress, [target.name]: target.value },
@@ -59,23 +62,19 @@ class EditInfo extends React.Component {
   }
 
   render() {
-    const {
-      // name,
-      adress,
-      phone,
-    } = this.state
+    const { name, adress, phone } = this.state
 
     return (
       <React.Fragment>
         <h3>Deine Daten</h3>
         <StyledEditInfo>
-          {/* <TextField
-          required={true}
-          label="Name"
-          value={name}
-          placeholder="Max Mustermann"
-          onChange={this.handleNameChange}
-        /> */}
+          <TextField
+            required={true}
+            label="Name"
+            value={name}
+            placeholder="Max Mustermann"
+            onChange={this.handleNameChange}
+          />
           <InputRow>
             <StyledTextField
               required={true}

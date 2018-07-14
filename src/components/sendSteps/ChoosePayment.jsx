@@ -11,7 +11,8 @@ const StyledPaymentContainer = styled.div`
 
 const StyledInput = withTheme()(styled.input`
   display: none;
-  :checked + label > div {
+  :checked + label > div,
+  :checked + label [data-outline] {
     ${({ theme }) => css`
       outline: 2px solid ${theme.palette.primary.main};
     `};

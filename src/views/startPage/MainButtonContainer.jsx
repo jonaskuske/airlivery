@@ -6,7 +6,7 @@ import MainButton from './/MainButton'
 
 import IconTrack from '../../assets/icons/track2.svg'
 import IconSend from '../../assets/icons/send2.svg'
-import IconReceive from '../../assets/icons/receive2.svg'
+import IconReceive from '../../assets/icons/people.svg'
 import IconAvatar from '../../assets/icons/avatar.svg'
 
 const Container = styled.div`
@@ -51,8 +51,8 @@ export default withRouter(({ history }) => {
       />
       <MainButton
         image={IconReceive}
-        text="Paket empfangen"
-        onClick={() => history.push('/empfangen')}
+        text="Adressbuch zeigen"
+        onClick={() => history.push('/adressbuch')}
       />
       <MainButton
         image={IconAvatar}

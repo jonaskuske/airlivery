@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import store from './store'
+import store, { persistor } from './store'
 import App from './App'
 import './assets/styles'
 import registerServiceWorker from './utils/registerServiceWorker'
 import './assets/styles'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import { layoutActions } from './state/layout'
+import { PersistGate } from 'redux-persist/integration/react'
 
 const theme = createMuiTheme({
   palette: {
@@ -36,9 +37,11 @@ queryHandler(mediaQuery)
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <App />
-    </MuiThemeProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
+    </PersistGate>
   </Provider>,
   document.getElementById('root'),
 )

@@ -8,6 +8,11 @@ import FloatingActionButton from '../components/MainFloatingActionButton'
 import ShowContacts from './contacts/ShowContacts'
 import AddContacts from './contacts/AddContacts'
 
+const Main = styled.main`
+  && {
+    padding-bottom: 1rem;
+  }
+`
 const Title = styled.h1`
   margin-bottom: 0.5rem;
 `
@@ -28,7 +33,7 @@ class Contacts extends React.Component {
     const { addView } = this.state
 
     return (
-      <main className="max-width">
+      <Main className="max-width">
         <Title>Adressbuch</Title>
 
         {!addView ? (
@@ -50,7 +55,7 @@ class Contacts extends React.Component {
             <Check />
           </FloatingActionButton>
         </Zoom>
-      </main>
+      </Main>
     )
   }
 }

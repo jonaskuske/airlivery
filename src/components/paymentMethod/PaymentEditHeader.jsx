@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Zoom, withTheme } from '@material-ui/core'
 import { Edit, Delete, Check } from '@material-ui/icons'
-import MicroButton from '../../MicroFloatingActionButton'
+import MicroButton from '../MicroFloatingActionButton'
 
 const StyledHeader = styled.div`
   position: absolute;
@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
   }
 `
 
-export default withTheme()(({ edit, active, toggleEdit, theme }) => {
+export default withTheme()(({ edit, active, toggleEdit, theme, onDelete }) => {
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
@@ -60,7 +60,7 @@ export default withTheme()(({ edit, active, toggleEdit, theme }) => {
           transitionDelay: edit && !active ? transitionDuration.exit : 0,
         }}
       >
-        <MicroButton color="primary">
+        <MicroButton color="primary" onClick={onDelete}>
           <Delete />
         </MicroButton>
       </Zoom>

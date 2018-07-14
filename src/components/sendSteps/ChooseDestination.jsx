@@ -40,7 +40,10 @@ export default props => {
   return (
     <div>
       <h2>Empfänger</h2>
-      <p>Wähle aus, an wen du dein Paket senden möchtest.</p>
+      <p>
+        Wähle einen Kontakt aus deinem Adressbuch, an den du dein Paket senden
+        möchtest.
+      </p>
       <StyledForm>
         {contacts.map((contact, index) => [
           <StyledInput

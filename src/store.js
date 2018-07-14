@@ -1,4 +1,6 @@
 import { createStore, combineReducers, compose } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import auth from './state/auth'
 import deliveries from './state/deliveries'
@@ -7,6 +9,7 @@ import errors from './state/errors'
 import contacts from './state/contacts'
 import airspots from './state/airspots'
 import payments from './state/payments'
+import user from './state/user'
 
 const reducers = {
   auth,
@@ -16,6 +19,7 @@ const reducers = {
   contacts,
   airspots,
   payments,
+  user,
 }
 
 const composeEnhancers =
@@ -24,6 +28,15 @@ const composeEnhancers =
 
 const rootReducer = combineReducers(reducers)
 
-const store = createStore(rootReducer, composeEnhancers())
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(persistedReducer, composeEnhancers())
+const persistor = persistStore(store)
+
+export { persistor }
 export default store

@@ -1,25 +1,22 @@
 import React from 'react'
 import Button from '../Button'
 import { connect } from 'react-redux'
-import { authActions } from '../../state/auth'
+import { userSelectors } from '../../state/user'
+import { Link } from 'react-router-dom'
+import auth from '../../utils/auth'
 
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
+  user: userSelectors.getUser(state),
 })
 
-const mapDispatchToProps = dispatch => ({
-  onLoginClick: () => dispatch(authActions.login()),
-  onLogoutClick: () => dispatch(authActions.logout()),
-})
-
-const LoginState = ({ isAuth, onLoginClick, onLogoutClick }) =>
+const LoginState = ({ isAuth, user }) =>
   isAuth ? (
-    <Button onClick={onLogoutClick}>Jonas Kuske</Button>
+    <Button onClick={auth.logout}>{user.name}</Button>
   ) : (
-    <Button onClick={onLoginClick}>Login/Registrieren</Button>
+    <Button>
+      <Link to="/einloggen">Login/Registrieren</Link>
+    </Button>
   )
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LoginState)
+export default connect(mapStateToProps)(LoginState)

@@ -1,6 +1,36 @@
 import jonasImage from '../assets/images/jonas.jpg'
 import womanImage from '../assets/images/woman.jpg'
 import defaultAvatar from '../assets/images/generic-user.png'
+import store from '../store'
+import { capitalize } from './'
+import { contactsActions } from '../state/contacts'
+
+const fetchMockContacts = async () => {
+  const { results } = await fetch(
+    'https://randomuser.me/api/?results=50&inc=name,picture,location',
+  )
+    .then(r => r.json())
+    .catch(() => ({ results: [] }))
+
+  const mockContacts = results
+    .map(({ name, location, picture }) => ({
+      name: capitalize(`${name.first} ${name.last}`),
+      image: picture.thumbnail,
+      adress: {
+        streetNumber: location.street.split(' ')[0],
+        street: capitalize(location.street.split(' ')[1]),
+        plz: location.postcode,
+        city: capitalize(location.city),
+      },
+    }))
+    .filter(r => typeof r.adress.plz === 'number')
+
+  return mockContacts
+}
+
+fetchMockContacts().then(contacts =>
+  store.dispatch(contactsActions.addContactsToList(contacts)),
+)
 
 export default [
   {

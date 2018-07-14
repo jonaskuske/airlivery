@@ -19,15 +19,20 @@ const AirspotContainer = styled.div`
   }
 `
 
-export default ({ airspots = [!!0, !!0], edit }) => {
+export default ({ airspots, edit, actions }) => {
   return (
     <AirspotContainer>
-      <h3>Meine Airspots</h3>
+      <h3>Deine Airspots</h3>
       {airspots.map((airspot, index) => (
-        <Airspot airspot={airspot} key={index} edit={edit} />
+        <Airspot
+          airspot={airspot}
+          key={index}
+          edit={edit}
+          onRemove={actions.removeAirspot}
+        />
       ))}
       <Zoom in={edit} unmountOnExit>
-        <Button variant="fab" mini color="primary">
+        <Button variant="fab" mini color="primary" onClick={actions.addAirspot}>
           <Add />
         </Button>
       </Zoom>

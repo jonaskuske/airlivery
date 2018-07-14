@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { Zoom, Button } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 import PaymentMethod from '../../components/PaymentMethod'
+import { paymentMethodsActions } from '../../state/payments/methods'
+import { connect } from 'react-redux'
 
 const StyledPaymentInfo = styled.div`
   display: flex;
@@ -17,28 +19,7 @@ const StyledPaymentInfo = styled.div`
   }
 `
 
-const mocks = [
-  {
-    type: 'creditcard',
-    name: 'Jonas Kuske',
-    expiry: '09/19',
-    cvc: '873',
-    number: '5180427132637683',
-  },
-  {
-    type: 'paypal',
-    mail: 'sample@jonaskuske.com',
-  },
-  {
-    type: 'creditcard',
-    name: 'Jonas Kuske',
-    expiry: '02/21',
-    cvc: '356',
-    number: '4716796276620325',
-  },
-]
-
-export default ({ paymentMethods = mocks, edit }) => {
+const PaymentInfo = ({ paymentMethods, edit, addPaymentMethod }) => {
   return (
     <StyledPaymentInfo>
       <h3>Kreditkarten</h3>
@@ -48,21 +29,41 @@ export default ({ paymentMethods = mocks, edit }) => {
           <PaymentMethod method={method} key={index} edit={edit} />
         ))}
       <Zoom in={edit} unmountOnExit>
-        <Button variant="fab" mini color="primary">
+        <Button
+          variant="fab"
+          mini
+          color="primary"
+          onClick={() => addPaymentMethod({ type: 'creditcard' })}
+        >
           <Add />
         </Button>
       </Zoom>
-      <h3>Paypal</h3>
+      <h3>PayPal</h3>
       {paymentMethods
         .filter(({ type }) => type === 'paypal')
         .map((method, index) => (
           <PaymentMethod method={method} key={index} edit={edit} />
         ))}
       <Zoom in={edit} unmountOnExit>
-        <Button variant="fab" mini color="primary">
+        <Button
+          variant="fab"
+          mini
+          color="primary"
+          onClick={() => addPaymentMethod({ type: 'paypal' })}
+        >
           <Add />
         </Button>
       </Zoom>
     </StyledPaymentInfo>
   )
 }
+
+const { addPaymentMethod } = paymentMethodsActions
+const mapStateToProps = () => ({})
+const mapDispatchToProps = dispatch => ({
+  addPaymentMethod: method => dispatch(addPaymentMethod(method)),
+})
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PaymentInfo)

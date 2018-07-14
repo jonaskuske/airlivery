@@ -5,7 +5,7 @@ import logo from '../../assets/icons/drone.svg'
 import { MoreVert, Search } from '@material-ui/icons'
 import { IconButton, Menu, MenuItem } from '@material-ui/core'
 import { connect } from 'react-redux'
-import { authActions } from '../../state/auth'
+import auth from '../../utils/auth'
 
 const HeaderContainer = styled.div`
   top: 0;
@@ -43,14 +43,7 @@ class HeaderMobile extends React.Component {
   handleClick = evt => this.setState({ anchorEl: evt.currentTarget })
 
   render() {
-    const {
-      isFixed,
-      hide,
-      transition,
-      isAuth,
-      onLoginClick,
-      onLogoutClick,
-    } = this.props
+    const { isFixed, hide, transition, isAuth } = this.props
     const { anchorEl } = this.state
 
     return (
@@ -83,19 +76,16 @@ class HeaderMobile extends React.Component {
                 <MenuItem
                   onClick={() => {
                     this.handleClose()
-                    onLogoutClick()
+                    auth.logout()
                   }}
                 >
                   Ausloggen
                 </MenuItem>
               ) : (
-                <MenuItem
-                  onClick={() => {
-                    this.handleClose()
-                    onLoginClick()
-                  }}
-                >
-                  Einloggen
+                <MenuItem>
+                  <Link to="/einloggen" onClick={this.handleClose}>
+                    Einloggen
+                  </Link>
                 </MenuItem>
               )}
             </Menu>
@@ -110,12 +100,4 @@ const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
 })
 
-const mapDispatchToProps = dispatch => ({
-  onLoginClick: () => dispatch(authActions.login()),
-  onLogoutClick: () => dispatch(authActions.logout()),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HeaderMobile)
+export default connect(mapStateToProps)(HeaderMobile)
