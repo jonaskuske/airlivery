@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import logo from '../../assets/icons/drone.svg'
 import { MoreVert, Search } from '@material-ui/icons'
@@ -43,7 +43,7 @@ class HeaderMobile extends React.Component {
   handleClick = evt => this.setState({ anchorEl: evt.currentTarget })
 
   render() {
-    const { isFixed, hide, transition, isAuth } = this.props
+    const { isFixed, hide, transition, isAuth, history } = this.props
     const { anchorEl } = this.state
 
     return (
@@ -54,7 +54,7 @@ class HeaderMobile extends React.Component {
             airlivery
           </HeaderPartial>
           <HeaderPartial>
-            <IconButton>
+            <IconButton onClick={() => history.push('/suche')}>
               <Search />
             </IconButton>
             <IconButton onClick={this.handleClick}>
@@ -65,7 +65,9 @@ class HeaderMobile extends React.Component {
               anchorEl={anchorEl}
               onClose={this.handleClose}
             >
-              <MenuItem>Hilfe</MenuItem>
+              <MenuItem>
+                <Link to="/hilfe">Hilfe</Link>
+              </MenuItem>
               <MenuItem>
                 <Link to="/einstellungen">Einstellungen</Link>
               </MenuItem>
@@ -102,4 +104,4 @@ const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
 })
 
-export default connect(mapStateToProps)(HeaderMobile)
+export default connect(mapStateToProps)(withRouter(HeaderMobile))

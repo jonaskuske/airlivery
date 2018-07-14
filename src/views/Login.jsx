@@ -39,6 +39,7 @@ const StyledTextfield = styled(TextField)`
 `
 const StyledLink = withTheme()(styled(Link)`
   font-weight: 600;
+  margin-bottom: 3rem;
   ${({ theme }) => css`
     color: ${theme.palette.primary.main};
   `};
@@ -92,7 +93,7 @@ class Login extends React.Component {
           </Button>
         </Form>
         <Subtitle>Neu hier?</Subtitle>
-        <StyledLink to="/registrieren">Jetzt registrieren</StyledLink>
+        <StyledLink to="/registrieren">Jetzt registrieren!</StyledLink>
       </Main>
     )
   }

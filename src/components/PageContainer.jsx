@@ -14,6 +14,8 @@ import Deliveries from '../views/Deliveries'
 import Login from '../views/Login'
 import Signup from '../views/Signup'
 import Settings from '../views/Settings'
+import Help from '../views/Help'
+import Search from '../views/Search'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -27,8 +29,10 @@ export default () => {
       <ProtectedRoute path="/lieferungen" component={Deliveries} />
       <ProtectedRoute path="/account" component={Account} />
       <ProtectedRoute path="/adressbuch" component={Contacts} />
-      <ProtectedRoute path="/einstellungen" component={Settings} />
+      <Route path="/einstellungen" component={Settings} />
       <Route path="/about" component={About} />
+      <Route path="/hilfe" component={Help} />
+      <Route path="/suche" component={Search} />
       <Route path="/impressum" component={Imprint} />
       <Route path="/datenschutz" component={Privacy} />
       <Route path="/rechtliches" component={LegalOverview} />

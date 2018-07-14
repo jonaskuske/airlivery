@@ -8,7 +8,11 @@ export default ({ value, handleValueChange, ...props }) => {
       <h2>Anmeldung erfolgreich</h2>
       <p>
         {`Hallo ${value.firstName}`}, dein Account wurde erfolgreich angelegt.<br />
-        Wir freuen uns, dich als Nutzer von airlivery begrüßen zu dürfen!
+        Wir freuen uns, dich als Nutzer von airlivery begrüßen zu dürfen!<br />
+        <br />
+        Um airlivery vollständig nutzen zu können, musst du erst noch eine
+        Zahlungsmethode und eine Landezone angeben. Besuche dafür deine
+        Profilseite.
       </p>
       <Button variant="contained" color="primary">
         <Link to="/account">Jetzt einloggen!</Link>
