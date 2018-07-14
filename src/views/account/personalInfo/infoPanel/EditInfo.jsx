@@ -45,7 +45,10 @@ class EditInfo extends React.Component {
       },
     }
   }
-
+  componentWillUnmount() {
+    const { updateUser } = this.props
+    updateUser(this.state)
+  }
   handleNameChange = ({ target }) => this.setState({ name: target.value })
   handleAdressChange = ({ target }) => {
     this.setState(prevState => ({

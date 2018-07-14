@@ -29,7 +29,7 @@ const HiddenPanel = styled(Panel)`
   }
 `
 
-export default ({ user, edit }) => {
+export default ({ user, edit, actions }) => {
   if (!edit) {
     return (
       <InformationContainer>
@@ -43,10 +43,10 @@ export default ({ user, edit }) => {
         <InformationContainer>
           <StyledUserImage image={user.profilePicture} />
           <HiddenPanel user={user}>
-            <EditActions />
+            <EditActions updateUser={actions.updateUser} />
           </HiddenPanel>
         </InformationContainer>
-        <EditInfo user={user} />
+        <EditInfo user={user} updateUser={actions.updateUser} />
       </React.Fragment>
     )
 }

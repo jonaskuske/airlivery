@@ -41,7 +41,7 @@ export default props => {
     <div>
       <h2>Empfänger</h2>
       <p>
-        Wähle einen Kontakt aus deinem Adressbuch, an en du dein Paket senden
+        Wähle einen Kontakt aus deinem Adressbuch, an den du dein Paket senden
         möchtest.
       </p>
       <StyledForm>

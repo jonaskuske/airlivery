@@ -50,41 +50,53 @@ const StyledAirspotMap = styled.div`
   }
 `
 
-export default props => {
-  const {
-    name = 'Airspot',
-    adress = {
-      street: 'Lange Straße',
-      streetNumber: '1',
-      plz: 27568,
-      city: 'Bremerhaven',
-    },
-    map = defaultMap,
-    edit = false,
-  } = props
+class Airspot extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state.showForm = props.forceEdit
+  }
 
-  const { street, streetNumber, plz, city } = adress
+  state = { showForm: false }
+  toggleForm = () => this.setState(prev => ({ showForm: !prev.showForm }))
 
-  const adressString = `${street} ${streetNumber}, ${plz} ${city}`
+  render() {
+    const { airspot, edit, onRemove } = this.props
+    const {
+      name = 'Airspot',
+      adress = {
+        street: 'Lange Straße',
+        streetNumber: '1',
+        plz: 27568,
+        city: 'Bremerhaven',
+      },
+      map = defaultMap,
+    } = airspot
 
-  return (
-    <StyledAirspot>
-      <StyledAirspotHeader>
-        <Zoom in={edit}>
-          <MicroButton color="primary">
-            <Edit />
-          </MicroButton>
-        </Zoom>
-        <Zoom in={edit}>
-          <MicroButton color="primary">
-            <Delete />
-          </MicroButton>
-        </Zoom>
-      </StyledAirspotHeader>
+    const { street, streetNumber, plz, city } = adress
 
-      <StyledAirspotName>{name}</StyledAirspotName>
-      <StyledAirspotAdress>{adressString}</StyledAirspotAdress>
-      <StyledAirspotMap map={map} />
-    </StyledAirspot>
-  )
+    const adressString = `${street} ${streetNumber}, ${plz} ${city}`
+
+    return (
+      <StyledAirspot>
+        <StyledAirspotHeader>
+          <Zoom in={edit}>
+            <MicroButton color="primary">
+              <Edit />
+            </MicroButton>
+          </Zoom>
+          <Zoom in={edit}>
+            <MicroButton color="primary">
+              <Delete onClick={() => onRemove(airspot)} />
+            </MicroButton>
+          </Zoom>
+        </StyledAirspotHeader>
+
+        <StyledAirspotName>{name}</StyledAirspotName>
+        <StyledAirspotAdress>{adressString}</StyledAirspotAdress>
+        <StyledAirspotMap map={map} />
+      </StyledAirspot>
+    )
+  }
 }
+
+export default Airspot

@@ -10,7 +10,13 @@ const removeContact = contact => ({
   contact,
 })
 
+const addContactsToList = contacts => ({
+  type: types.ADD_CONTACTS_TO_LIST,
+  contacts,
+})
+
 export default {
   addContact,
   removeContact,
+  addContactsToList,
 }

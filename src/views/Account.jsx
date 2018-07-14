@@ -15,6 +15,9 @@ import { userSelectors } from '../state/user'
 import { airspotsSelectors } from '../state/airspots'
 import { paymentMethodsSelectors } from '../state/payments/methods'
 
+import { airspotsActions } from '../state/airspots'
+import { userActions } from '../state/user'
+
 const Title = styled.h1`
   margin-bottom: 0;
 `
@@ -23,7 +26,7 @@ const Main = styled.main`
 `
 
 class Account extends React.Component {
-  state = { editMode: false, infoType: 'payment' }
+  state = { editMode: false, infoType: 'personal' }
   toggleEditMode = () => {
     this.setState(prevState => ({
       editMode: !prevState.editMode,
@@ -36,7 +39,7 @@ class Account extends React.Component {
   }
 
   render() {
-    const { user, paymentMethods, airspots } = this.props
+    const { user, paymentMethods, airspots, actions } = this.props
     const { editMode, infoType } = this.state
 
     return (
@@ -51,7 +54,12 @@ class Account extends React.Component {
             <InfoTypeSwitcher onClick={this.toggleType} infoType={infoType} />
 
             {infoType === 'personal' ? (
-              <PersonalInfo edit={editMode} user={user} airspots={airspots} />
+              <PersonalInfo
+                edit={editMode}
+                user={user}
+                airspots={airspots}
+                actions={actions}
+              />
             ) : (
               <PaymentInfo
                 edit={editMode}
@@ -78,4 +86,15 @@ const mapStateToProps = state => ({
   airspots: airspotsSelectors.getAllAirspots(state),
 })
 
-export default connect(mapStateToProps)(Account)
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    removeAirspot: a => dispatch(airspotsActions.removeAirspot(a)),
+    addAirspot: a => dispatch(airspotsActions.addAirspot(a)),
+    updateUser: u => dispatch(userActions.updateUser(u)),
+  },
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Account)

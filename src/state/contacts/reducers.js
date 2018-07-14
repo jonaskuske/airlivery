@@ -9,6 +9,8 @@ const contactsReducer = (state = mockContacts, { type, contact, contacts }) => {
       return state.map(c => (c === contact ? { ...c, isAdded: false } : c))
     case types.REPLACE_CONTACTS:
       return contacts
+    case types.ADD_CONTACTS_TO_LIST:
+      return [...state, ...contacts]
     default:
       return state
   }

@@ -9,6 +9,7 @@ import Imprint from '../views/Imprint'
 import Privacy from '../views/Privacy'
 import LegalOverview from '../views/LegalOverview'
 import Contacts from '../views/Contacts'
+import Deliveries from '../views/Deliveries'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -18,6 +19,7 @@ export default () => {
       <Route path="/" exact component={Main} />
       <Route path="/senden" component={Send} />
       <Route path="/about" component={About} />
+      <Route path="/lieferungen" component={Deliveries} />
       <Route path="/account" component={Account} />
       <Route path="/adressbuch" component={Contacts} />
       <Route path="/impressum" component={Imprint} />

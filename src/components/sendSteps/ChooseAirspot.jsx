@@ -54,7 +54,7 @@ export default ({ data, actions }) => {
               onChange={() => setAirspot(airspot)}
             />,
             <StyledLabel htmlFor={`airspot-select-${index}`} key="label">
-              <Airspot name={airspot.name} adress={airspot.adress} />
+              <Airspot airspot={airspot} />
             </StyledLabel>,
             <br key="br" />,
           ]

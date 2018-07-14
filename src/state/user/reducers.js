@@ -1,6 +1,7 @@
 import types from './types'
 
 import profilePicture from '../../assets/images/jonas.jpg'
+
 const mockUser = {
   profilePicture,
   name: 'Jonas Kuske',

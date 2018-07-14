@@ -5,19 +5,37 @@ import MainButtons from './startPage/MainButtonContainer'
 import DeliveryDisplay from '../components/DeliveryDisplay'
 import { connect } from 'react-redux'
 import { userSelectors } from '../state/user'
+import { Link } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import { withTheme } from '@material-ui/core'
 import { deliveriesSelectors } from '../state/deliveries'
+
+const Subtitle = styled.h3`
+  margin-bottom: 0.6rem;
+`
+const StyledLink = withTheme()(styled(Link)`
+  font-weight: 600;
+  ${({ theme }) => css`
+    color: ${theme.palette.primary.main};
+  `};
+  + * {
+    margin-top: 1rem;
+  }
+`)
 
 const StartPage = ({ user, deliveries }) => (
   <div>
     <HeroImage
       image={heroImage}
       title={`Willkommen ${user.name.split(' ')[0]}`}
-      subtitle="Was wollen Sie tun?"
+      subtitle="Einfach abheben."
       smallSubtitle={true}
     />
     <main className="max-width">
       <MainButtons />
-      <DeliveryDisplay deliveries={deliveries} />
+      <Subtitle>Letzte Lieferungen</Subtitle>
+      <StyledLink to="/lieferungen">Alle anzeigen</StyledLink>
+      <DeliveryDisplay deliveries={deliveries} limit={3} />
     </main>
   </div>
 )

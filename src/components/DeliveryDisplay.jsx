@@ -15,8 +15,11 @@ export default class extends React.Component {
 
   render() {
     const { filter } = this.state
-    const { deliveries } = this.props
-    const displayedDeliveries = deliveries[filter] || []
+    const { deliveries = {}, limit } = this.props
+    const filteredDeliveries = deliveries[filter] || []
+    const displayedDeliveries = limit
+      ? filteredDeliveries.slice(0, limit)
+      : filteredDeliveries
 
     return (
       <StyledDeliveryDisplay>

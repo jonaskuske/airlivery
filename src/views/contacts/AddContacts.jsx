@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { TextField, InputAdornment } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
 import Contact from '../../components/Contact'
-import { includesString } from '../../utils'
+import { includesString, createPropertyComparer } from '../../utils'
+
+const compareName = createPropertyComparer('name')
 
 const Title = styled.h2`
   margin-bottom: 0.5rem;
@@ -48,14 +50,16 @@ export default class extends React.Component {
           }}
         />
         {(filteredContacts.length &&
-          filteredContacts.map((contact, index) => (
-            <StyledContact
-              contact={contact}
-              key={index}
-              allowInteractions={true}
-              onAdd={addContact}
-            />
-          ))) || <p>Keine Kontakte gefunden.</p>}
+          filteredContacts
+            .sort(compareName)
+            .map((contact, index) => (
+              <StyledContact
+                contact={contact}
+                key={index}
+                allowInteractions={true}
+                onAdd={addContact}
+              />
+            ))) || <p>Keine Kontakte gefunden.</p>}
       </React.Fragment>
     )
   }
