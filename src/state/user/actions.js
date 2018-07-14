@@ -5,6 +5,17 @@ const updateUser = user => ({
   user,
 })
 
+const setActiveUser = user => ({
+  type: types.SET_ACTIVE_USER,
+  user,
+})
+
+const removeActiveUser = () => ({
+  type: types.REMOVE_ACTIVE_USER,
+})
+
 export default {
   updateUser,
+  setActiveUser,
+  removeActiveUser,
 }

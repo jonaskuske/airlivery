@@ -1,0 +1,100 @@
+import React from 'react'
+import { TextField, Button } from '@material-ui/core'
+import styled from 'styled-components'
+import { login } from '../utils/auth'
+import { userActions } from '../state/user'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { authSelectors } from '../state/auth'
+
+const Main = styled.main`
+  display: flex;
+  min-height: calc(100vh - 120px);
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  > h1,
+  > form {
+    width: 100%;
+  }
+`
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  && {
+    > div {
+      margin-bottom: 0.5rem;
+    }
+    > button {
+      margin-top: 3rem;
+    }
+  }
+`
+const StyledTextfield = styled(TextField)`
+  width: 100%;
+`
+
+class Login extends React.Component {
+  state = {
+    user: '',
+    password: '',
+    failedLogin: false,
+  }
+
+  setUser = ({ target }) => this.setState({ user: target.value })
+  setPassword = ({ target }) => this.setState({ password: target.value })
+
+  tryLogin = e => {
+    e.preventDefault()
+
+    const { user, password } = this.state
+    login({ user, password }).catch(() => this.setState({ failedLogin: true }))
+  }
+
+  render() {
+    const { isAuth, location } = this.props
+    const { user, password, failedLogin } = this.state
+    const { from } = location.state || { from: { pathname: '/' } }
+
+    if (isAuth) return <Redirect to={from} />
+
+    return (
+      <Main className="max-width">
+        <h1>Einloggen</h1>
+        <Form method="post" onSubmit={this.tryLogin}>
+          <StyledTextfield
+            label="Name oder E-Mail"
+            placeholder="Max Mustermann"
+            onChange={this.setUser}
+            value={user}
+            error={failedLogin}
+          />
+          <StyledTextfield
+            label="Passwort"
+            placeholder="••••••••"
+            type="password"
+            onChange={this.setPassword}
+            value={password}
+            error={failedLogin}
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Einloggen
+          </Button>
+        </Form>
+      </Main>
+    )
+  }
+}
+
+const mapStateToProps = state => ({
+  isAuth: authSelectors.getAuthState(state),
+})
+const mapDispatchToProps = dispatch => ({
+  setUser: u => dispatch(userActions.setActiveUser(u)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login)

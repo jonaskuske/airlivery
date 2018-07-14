@@ -1,11 +1,31 @@
 import types from './types'
 
-const authReducer = (state = { isAuth: true }, { type }) => {
+import profilePicture from '../../assets/images/jonas.jpg'
+const initialState = {
+  isAuth: false,
+  knownUsers: [
+    {
+      profilePicture,
+      name: 'Jonas Kuske',
+      email: 'mail@jonaskuske.com',
+      password: 'test123',
+      phone: '+491603336948',
+      adress: {
+        street: 'Sielstraße',
+        streetNumber: '5',
+        plz: 27568,
+        city: 'Bremerhaven',
+      },
+    },
+  ],
+}
+
+const authReducer = (state = initialState, { type }) => {
   switch (type) {
     case types.LOGIN:
-      return { isAuth: true }
+      return { ...state, isAuth: true }
     case types.LOGOUT:
-      return { isAuth: false }
+      return { ...state, isAuth: false }
     default:
       return state
   }
