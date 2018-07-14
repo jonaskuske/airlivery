@@ -66,7 +66,9 @@ class HeaderMobile extends React.Component {
               onClose={this.handleClose}
             >
               <MenuItem>Hilfe</MenuItem>
-              <MenuItem>Einstellungen</MenuItem>
+              <MenuItem>
+                <Link to="/einstellungen">Einstellungen</Link>
+              </MenuItem>
               <MenuItem>
                 <Link to="/rechtliches" onClick={this.handleClose}>
                   Rechtliches
