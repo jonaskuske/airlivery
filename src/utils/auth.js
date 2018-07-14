@@ -7,9 +7,10 @@ const { getKnownUsers } = authSelectors
 export const login = ({ user, password }) => {
   const users = getKnownUsers(store.getState())
   const matchingUser = users.find(
-    u => u.password === password && (u.name === user || u.email === user),
+    u =>
+      u.password === password &&
+      (u.name === user.trim() || u.email === user.trim()),
   )
-
   return new Promise((resolve, reject) => {
     if (matchingUser) {
       store.dispatch(userActions.setActiveUser(matchingUser))

@@ -1,6 +1,6 @@
 {
   "short_name": "airlivery",
-  "name": "airlivery",
+  "name": "airlivery - Paketzustellung per Drohne",
   "icons": [
     {
       "src": "drone-white.svg",
@@ -10,6 +10,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#6EAFFB"
+  "theme_color": "#6EAFFB",
+  "background_color": "#FAFAFA"
 }

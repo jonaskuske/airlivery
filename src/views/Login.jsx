@@ -1,19 +1,19 @@
 import React from 'react'
-import { TextField, Button } from '@material-ui/core'
-import styled from 'styled-components'
+import { TextField, Button, withTheme } from '@material-ui/core'
+import styled, { css } from 'styled-components'
 import { login } from '../utils/auth'
 import { userActions } from '../state/user'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { authSelectors } from '../state/auth'
 
 const Main = styled.main`
   display: flex;
   min-height: calc(100vh - 120px);
   flex-flow: row wrap;
-  justify-content: center;
   align-items: flex-start;
   > h1,
+  > h2,
   > form {
     width: 100%;
   }
@@ -31,10 +31,18 @@ const Form = styled.form`
     }
   }
 `
+const Subtitle = styled.h2`
+  margin: 0;
+`
 const StyledTextfield = styled(TextField)`
   width: 100%;
 `
-
+const StyledLink = withTheme()(styled(Link)`
+  font-weight: 600;
+  ${({ theme }) => css`
+    color: ${theme.palette.primary.main};
+  `};
+`)
 class Login extends React.Component {
   state = {
     user: '',
@@ -62,6 +70,7 @@ class Login extends React.Component {
     return (
       <Main className="max-width">
         <h1>Einloggen</h1>
+        <Subtitle>Schon registriert?</Subtitle>
         <Form method="post" onSubmit={this.tryLogin}>
           <StyledTextfield
             label="Name oder E-Mail"
@@ -82,6 +91,8 @@ class Login extends React.Component {
             Einloggen
           </Button>
         </Form>
+        <Subtitle>Neu hier?</Subtitle>
+        <StyledLink to="/registrieren">Jetzt registrieren</StyledLink>
       </Main>
     )
   }

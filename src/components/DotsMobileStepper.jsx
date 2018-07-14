@@ -8,13 +8,20 @@ export default class extends React.Component {
     this.state = { activeStep: props.activeStep || 0 }
     this.handleStepChange = props.onStepChange
   }
-
   handleNext = () => {
+    const { onDone, dots } = this.props
+
+    if (!this.doneCalled && onDone && this.state.activeStep + 2 === dots) {
+      this.doneCalled = true
+      onDone()
+    }
+
     const next = this.state.activeStep + 1
     this.setState({
       activeStep: next,
     })
     this.handleStepChange(next)
+    this.props.onNext && this.props.onNext()
   }
   handleBack = () => {
     const next = this.state.activeStep - 1
@@ -23,6 +30,9 @@ export default class extends React.Component {
     })
     this.handleStepChange(next)
   }
+  doneCalled = false
+
+  componentWillUpdate() {}
 
   render() {
     const { dots = 5 } = this.props
@@ -48,7 +58,9 @@ export default class extends React.Component {
           <Button
             size="small"
             onClick={this.handleBack}
-            disabled={this.state.activeStep === 0}
+            disabled={
+              this.state.activeStep === 0 || this.state.activeStep === dots - 1
+            }
           >
             <KeyboardArrowLeft />
             Zurück

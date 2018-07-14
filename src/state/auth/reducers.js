@@ -20,12 +20,19 @@ const initialState = {
   ],
 }
 
-const authReducer = (state = initialState, { type }) => {
+const authReducer = (state = initialState, { type, user }) => {
   switch (type) {
     case types.LOGIN:
       return { ...state, isAuth: true }
     case types.LOGOUT:
       return { ...state, isAuth: false }
+    case types.ADD_KNOWN_USER:
+      return { ...state, knownUsers: [...state.knownUsers, user] }
+    case types.REMOVE_KNOWN_USER:
+      return {
+        ...state,
+        knownUsers: state.knownUsers.filter(u => u !== user),
+      }
     default:
       return state
   }

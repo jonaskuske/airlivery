@@ -12,6 +12,8 @@ import LegalOverview from '../views/LegalOverview'
 import Contacts from '../views/Contacts'
 import Deliveries from '../views/Deliveries'
 import Login from '../views/Login'
+import Signup from '../views/Signup'
+import Settings from '../views/Settings'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -19,12 +21,14 @@ export default () => {
     <div className="page-container">
       <ErrorView />
       <Route path="/" exact component={Main} />
+      <Route path="/einloggen" component={Login} />
+      <Route path="/registrieren" component={Signup} />
       <ProtectedRoute path="/senden" component={Send} />
-      <Route path="/about" component={About} />
       <ProtectedRoute path="/lieferungen" component={Deliveries} />
       <ProtectedRoute path="/account" component={Account} />
-      <Route path="/einloggen" component={Login} />
       <ProtectedRoute path="/adressbuch" component={Contacts} />
+      <ProtectedRoute path="/einstellungen" component={Settings} />
+      <Route path="/about" component={About} />
       <Route path="/impressum" component={Imprint} />
       <Route path="/datenschutz" component={Privacy} />
       <Route path="/rechtliches" component={LegalOverview} />
