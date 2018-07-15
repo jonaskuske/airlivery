@@ -34,6 +34,7 @@ const HeaderPartial = styled.div`
 const Logo = styled.img`
   width: 3rem;
 `
+
 class HeaderMobile extends React.Component {
   state = {
     anchorEl: null,
@@ -49,12 +50,12 @@ class HeaderMobile extends React.Component {
     return (
       <HeaderContainer isFixed={isFixed} hide={hide} transition={transition}>
         <Header className="max-width">
-          <HeaderPartial>
+          <HeaderPartial onClick={() => history.push('/')}>
             <Logo src={logo} />
             airlivery
           </HeaderPartial>
           <HeaderPartial>
-            <IconButton onClick={() => history.push('/suche')}>
+            <IconButton component={Link} to="/suche">
               <Search />
             </IconButton>
             <IconButton onClick={this.handleClick}>
@@ -64,32 +65,34 @@ class HeaderMobile extends React.Component {
               open={!!anchorEl}
               anchorEl={anchorEl}
               onClose={this.handleClose}
+              onClick={this.handleClose}
             >
-              <MenuItem>
-                <Link to="/hilfe">Hilfe</Link>
+              <MenuItem component={Link} to="/hilfe">
+                Hilfe
               </MenuItem>
-              <MenuItem>
-                <Link to="/einstellungen">Einstellungen</Link>
+              <MenuItem component={Link} to="/einstellungen">
+                Einstellungen
               </MenuItem>
-              <MenuItem>
-                <Link to="/rechtliches" onClick={this.handleClose}>
-                  Rechtliches
-                </Link>
+              <MenuItem component={Link} to="/rechtliches">
+                Rechtliches
               </MenuItem>
               {isAuth ? (
                 <MenuItem
+                  component="button"
                   onClick={() => {
                     this.handleClose()
                     auth.logout()
+                    history.push({
+                      pathname: '/einloggen',
+                      state: { from: history.location },
+                    })
                   }}
                 >
                   Ausloggen
                 </MenuItem>
               ) : (
-                <MenuItem>
-                  <Link to="/einloggen" onClick={this.handleClose}>
-                    Einloggen
-                  </Link>
+                <MenuItem component={Link} to="/einloggen">
+                  Einloggen
                 </MenuItem>
               )}
             </Menu>
