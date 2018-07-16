@@ -11,7 +11,7 @@ import ChoosePayment from './sendSteps/ChoosePayment'
 import ChooseAirspot from './sendSteps/ChooseAirspot'
 import Cart from './sendSteps/Cart'
 import Confirmation from './sendSteps/Confirmation'
-import packageSizes from '../utils/packageSizes'
+import packageSizes from '../utils/mocks/packageSizes'
 
 const steps = [
   ChoosePackageSize,

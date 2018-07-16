@@ -12,6 +12,11 @@ import LegalOverview from '../views/LegalOverview'
 import Contacts from '../views/Contacts'
 import Deliveries from '../views/Deliveries'
 import Login from '../views/Login'
+import Signup from '../views/Signup'
+import Settings from '../views/Settings'
+import Help from '../views/Help'
+import Search from '../views/Search'
+import Track from '../views/Track'
 import ErrorView from './ErrorViewContainer'
 
 export default () => {
@@ -19,12 +24,17 @@ export default () => {
     <div className="page-container">
       <ErrorView />
       <Route path="/" exact component={Main} />
+      <Route path="/einloggen" component={Login} />
+      <Route path="/registrieren" component={Signup} />
       <ProtectedRoute path="/senden" component={Send} />
-      <Route path="/about" component={About} />
       <ProtectedRoute path="/lieferungen" component={Deliveries} />
       <ProtectedRoute path="/account" component={Account} />
-      <Route path="/einloggen" component={Login} />
       <ProtectedRoute path="/adressbuch" component={Contacts} />
+      <Route path="/einstellungen" component={Settings} />
+      <Route path="/about" component={About} />
+      <Route path="/hilfe" component={Help} />
+      <Route path="/suche" component={Search} />
+      <Route path="/sendungsverfolgung" component={Track} />
       <Route path="/impressum" component={Imprint} />
       <Route path="/datenschutz" component={Privacy} />
       <Route path="/rechtliches" component={LegalOverview} />

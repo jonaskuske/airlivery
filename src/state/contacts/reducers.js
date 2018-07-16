@@ -1,5 +1,5 @@
 import types from './types'
-import mockContacts from '../../utils/mockContacts'
+import mockContacts from '../../utils/mocks/contacts'
 
 const contactsReducer = (state = mockContacts, { type, contact, contacts }) => {
   switch (type) {

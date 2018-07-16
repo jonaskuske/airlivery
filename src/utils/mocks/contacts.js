@@ -1,13 +1,13 @@
-import jonasImage from '../assets/images/jonas.jpg'
-import womanImage from '../assets/images/woman.jpg'
-import defaultAvatar from '../assets/images/generic-user.png'
-import store from '../store'
-import { capitalize } from './'
-import { contactsActions } from '../state/contacts'
+import jonasImage from '../../assets/images/jonas.jpg'
+import womanImage from '../../assets/images/woman.jpg'
+import defaultAvatar from '../../assets/images/generic-user.png'
+import store from '../../store'
+import { capitalize } from '../'
+import { contactsActions, contactsSelectors } from '../../state/contacts'
 
 const fetchMockContacts = async () => {
   const { results } = await fetch(
-    'https://randomuser.me/api/?results=50&inc=name,picture,location',
+    'https://randomuser.me/api/?results=20&inc=name,picture,location',
   )
     .then(r => r.json())
     .catch(() => ({ results: [] }))
@@ -28,9 +28,13 @@ const fetchMockContacts = async () => {
   return mockContacts
 }
 
-fetchMockContacts().then(contacts =>
-  store.dispatch(contactsActions.addContactsToList(contacts)),
-)
+fetchMockContacts().then(contacts => {
+  // only add contacts if none have been added yet
+  const { getAllContacts } = contactsSelectors
+  if (getAllContacts(store.getState()).length > 5) return
+
+  store.dispatch(contactsActions.addContactsToList(contacts))
+})
 
 export default [
   {

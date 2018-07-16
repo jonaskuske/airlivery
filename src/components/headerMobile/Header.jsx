@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import logo from '../../assets/icons/drone.svg'
 import { MoreVert, Search } from '@material-ui/icons'
@@ -34,6 +34,7 @@ const HeaderPartial = styled.div`
 const Logo = styled.img`
   width: 3rem;
 `
+
 class HeaderMobile extends React.Component {
   state = {
     anchorEl: null,
@@ -43,18 +44,18 @@ class HeaderMobile extends React.Component {
   handleClick = evt => this.setState({ anchorEl: evt.currentTarget })
 
   render() {
-    const { isFixed, hide, transition, isAuth } = this.props
+    const { isFixed, hide, transition, isAuth, history } = this.props
     const { anchorEl } = this.state
 
     return (
       <HeaderContainer isFixed={isFixed} hide={hide} transition={transition}>
         <Header className="max-width">
-          <HeaderPartial>
+          <HeaderPartial onClick={() => history.push('/')}>
             <Logo src={logo} />
             airlivery
           </HeaderPartial>
           <HeaderPartial>
-            <IconButton>
+            <IconButton component={Link} to="/suche">
               <Search />
             </IconButton>
             <IconButton onClick={this.handleClick}>
@@ -64,28 +65,34 @@ class HeaderMobile extends React.Component {
               open={!!anchorEl}
               anchorEl={anchorEl}
               onClose={this.handleClose}
+              onClick={this.handleClose}
             >
-              <MenuItem>Hilfe</MenuItem>
-              <MenuItem>Einstellungen</MenuItem>
-              <MenuItem>
-                <Link to="/rechtliches" onClick={this.handleClose}>
-                  Rechtliches
-                </Link>
+              <MenuItem component={Link} to="/hilfe">
+                Hilfe
+              </MenuItem>
+              <MenuItem component={Link} to="/einstellungen">
+                Einstellungen
+              </MenuItem>
+              <MenuItem component={Link} to="/rechtliches">
+                Rechtliches
               </MenuItem>
               {isAuth ? (
                 <MenuItem
+                  component="button"
                   onClick={() => {
                     this.handleClose()
                     auth.logout()
+                    history.push({
+                      pathname: '/einloggen',
+                      state: { from: history.location },
+                    })
                   }}
                 >
                   Ausloggen
                 </MenuItem>
               ) : (
-                <MenuItem>
-                  <Link to="/einloggen" onClick={this.handleClose}>
-                    Einloggen
-                  </Link>
+                <MenuItem component={Link} to="/einloggen">
+                  Einloggen
                 </MenuItem>
               )}
             </Menu>
@@ -100,4 +107,4 @@ const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
 })
 
-export default connect(mapStateToProps)(HeaderMobile)
+export default connect(mapStateToProps)(withRouter(HeaderMobile))
