@@ -26,7 +26,7 @@ const Form = styled.form`
     > div {
       margin-bottom: 0.5rem;
     }
-    > button {
+    & button {
       margin-top: 3rem;
     }
   }
@@ -92,8 +92,11 @@ class Login extends React.Component {
             Einloggen
           </Button>
         </Form>
-        <Subtitle>Neu hier?</Subtitle>
-        <StyledLink to="/registrieren">Jetzt registrieren!</StyledLink>
+        <div>
+          <Subtitle>Neu hier?</Subtitle>
+          <br />
+          <StyledLink to="/registrieren">Jetzt registrieren!</StyledLink>
+        </div>
       </Main>
     )
   }

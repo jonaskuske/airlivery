@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { userSelectors } from '../state/user'
 import { authActions, authSelectors } from '../state/auth'
 import auth from '../utils/auth'
-import { persistor } from '../store'
 import { Link } from 'react-router-dom'
+import { persistor } from '../store'
 
 const Main = styled.main``
 
@@ -25,7 +25,6 @@ const StyledLink = withTheme()(styled(Link)`
 
 const Settings = ({ user, removeUser, isAuth }) => {
   const deleteAccount = () => {
-    persistor.purge()
     auth.logout()
     removeUser(user)
   }
@@ -39,15 +38,26 @@ const Settings = ({ user, removeUser, isAuth }) => {
         inventore assumenda. Commodi, molestias optio. Enim maiores assumenda
         soluta libero corporis? Odit id hic aliquid, dicta quis ea quae ullam.
       </p>
+      <Button variant="contained" onClick={persistor.purge}>
+        Lokale Daten löschen
+      </Button>
       <h2>Account</h2>
       {isAuth ? (
-        <StyledButton
-          color="inherit"
-          variant="contained"
-          onClick={deleteAccount}
-        >
-          Account löschen
-        </StyledButton>
+        <React.Fragment>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+            id inventore assumenda. Commodi, molestias optio. Enim maiores
+            assumenda soluta libero corporis? Odit id hic aliquid, dicta quis ea
+            quae ullam.
+          </p>
+          <StyledButton
+            color="inherit"
+            variant="contained"
+            onClick={deleteAccount}
+          >
+            Account löschen
+          </StyledButton>
+        </React.Fragment>
       ) : (
         <p>
           <StyledLink
