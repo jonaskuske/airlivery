@@ -1,0 +1,2 @@
+FallbackResource /index.html
+mod_gzip_on Yes

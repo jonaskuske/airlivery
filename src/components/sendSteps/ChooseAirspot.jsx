@@ -34,9 +34,8 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ data, actions }) => {
-  const { airspots } = data
-  const { setAirspot } = actions
+export default ({ options, selection, setSelection }) => {
+  const { airspots } = options
 
   return (
     <div>
@@ -50,8 +49,8 @@ export default ({ data, actions }) => {
               name="airspot-select"
               key="input"
               id={`airspot-select-${index}`}
-              defaultChecked={index === 0}
-              onChange={() => setAirspot(airspot)}
+              checked={airspot === selection.airspot}
+              onChange={() => setSelection('airspot', airspot)}
             />,
             <StyledLabel htmlFor={`airspot-select-${index}`} key="label">
               <Airspot airspot={airspot} />

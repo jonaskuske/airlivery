@@ -12,7 +12,7 @@ const Main = styled.main``
 
 class Signup extends React.Component {
   state = {
-    step: 0,
+    activeStep: 0,
     value: {
       firstName: '',
       lastName: '',
@@ -28,7 +28,9 @@ class Signup extends React.Component {
     },
   }
 
-  handleStepChange = step => this.setState({ step })
+  onBack = () => this.setState(prev => ({ activeStep: prev.activeStep - 1 }))
+  onNext = () => this.setState(prev => ({ activeStep: prev.activeStep + 1 }))
+
   handleValueChange = ({ target }) => {
     this.setState(prev => ({
       value: { ...prev.value, [target.name]: target.value },
@@ -56,7 +58,7 @@ class Signup extends React.Component {
     this.props.registerUser(user)
   }
   render() {
-    const { step, value } = this.state
+    const { activeStep, value } = this.state
 
     if (this.props.isAuth) return <Redirect to={{ pathname: '/' }} />
 
@@ -65,13 +67,13 @@ class Signup extends React.Component {
         <h1>Registrieren</h1>
         <form onSubmit={this.trySignup}>
           <DotsMobileStepper
-            step={step}
-            dots={3}
-            onStepChange={this.handleStepChange}
-            onDone={this.trySignup}
+            activeStep={activeStep}
+            steps={3}
+            onNext={this.onNext}
+            onBack={this.onBack}
           />
           <SignupSteps
-            step={step}
+            activeStep={activeStep}
             handleValueChange={this.handleValueChange}
             value={value}
           />
