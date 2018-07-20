@@ -1,10 +1,13 @@
-language: node_js
-node_js:
-  - "node"
-install:
-  - npm install
-script:
-  - npm test
+---
+after_success:
+  - "test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && npm run build && npx firebase deploy --project airlivery-app --token $FIREBASE_TOKEN"
 cache:
   directories:
     - node_modules
+install:
+  - "npm install"
+language: node_js
+node_js:
+  - node
+script:
+  - "npm test"
