@@ -43,8 +43,8 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ actions, data }) => {
-  const { packageSizes } = data
+export default ({ setSelection, options, selection }) => {
+  const { packageSizes } = options
   return (
     <div>
       <h2>Paketgröße</h2>
@@ -54,10 +54,10 @@ export default ({ actions, data }) => {
           <StyledInput
             type="radio"
             name="package-size-select"
-            defaultChecked={index === 0}
+            checked={packageSize === selection.packageSize}
             id={`package-size-select-${index}`}
             key="input"
-            onChange={() => actions.setPackageSize(packageSize)}
+            onChange={() => setSelection('packageSize', packageSize)}
           />,
           <StyledLabel key="label" htmlFor={`package-size-select-${index}`}>
             <PackageSize packageSize={packageSize} />

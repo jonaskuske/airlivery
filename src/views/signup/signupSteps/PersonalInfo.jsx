@@ -1,6 +1,7 @@
 import React from 'react'
-import { TextField } from '@material-ui/core'
+import { TextField, Button } from '@material-ui/core'
 import styled from 'styled-components'
+import UserImage from '../../../components/UserImage'
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +39,29 @@ export default ({ handleValueChange, value, ...props }) => {
     <Container {...props}>
       <Subtitle>Name</Subtitle>
       <InputRow>
+        <div>
+          <TextField
+            name="firstName"
+            label="Vorname"
+            placeholder="Max"
+            value={value.firstName}
+            onChange={handleValueChange}
+            required
+          />
+          <TextField
+            name="lastName"
+            label="Nachname"
+            placeholder="Mustermann"
+            value={value.lastName}
+            onChange={handleValueChange}
+            required
+          />
+        </div>
+        <div>
+          <UserImage image={value.profilePicture} />
+          <Button>Bild ändern</Button>
+          <Button>Bild entfernen</Button>
+        </div>
         <TextField
           name="firstName"
           label="Vorname"
