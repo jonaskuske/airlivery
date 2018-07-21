@@ -33,9 +33,8 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default props => {
-  const { data, actions } = props
-  const { contacts } = data
+export default ({ selection, options, setSelection }) => {
+  const { contacts } = options
 
   return (
     <div>
@@ -51,8 +50,8 @@ export default props => {
             name="contact-select"
             key="input"
             id={`contact-select-${index}`}
-            defaultChecked={index === 0}
-            onChange={() => actions.setDestination(contact)}
+            checked={contact === selection.contact}
+            onChange={() => setSelection('contact', contact)}
           />,
           <StyledLabel htmlFor={`contact-select-${index}`} key="label">
             <Contact contact={contact} />
