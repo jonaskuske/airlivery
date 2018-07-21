@@ -5,12 +5,12 @@ import Success from './signupSteps/Success'
 
 const steps = [PersonalInfo, RegulatoryInfo, Success]
 
-export default ({ step, handleValueChange, value }) => {
+export default ({ activeStep, handleValueChange, value }) => {
   return steps.map((Component, index) => (
     <Component
       handleValueChange={handleValueChange}
       key={index}
-      style={{ display: step !== index && 'none' }}
+      style={{ display: activeStep !== index && 'none' }}
       value={value}
     />
   ))

@@ -1,14 +1,25 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Button } from '@material-ui/core'
 import Contact from '../Contact'
 import PaymentMethod from '../PaymentMethod'
 import Airspot from '../Airspot'
 import PackageSize from '../PackageSize'
 
-export default ({ selection }) => {
-  const { destination, packageSize, airspot, paymentMethod } = selection
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Sum = styled.p`
+  font-size: 130%;
+`
+export default ({ selection, onDone }) => {
+  const { contact, packageSize, airspot, paymentMethod } = selection
+  const { price } = packageSize
+  const [euro, cents = ''] = price.toString().split('.')
 
   return (
-    <div>
+    <Container>
       <h2>Angaben prüfen</h2>
       <p>
         Überprüfe noch einmal deine Auswahl.<br />
@@ -22,7 +33,7 @@ export default ({ selection }) => {
       <p>
         <b>Ziel:</b>
       </p>
-      <Contact contact={destination} />
+      <Contact contact={contact} />
       <p>
         <b>Zahlungsmethode:</b>
       </p>
@@ -32,6 +43,15 @@ export default ({ selection }) => {
       </p>
       <Airspot airspot={airspot} />
       <br />
-    </div>
+      <h2>Gesamtsumme</h2>
+      <Sum>
+        <b>{`${euro},${cents.padEnd(2, '0')}€`}</b>
+      </Sum>
+      <Button variant="contained" color="primary" onClick={onDone}>
+        Kostenpflichtig abschließen
+      </Button>
+      <br />
+      <br />
+    </Container>
   )
 }
