@@ -8,7 +8,5 @@ script:
 cache:
   directories:
     - node_modules
-install:
-  - npm i && npm i -g firebase-tools
 after_success:
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && firebase deploy --project airlivery-app --token $FIREBASE_TOKEN
+  - "test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && npm i -g firebase-tools && firebase deploy --project airlivery-app --token $FIREBASE_TOKEN"
