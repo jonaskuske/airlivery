@@ -23,8 +23,8 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ options, selection, setSelection }) => {
-  const { paymentMethods } = options
+export default ({ data, actions }) => {
+  const { paymentMethods } = data
 
   return (
     <div>
@@ -37,8 +37,8 @@ export default ({ options, selection, setSelection }) => {
             id={`payment-select-${i}`}
             type="radio"
             name="payment-select"
-            checked={method === selection.paymentMethod}
-            onChange={() => setSelection('paymentMethod', method)}
+            defaultChecked={i === 0}
+            onChange={() => actions.setPaymentMethod(method)}
           />,
           <StyledLabel htmlFor={`payment-select-${i}`} key="label">
             <PaymentMethod method={method} />
