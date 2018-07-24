@@ -2,17 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import DotsMobileStepper from '../components/DotsMobileStepper'
 import SignupSteps from './signup/SignupSteps'
+import Success from './signup/Success'
 import { connect } from 'react-redux'
 import { authActions, authSelectors } from '../state/auth'
 import { Redirect } from 'react-router-dom'
 
 import image from '../assets/images/generic-user.png'
 
-const Main = styled.main``
-
 class Signup extends React.Component {
   state = {
-    step: 0,
+    activeStep: 0,
+    done: false,
+    showFormErrors: false,
+    userNameWarning: false,
     value: {
       firstName: '',
       lastName: '',
@@ -28,13 +30,59 @@ class Signup extends React.Component {
     },
   }
 
-  handleStepChange = step => this.setState({ step })
+  onBack = () => this.setState(prev => ({ activeStep: prev.activeStep - 1 }))
+  onNext = () => {
+    let formValidated = false
+    const { activeStep } = this.state
+
+    switch (activeStep) {
+      case 0:
+        formValidated = this.checkPersonalData()
+        break
+      case 1:
+        formValidated = this.checkRegulatoryData()
+        break
+      default:
+        break
+    }
+
+    if (formValidated)
+      this.setState(prev => ({
+        showFormErrors: false,
+        activeStep: prev.activeStep + 1,
+      }))
+    else this.setState({ showFormErrors: true })
+  }
+  checkPersonalData = () => {
+    const { value } = this.state
+    if (
+      value.firstName &&
+      value.lastName &&
+      value.street &&
+      value.streetNumber &&
+      value.plz &&
+      value.city
+    ) {
+      const existsAlready = this.props.knownUsers
+        .map(user => user.name)
+        .includes(`${value.firstName} ${value.lastName}`)
+      this.setState({ userNameWarning: existsAlready })
+
+      return !existsAlready
+    } else return false
+  }
+  checkRegulatoryData = () => {
+    const { value } = this.state
+    if (value.email && value.password && value.confirmPassword) {
+      return value.password === value.confirmPassword
+    } else return false
+  }
   handleValueChange = ({ target }) => {
     this.setState(prev => ({
       value: { ...prev.value, [target.name]: target.value },
     }))
   }
-  trySignup = e => {
+  onConfirm = e => {
     e && e.preventDefault()
 
     const { value } = this.state
@@ -50,39 +98,57 @@ class Signup extends React.Component {
         street: value.street,
         streetNumber: value.streetNumber,
       },
-      profilePicture: image,
+      profilePicture: value.profilePicture || image,
     }
 
     this.props.registerUser(user)
+    this.setState({ done: true })
   }
   render() {
-    const { step, value } = this.state
+    const {
+      activeStep,
+      value,
+      done,
+      showFormErrors,
+      userNameWarning,
+    } = this.state
 
     if (this.props.isAuth) return <Redirect to={{ pathname: '/' }} />
 
     return (
-      <Main className="max-width">
+      <main className="max-width">
         <h1>Registrieren</h1>
-        <form onSubmit={this.trySignup}>
+        <form onSubmit={this.onConfirm}>
           <DotsMobileStepper
             step={step}
             dots={3}
             onStepChange={this.handleStepChange}
             onDone={this.trySignup}
           />
-          <SignupSteps
-            step={step}
-            handleValueChange={this.handleValueChange}
-            value={value}
-          />
+          {userNameWarning && (
+            <p style={{ color: '#f44336' }}>
+              Ein Nutzer mit diesem Namen ist bereits registriert.
+            </p>
+          )}
+          {done ? (
+            <Success value={value} />
+          ) : (
+            <SignupSteps
+              activeStep={activeStep}
+              handleValueChange={this.handleValueChange}
+              value={value}
+              showFormErrors={showFormErrors}
+            />
+          )}
         </form>
-      </Main>
+      </main>
     )
   }
 }
 
 const mapStateToProps = state => ({
   isAuth: authSelectors.getAuthState(state),
+  knownUsers: authSelectors.getKnownUsers(state),
 })
 const mapDispatchToProps = dispatch => ({
   registerUser: u => dispatch(authActions.addKnownUser(u)),
