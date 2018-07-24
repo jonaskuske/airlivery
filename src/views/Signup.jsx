@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import DotsMobileStepper from '../components/DotsMobileStepper'
 import SignupSteps from './signup/SignupSteps'
 import Success from './signup/Success'
