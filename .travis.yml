@@ -1,6 +1,6 @@
 ---
 after_success:
-  - "test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && npm run build && npx firebase deploy --token $FIREBASE_TOKEN"
+  - "test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && npm run build && npm i -g firebase-tools && firebase deploy --token $FIREBASE_TOKEN"
 cache:
   directories:
     - node_modules
