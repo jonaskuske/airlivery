@@ -120,10 +120,10 @@ class Signup extends React.Component {
         <h1>Registrieren</h1>
         <form onSubmit={this.onConfirm}>
           <DotsMobileStepper
-            activeStep={activeStep}
-            steps={3}
-            onNext={this.onNext}
-            onBack={this.onBack}
+            step={step}
+            dots={3}
+            onStepChange={this.handleStepChange}
+            onDone={this.trySignup}
           />
           {userNameWarning && (
             <p style={{ color: '#f44336' }}>
