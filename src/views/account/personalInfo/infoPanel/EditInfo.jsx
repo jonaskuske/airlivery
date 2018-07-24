@@ -87,7 +87,6 @@ class EditInfo extends React.Component {
             <TextFieldStreetNumber
               required={true}
               label="Nr."
-              type="number"
               placeholder="1"
               name="streetNumber"
               value={adress.streetNumber}

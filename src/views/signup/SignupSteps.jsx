@@ -1,17 +1,16 @@
 import React from 'react'
 import PersonalInfo from './signupSteps/PersonalInfo'
 import RegulatoryInfo from './signupSteps/RegulatoryInfo'
-import Success from './signupSteps/Success'
+import Confirmation from './signupSteps/Confirmation'
 
-const steps = [PersonalInfo, RegulatoryInfo, Success]
+const steps = [PersonalInfo, RegulatoryInfo, Confirmation]
 
-export default ({ activeStep, handleValueChange, value }) => {
+export default ({ activeStep, ...props }) => {
   return steps.map((Component, index) => (
     <Component
-      handleValueChange={handleValueChange}
       key={index}
       style={{ display: activeStep !== index && 'none' }}
-      value={value}
+      {...props}
     />
   ))
 }
