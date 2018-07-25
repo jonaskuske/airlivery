@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import Airspot from '../Airspot'
+import Airspot from '../../../components/Airspot'
 import { withTheme } from '@material-ui/core'
 
 const StyledAirspotContainer = styled.form`

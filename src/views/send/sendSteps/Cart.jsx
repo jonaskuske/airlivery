@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
-import Contact from '../Contact'
-import PaymentMethod from '../PaymentMethod'
-import Airspot from '../Airspot'
-import PackageSize from '../PackageSize'
+import Contact from '../../../components/Contact'
+import PaymentMethod from '../../../components/PaymentMethod'
+import Airspot from '../../../components/Airspot'
+import PackageSize from '../../../components/PackageSize'
 
 const Container = styled.div`
   display: flex;
@@ -23,8 +23,7 @@ export default ({ selection, onDone }) => {
       <h2>Angaben prüfen</h2>
       <p>
         Überprüfe noch einmal deine Auswahl.<br />
-        Alles korrekt? Dann schließe mit "Fertig" den Vorgang zahlungspflichtig
-        ab.
+        Alles korrekt? Dann schließe den Vorgang zahlungspflichtig ab.
       </p>
       <p>
         <b>Gewählte Paketgröße:</b>
@@ -47,7 +46,12 @@ export default ({ selection, onDone }) => {
       <Sum>
         <b>{`${euro},${cents.padEnd(2, '0')}€`}</b>
       </Sum>
-      <Button variant="contained" color="primary" onClick={onDone}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={onDone}
+        id="cart-confirm"
+      >
         Kostenpflichtig abschließen
       </Button>
       <br />

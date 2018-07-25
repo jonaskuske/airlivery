@@ -9,6 +9,7 @@ export default ({
   onBack = noop,
   onNext = noop,
   activeStep = 0,
+  alwaysAllowNext = false,
   ...props
 }) => {
   const isLastStep = activeStep === steps - 1
@@ -30,7 +31,7 @@ export default ({
           size="small"
           variant="text"
           onClick={onNext}
-          disabled={isLastStep}
+          disabled={!alwaysAllowNext && isLastStep}
         >
           Weiter
           <KeyboardArrowRight />
