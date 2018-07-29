@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import DocumentTitle from 'react-document-title'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DotsMobileStepper from '../components/DotsMobileStepper'
 import SendSteps from './send/SendSteps'
-import Confirmation from './send/Confirmation'
 
 import packageSizes from '../utils/mocks/packageSizes'
 import { contactsSelectors } from '../state/contacts'
@@ -81,7 +81,11 @@ class Send extends React.Component {
         </DocumentTitle>
       )
     } else {
-      return <Confirmation />
+      return (
+        <Redirect
+          to={{ pathname: 'aktive-sendung', state: { delivery: selection } }}
+        />
+      )
     }
   }
 }
