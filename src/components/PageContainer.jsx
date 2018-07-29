@@ -11,6 +11,7 @@ import Privacy from '../views/Privacy'
 import LegalOverview from '../views/LegalOverview'
 import Contacts from '../views/Contacts'
 import Deliveries from '../views/Deliveries'
+import ActiveDelivery from '../views/ActiveDelivery'
 import Login from '../views/Login'
 import Signup from '../views/Signup'
 import Settings from '../views/Settings'
@@ -28,6 +29,7 @@ export default () => {
       <Route path="/registrieren" component={Signup} />
       <ProtectedRoute path="/senden" component={Send} />
       <ProtectedRoute path="/lieferungen" component={Deliveries} />
+      <ProtectedRoute path="/aktive-sendung" component={ActiveDelivery} />
       <ProtectedRoute path="/account" component={Account} />
       <ProtectedRoute path="/adressbuch" component={Contacts} />
       <Route path="/einstellungen" component={Settings} />

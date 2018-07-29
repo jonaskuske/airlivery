@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import DocumentTitle from 'react-document-title'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DotsMobileStepper from '../components/DotsMobileStepper'
-import SendSteps from '../components/SendSteps'
+import SendSteps from './send/SendSteps'
 
 import packageSizes from '../utils/mocks/packageSizes'
 import { contactsSelectors } from '../state/contacts'
@@ -47,7 +48,12 @@ class Send extends React.Component {
     this.setState(prev => ({ selection: { ...prev.selection, [type]: val } }))
   }
   onBack = () => this.setState(prev => ({ activeStep: prev.activeStep - 1 }))
-  onNext = () => this.setState(prev => ({ activeStep: prev.activeStep + 1 }))
+  onNext = () => {
+    if (this.state.activeStep > 3) {
+      const btn = document.getElementById('cart-confirm')
+      btn && btn.scrollIntoView({ behavior: 'smooth' })
+    } else this.setState(prev => ({ activeStep: prev.activeStep + 1 }))
+  }
   onDone = () => this.setState({ completed: true })
 
   render() {
@@ -62,6 +68,7 @@ class Send extends React.Component {
               onBack={this.onBack}
               activeStep={activeStep}
               steps={5}
+              alwaysAllowNext
             />
             <SendSteps
               activeStep={activeStep}
@@ -75,9 +82,9 @@ class Send extends React.Component {
       )
     } else {
       return (
-        <p>
-          <b>Success</b>
-        </p>
+        <Redirect
+          to={{ pathname: 'aktive-sendung', state: { delivery: selection } }}
+        />
       )
     }
   }

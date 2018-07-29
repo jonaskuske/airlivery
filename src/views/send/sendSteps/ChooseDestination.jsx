@@ -1,5 +1,5 @@
 import React from 'react'
-import Contact from '../Contact'
+import Contact from '../../../components/Contact'
 import styled, { css } from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
