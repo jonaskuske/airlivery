@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import IconLink from '../../assets/icons/link.svg'
 import { withTheme } from '@material-ui/core'
 
@@ -44,19 +44,13 @@ const Button = withTheme()(styled.button`
     transform: translate(-50%, -50%) scale(0.15);
     opacity: 0;
     transition: transform 350ms ease-out, opacity 280ms ease-out;
-    ${({ theme }) =>
-      css`
-        background: ${theme.palette.primary.main};
-      `};
+    background: ${({ theme }) => theme.palette.primary.main};
   }
   :active::after {
     opacity: 0.2;
     transform: translate(-50%, -50%) scale(1);
   }
-  ${props =>
-    css`
-      background-image: url(${props.image || IconLink});
-    `};
+  background-image: url(${({ image }) => image || IconLink});
 `)
 
 const ButtonText = withTheme()(styled.p`
