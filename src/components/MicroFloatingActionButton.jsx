@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '@material-ui/core'
+import { Fab } from '@material-ui/core'
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(Fab)`
   && {
     width: 28px;
     height: 28px;
@@ -14,7 +14,5 @@ const StyledButton = styled(Button)`
 `
 
 export default ({ children, ...props }) => (
-  <StyledButton variant="fab" mini {...props}>
-    {children}
-  </StyledButton>
+  <StyledButton {...props}>{children}</StyledButton>
 )

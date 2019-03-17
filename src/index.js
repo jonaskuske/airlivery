@@ -11,6 +11,7 @@ import { layoutActions } from './state/layout'
 import { PersistGate } from 'redux-persist/integration/react'
 
 const theme = createMuiTheme({
+  typography: { useNextVariants: true },
   palette: {
     primary: {
       light: '#a4e1ff',

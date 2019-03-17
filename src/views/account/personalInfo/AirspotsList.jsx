@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Zoom, Button } from '@material-ui/core'
+import { Zoom, Fab } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 import Airspot from '../../../components/Airspot'
 
@@ -32,9 +32,9 @@ export default ({ airspots, edit, actions }) => {
         />
       ))}
       <Zoom in={edit} unmountOnExit>
-        <Button variant="fab" mini color="primary" onClick={actions.addAirspot}>
+        <Fab color="primary" onClick={actions.addAirspot}>
           <Add />
-        </Button>
+        </Fab>
       </Zoom>
     </AirspotContainer>
   )

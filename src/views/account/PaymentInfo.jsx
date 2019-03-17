@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Zoom, Button } from '@material-ui/core'
+import { Zoom, Fab } from '@material-ui/core'
 import { Add } from '@material-ui/icons'
 import PaymentMethod from '../../components/PaymentMethod'
 import { paymentMethodsActions } from '../../state/payments/methods'
@@ -29,14 +29,12 @@ const PaymentInfo = ({ paymentMethods, edit, addPaymentMethod }) => {
           <PaymentMethod method={method} key={index} edit={edit} />
         ))}
       <Zoom in={edit} unmountOnExit>
-        <Button
-          variant="fab"
-          mini
+        <Fab
           color="primary"
           onClick={() => addPaymentMethod({ type: 'creditcard' })}
         >
           <Add />
-        </Button>
+        </Fab>
       </Zoom>
       <h3>PayPal</h3>
       {paymentMethods
@@ -45,14 +43,12 @@ const PaymentInfo = ({ paymentMethods, edit, addPaymentMethod }) => {
           <PaymentMethod method={method} key={index} edit={edit} />
         ))}
       <Zoom in={edit} unmountOnExit>
-        <Button
-          variant="fab"
-          mini
+        <Fab
           color="primary"
           onClick={() => addPaymentMethod({ type: 'paypal' })}
         >
           <Add />
-        </Button>
+        </Fab>
       </Zoom>
     </StyledPaymentInfo>
   )
