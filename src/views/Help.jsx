@@ -1,11 +1,9 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
 const Subtitle = withTheme()(styled.h2`
-  ${({ theme }) => css`
-    color: ${theme.palette.primary.main};
-  `};
+  color: ${({ theme }) => theme.palette.primary.main};
 `)
 
 export default () => {

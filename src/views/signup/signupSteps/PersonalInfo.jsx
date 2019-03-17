@@ -31,12 +31,12 @@ const InputRow = styled.div`
     margin-right: 0;
   }
 `
-const StreetInputRow = InputRow.extend`
+const StreetInputRow = styled(InputRow)`
   > div:last-of-type {
     flex: 3;
   }
 `
-const CityInputRow = InputRow.extend`
+const CityInputRow = styled(InputRow)`
   > div:first-of-type {
     flex: 5;
   }

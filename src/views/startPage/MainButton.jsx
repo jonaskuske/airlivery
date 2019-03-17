@@ -70,10 +70,7 @@ const ButtonText = withTheme()(styled.p`
   @media screen and (max-width: 360px) {
     font-size: 0.8rem;
   }
-  ${({ theme }) =>
-    css`
-      color: ${theme.palette.primary.main};
-    `};
+  color: ${({ theme }) => theme.palette.primary.main};
 `)
 
 export default ({ onClick, text = 'Main Button', ...props }) => (

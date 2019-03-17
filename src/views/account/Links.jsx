@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
@@ -8,9 +8,7 @@ const StyledLinkContainer = withTheme()(styled.div`
   > a {
     margin-right: 1rem;
     font-weight: 600;
-    ${({ theme }) => css`
-      color: ${theme.palette.primary.main};
-    `};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
   margin: 0.7rem 0 1.2rem 0;
 `)

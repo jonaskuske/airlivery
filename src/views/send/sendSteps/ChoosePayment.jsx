@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import PaymentMethod from '../../../components/PaymentMethod'
 import { withTheme } from '@material-ui/core'
 
@@ -13,9 +13,7 @@ const StyledInput = withTheme()(styled.input`
   display: none;
   :checked + label > div,
   :checked + label [data-outline] {
-    ${({ theme }) => css`
-      outline: 2px solid ${theme.palette.primary.main};
-    `};
+    outline: 2px solid ${({ theme }) => theme.palette.primary.main};
   }
 `)
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 import PackageSize from '../../../components/PackageSize'
 
@@ -33,9 +33,7 @@ const StyledPackageContainer = styled.form`
 const StyledInput = withTheme()(styled.input`
   display: none;
   :checked + label > div {
-    ${({ theme }) => css`
-      outline: 2px solid ${theme.palette.primary.main};
-    `};
+    outline: 2px solid ${({ theme }) => theme.palette.primary.main};
   }
 `)
 

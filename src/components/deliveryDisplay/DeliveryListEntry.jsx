@@ -18,13 +18,13 @@ const StyledEntry = styled.div`
 const Column = styled.div`
   min-width: 0;
 `
-const ColumnNoShrink = Column.extend`
+const ColumnNoShrink = styled(Column)`
   flex-shrink: 0;
 `
-const ColumnCenter = ColumnNoShrink.extend`
+const ColumnCenter = styled(ColumnNoShrink)`
   align-self: center;
 `
-const TabletOnly = ColumnNoShrink.extend`
+const TabletOnly = styled(ColumnNoShrink)`
   @media screen and (max-width: 350px) {
     display: none;
   }
@@ -32,11 +32,11 @@ const TabletOnly = ColumnNoShrink.extend`
 const EntryText = styled.p`
   margin: 0;
 `
-const EntryTextHead = EntryText.extend`
+const EntryTextHead = styled(EntryText)`
   font-weight: bold;
   padding-bottom: 0.3rem;
 `
-const EntryTextTruncated = EntryText.extend`
+const EntryTextTruncated = styled(EntryText)`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

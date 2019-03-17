@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import defaultAvatar from '../assets/images/generic-user.png'
 
@@ -18,10 +18,8 @@ const StyledUserImageInner = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent center / cover no-repeat;
-    ${({ image }) => css`
-      background-image: url(${image});
-    `} border-radius: 50%;
+    background: url(${({ image }) => image}) center / cover no-repeat;
+    border-radius: 50%;
   }
 `
 export default ({ image, ...props }) => {

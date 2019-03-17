@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import store from '../store'
 
 const showError = () =>
@@ -29,11 +29,7 @@ const HeroImage = styled.div`
   top: 0;
   left: 0;
   background: #f0f0f0 center / cover no-repeat;
-  ${props =>
-    props.image &&
-    css`
-      background-image: url(${props.image});
-    `};
+  background-image: url(${({ image }) => image || 'none'});
 `
 const HeroTitleContainer = styled.div`
   && {

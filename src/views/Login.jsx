@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextField, Button, withTheme } from '@material-ui/core'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { login } from '../utils/auth'
 import { userActions } from '../state/user'
 import { connect } from 'react-redux'
@@ -40,9 +40,7 @@ const StyledTextfield = styled(TextField)`
 const StyledLink = withTheme()(styled(Link)`
   font-weight: 600;
   margin-bottom: 3rem;
-  ${({ theme }) => css`
-    color: ${theme.palette.primary.main};
-  `};
+  color: ${({ theme }) => theme.palette.primary.main};
 `)
 class Login extends React.Component {
   state = {

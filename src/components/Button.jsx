@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
 const Button = withTheme()(styled.button`
@@ -10,10 +10,7 @@ const Button = withTheme()(styled.button`
   cursor: pointer;
   :hover {
     text-decoration: underline;
-    ${({ theme }) =>
-      css`
-        text-decoration-color: ${theme.palette.primary.main};
-      `};
+    text-decoration-color: ${({ theme }) => theme.palette.primary.main};
   }
 `)
 

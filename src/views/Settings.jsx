@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Button, withTheme } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { userSelectors } from '../state/user'
@@ -18,9 +18,7 @@ const StyledButton = styled(Button)`
 `
 const StyledLink = withTheme()(styled(Link)`
   text-decoration: underline;
-  ${({ theme }) => css`
-    color: ${theme.palette.primary.main};
-  `};
+  color: ${({ theme }) => theme.palette.primary.main};
 `)
 
 const Settings = ({ user, removeUser, isAuth }) => {
@@ -67,7 +65,8 @@ const Settings = ({ user, removeUser, isAuth }) => {
             }}
           >
             Einloggen
-          </StyledLink>, um Account-Einstellungen zu zeigen.
+          </StyledLink>
+          , um Account-Einstellungen zu zeigen.
         </p>
       )}
     </Main>

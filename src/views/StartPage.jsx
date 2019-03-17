@@ -6,7 +6,7 @@ import DeliveryDisplay from '../components/DeliveryDisplay'
 import { connect } from 'react-redux'
 import { userSelectors } from '../state/user'
 import { Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 import { deliveriesSelectors } from '../state/deliveries'
 
@@ -15,9 +15,7 @@ const Subtitle = styled.h3`
 `
 const StyledLink = withTheme()(styled(Link)`
   font-weight: 600;
-  ${({ theme }) => css`
-    color: ${theme.palette.primary.main};
-  `};
+  color: ${({ theme }) => theme.palette.primary.main};
   + * {
     margin-top: 1rem;
   }

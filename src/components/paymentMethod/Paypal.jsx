@@ -19,6 +19,7 @@ const StyledPaypal = styled.div`
   outline: 2px solid #d6d6d6;
   transition: outline-color 0.25s ease-out;
   justify-content: space-between;
+  align-items: center;
 `
 
 const StyledLogo = styled.img`

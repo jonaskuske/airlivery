@@ -1,6 +1,6 @@
 import React from 'react'
 import Contact from '../../../components/Contact'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
 const StyledForm = styled.form`
@@ -23,9 +23,7 @@ const StyledForm = styled.form`
 const StyledInput = withTheme()(styled.input`
   display: none;
   :checked + label > div {
-    ${({ theme }) => css`
-      outline: 2px solid ${theme.palette.primary.main};
-    `};
+    outline: 2px solid ${({ theme }) => theme.palette.primary.main};
   }
 `)
 

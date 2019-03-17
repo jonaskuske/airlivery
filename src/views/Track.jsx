@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { TextField, withTheme } from '@material-ui/core'
 import Delivery from '../components/deliveryDisplay/DeliveryListEntry'
 import { MockDelivery } from '../utils/mocks/deliveries'
@@ -9,18 +9,15 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 120px);
-  ${({ empty }) =>
-    empty &&
-    css`
-      background: url(${droneImage}) center / 30% no-repeat;
-    `};
+  background: ${({ empty }) => {
+    if (empty) return `url(${droneImage}) center / 30% no-repeat`
+    return 'none'
+  }};
 `
 const Status = withTheme()(styled.p`
   align-self: flex-start;
   font-weight: 600;
-  ${({ theme }) => css`
-    color: ${theme.palette.primary.main};
-  `};
+  color: ${({ theme }) => theme.palette.primary.main};
 `)
 export default class extends React.Component {
   state = { query: '' }

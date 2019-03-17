@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Zoom } from '@material-ui/core'
 import MicroButton from './MicroFloatingActionButton'
 import { Delete, Edit } from '@material-ui/icons'
@@ -39,10 +39,7 @@ const StyledAirspotAdress = styled.p`
 
 const StyledAirspotMap = styled.div`
   width: 100%;
-  background: transparent center / cover no-repeat;
-  ${({ map }) => css`
-    background-image: url(${map});
-  `};
+  background: url(${({ map }) => map}) center / cover no-repeat;
   ::before {
     content: '';
     display: block;
@@ -74,7 +71,7 @@ class Airspot extends React.Component {
 
     const { street, streetNumber, plz, city } = adress
 
-    const adressString = `${street} ${streetNumber}, ${plz} ${city}`
+    const adressString = `${street} ${streetNumber}, ${plz} ${city} `
 
     return (
       <StyledAirspot>

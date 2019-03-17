@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import ErrorCount from './ErrorCount'
 import ErrorText from './ErrorText'
@@ -13,9 +13,7 @@ const StyledErrorView = styled.div`
   transition: max-height 380ms ease-out;
   overflow: hidden;
   box-shadow: inset 0px -7px 10px 1px rgba(0, 0, 0, 0.3);
-  ${({ visible }) => css`
-    max-height: ${visible ? '350px' : 0};
-  `};
+  max-height: ${({ visible }) => (visible ? '350px' : 0)};
 `
 const StyledErrorViewInner = styled.div`
   margin-top: 1rem;

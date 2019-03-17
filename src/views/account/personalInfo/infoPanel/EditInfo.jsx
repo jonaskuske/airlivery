@@ -19,10 +19,10 @@ const StyledTextField = styled(TextField)`
     margin-bottom: 0.5rem;
   }
 `
-const TextFieldStreetNumber = StyledTextField.extend`
+const TextFieldStreetNumber = styled(StyledTextField)`
   width: 50px;
 `
-const TextFieldPlz = StyledTextField.extend`
+const TextFieldPlz = styled(StyledTextField)`
   width: 95px;
 `
 

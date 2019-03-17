@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Icon = styled.a`
   margin: 0 0.5rem;
@@ -13,9 +13,8 @@ const Icon = styled.a`
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
-  ${props => css`
-    background-color: ${props.color || 'grey'};
-  `};
+  background-color: ${({ color }) => color || 'grey'};
+
   :hover {
     text-decoration: none;
   }
