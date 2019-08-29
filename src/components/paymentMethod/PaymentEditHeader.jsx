@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
   }
 `
 
-export default withTheme()(({ edit, active, toggleEdit, theme, onDelete }) => {
+export default withTheme(({ edit, active, toggleEdit, theme, onDelete }) => {
   const transitionDuration = {
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,

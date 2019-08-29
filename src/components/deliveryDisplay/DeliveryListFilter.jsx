@@ -19,7 +19,7 @@ const RadioLabel = styled.label`
   }
 `
 
-const RadioInput = withTheme()(styled.input`
+const RadioInput = withTheme(styled.input`
   display: none;
   :checked + label {
     ${({ theme }) => css`

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 import DocumentTitle from 'react-document-title'
 
-const Main = withTheme()(styled.main`
+const Main = withTheme(styled.main`
   & h3 {
     color: ${({ theme }) => theme.palette.primary.main};
   }

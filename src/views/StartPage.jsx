@@ -13,7 +13,7 @@ import { deliveriesSelectors } from '../state/deliveries'
 const Subtitle = styled.h3`
   margin-bottom: 0.6rem;
 `
-const StyledLink = withTheme()(styled(Link)`
+const StyledLink = withTheme(styled(Link)`
   font-weight: 600;
   color: ${({ theme }) => theme.palette.primary.main};
   + * {

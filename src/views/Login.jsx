@@ -37,7 +37,7 @@ const Subtitle = styled.h2`
 const StyledTextfield = styled(TextField)`
   width: 100%;
 `
-const StyledLink = withTheme()(styled(Link)`
+const StyledLink = withTheme(styled(Link)`
   font-weight: 600;
   margin-bottom: 3rem;
   color: ${({ theme }) => theme.palette.primary.main};

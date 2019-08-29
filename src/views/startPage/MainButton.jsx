@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   }
 `
 
-const Button = withTheme()(styled.button`
+const Button = withTheme(styled.button`
   position: relative;
   width: 100%;
   border: none;
@@ -53,7 +53,7 @@ const Button = withTheme()(styled.button`
   background-image: url(${({ image }) => image || IconLink});
 `)
 
-const ButtonText = withTheme()(styled.p`
+const ButtonText = withTheme(styled.p`
   font-size: 1rem;
   font-weight: 500;
   margin: 0.5rem 0;

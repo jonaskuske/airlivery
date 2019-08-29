@@ -14,7 +14,7 @@ const Main = styled.main`
     return 'none'
   }};
 `
-const Status = withTheme()(styled.p`
+const Status = withTheme(styled.p`
   align-self: flex-start;
   font-weight: 600;
   color: ${({ theme }) => theme.palette.primary.main};

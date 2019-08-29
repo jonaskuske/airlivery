@@ -22,7 +22,7 @@ const StyledAirspotContainer = styled.form`
     margin-bottom: 1rem;
   }
 `
-const StyledInput = withTheme()(styled.input`
+const StyledInput = withTheme(styled.input`
   display: none;
   :checked + label > div {
     outline: 2px solid ${({ theme }) => theme.palette.primary.main};

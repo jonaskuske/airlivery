@@ -9,7 +9,7 @@ const StyledPaymentContainer = styled.div`
   }
 `
 
-const StyledInput = withTheme()(styled.input`
+const StyledInput = withTheme(styled.input`
   display: none;
   :checked + label > div,
   :checked + label [data-outline] {

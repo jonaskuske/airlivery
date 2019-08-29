@@ -20,7 +20,7 @@ const StyledForm = styled.form`
   }
 `
 
-const StyledInput = withTheme()(styled.input`
+const StyledInput = withTheme(styled.input`
   display: none;
   :checked + label > div {
     outline: 2px solid ${({ theme }) => theme.palette.primary.main};

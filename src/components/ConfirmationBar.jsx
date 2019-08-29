@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { withTheme, IconButton } from '@material-ui/core'
 import { Check } from '@material-ui/icons'
 
-const HeaderContainer = withTheme()(styled.div`
+const HeaderContainer = withTheme(styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
@@ -14,7 +14,7 @@ const HeaderContainer = withTheme()(styled.div`
   position: fixed;
   background: ${({ theme }) => theme.palette.primary.main};
 `)
-const Header = withTheme()(styled.header`
+const Header = withTheme(styled.header`
   display: flex;
   justify-content: flex-end;
   align-items: center;

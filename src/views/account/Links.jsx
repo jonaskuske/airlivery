@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const StyledLinkContainer = withTheme()(styled.div`
+const StyledLinkContainer = withTheme(styled.div`
   display: flex;
   > a {
     margin-right: 1rem;

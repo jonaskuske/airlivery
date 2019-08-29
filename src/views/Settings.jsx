@@ -16,7 +16,7 @@ const StyledButton = styled(Button)`
     background-color: red;
   }
 `
-const StyledLink = withTheme()(styled(Link)`
+const StyledLink = withTheme(styled(Link)`
   text-decoration: underline;
   color: ${({ theme }) => theme.palette.primary.main};
 `)

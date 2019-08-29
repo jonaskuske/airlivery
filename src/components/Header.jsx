@@ -37,10 +37,10 @@ const HeaderPartial = styled.div`
   }
 `
 
-const HeaderLink = withTheme()(styled(Link)`
+const HeaderLink = withTheme(styled(Link)`
   color: ${({ theme }) => theme.palette.primary.main};
 `)
-const HeaderLinkLogo = withTheme()(styled(HeaderLink)`
+const HeaderLinkLogo = withTheme(styled(HeaderLink)`
   display: flex;
   align-items: center;
   > svg {

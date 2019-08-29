@@ -16,7 +16,7 @@ const Title = styled.h1`
   overflow: hidden;
 `
 
-export default withTheme()(
+export default withTheme(
   class extends React.Component {
     state = {
       countdownActive: true,

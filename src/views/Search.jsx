@@ -6,7 +6,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
 `
-const Result = withTheme()(styled.p`
+const Result = withTheme(styled.p`
   align-self: flex-start;
   ${({ theme }) => css`
     color: ${theme.palette.primary.main};

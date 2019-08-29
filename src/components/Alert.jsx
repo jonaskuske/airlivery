@@ -9,9 +9,9 @@ import {
   Slide,
 } from '@material-ui/core'
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />
-}
+const Transition = React.forwardRef((props, ref) => {
+  return <Slide direction="up" {...props} ref={ref} />
+})
 
 const AlertDialogSlide = ({
   open,

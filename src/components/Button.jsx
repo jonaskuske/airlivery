@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
-const Button = withTheme()(styled.button`
+const Button = withTheme(styled.button`
   background: none;
   border: none;
   color: currentColor;
