@@ -20,28 +20,31 @@ const StyledErrorViewInner = styled.div`
 `
 
 export default class extends React.Component {
-  state = { render: false, visible: false, lastError: {} }
+  state = { render: false, visible: false, lastestError: null }
 
   componentDidMount() {
     if (this.props.error) this.slideIn()
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.error) this.slideIn()
-    else {
-      this.setState({ lastError: this.props.error })
-      this.slideOut()
-    }
+  componentDidUpdate() {
+    const { error } = this.props
+
+    if (error && error !== this.state.lastestError)
+      this.setState({ lastestError: error })
+
+    if (error) this.slideIn()
+    else this.slideOut()
   }
 
   slideIn = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
-    this.setState({ render: true })
-    setTimeout(() => this.setState({ visible: true }), 50)
+    if (!this.state.render) this.setState({ render: true })
+    if (!this.state.visible)
+      setTimeout(() => this.setState({ visible: true }), 50)
   }
 
   slideOut = () => {
-    this.setState({ visible: false })
+    if (this.state.visible) this.setState({ visible: false })
   }
 
   handleTransitionEnd = () => {
@@ -50,7 +53,7 @@ export default class extends React.Component {
 
   render() {
     if (!this.state.render) return null
-    const { error = this.state.lastError, setAsSeen, errors } = this.props
+    const { error = this.state.lastestError, setAsSeen, errors } = this.props
 
     return (
       <StyledErrorView

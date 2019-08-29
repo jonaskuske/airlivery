@@ -44,7 +44,7 @@ export default class HeaderMobileFixed extends React.Component {
       this.isHandling = true
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
   }
   componentWillUnmount() {
