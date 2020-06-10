@@ -30,19 +30,32 @@ const StyledUserImage = styled(UserImage)`
   max-width: 4rem;
 `
 const UserName = styled.p`
-  flex-shrink: 0;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
   > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  > span:first-child {
     font-weight: bold;
   }
 `
 const UserAdress = styled.p`
+  flex: 1.5;
+  overflow: hidden;
+  white-space: nowrap;
   margin-left: 1rem;
   display: flex;
   flex-direction: column;
-  > span:first-of-type {
+  > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  > span:first-child {
     font-weight: bold;
   }
 `
@@ -74,7 +87,7 @@ export default ({ contact, onDelete, onAdd, allowInteractions, ...props }) => {
       <StyledUserImage image={image} />
       <UserName>
         <span>Name</span>
-        {name}
+        <span>{name}</span>
       </UserName>
       <UserAdress>
         <span>Adresse</span>
