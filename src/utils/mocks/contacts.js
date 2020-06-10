@@ -17,8 +17,8 @@ const fetchMockContacts = async () => {
       name: capitalize(`${name.first} ${name.last}`),
       image: picture.thumbnail,
       adress: {
-        streetNumber: location.street.split(' ')[0],
-        street: capitalize(location.street.split(' ')[1]),
+        streetNumber: location.street.number,
+        street: capitalize(location.street.name),
         plz: location.postcode,
         city: capitalize(location.city),
       },
