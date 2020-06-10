@@ -17,6 +17,18 @@ const initialState = {
         city: 'Bremerhaven',
       },
     },
+    {
+      name: 'Demo',
+      email: 'demo@dmp-bremerhaven.de',
+      password: 'test123',
+      phone: '+491609284672',
+      adress: {
+        street: 'An der Karlstadt',
+        streetNumber: '8',
+        plz: 27568,
+        city: 'Bremerhaven',
+      },
+    },
   ],
 }
 
