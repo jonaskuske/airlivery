@@ -73,15 +73,12 @@ const Settings = ({ user, removeUser, isAuth }) => {
   )
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: authSelectors.getAuthState(state),
   user: userSelectors.getUser(state),
 })
-const mapDispatchToProps = dispatch => ({
-  removeUser: u => dispatch(authActions.removeKnownUser(u)),
+const mapDispatchToProps = (dispatch) => ({
+  removeUser: (u) => dispatch(authActions.removeKnownUser(u)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Settings)
+export default connect(mapStateToProps, mapDispatchToProps)(Settings)

@@ -3,7 +3,7 @@ import LandingPage from './LandingPage'
 import StartPage from './StartPage'
 import { connect } from 'react-redux'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 })
 

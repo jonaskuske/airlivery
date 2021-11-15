@@ -19,7 +19,7 @@ const StyledErrorViewInner = styled.div`
   margin-top: 1rem;
 `
 
-export default class extends React.Component {
+export default class ErrorView extends React.Component {
   state = { render: false, visible: false, lastestError: null }
 
   componentDidMount() {

@@ -1,4 +1,6 @@
-const getAuthState = state => state.auth.isAuth
-const getKnownUsers = state => state.auth.knownUsers
+const getAuthState = (state) => state.auth.isAuth
+const getKnownUsers = (state) => state.auth.knownUsers
 
-export default { getAuthState, getKnownUsers }
+const obj = { getAuthState, getKnownUsers }
+
+export default obj

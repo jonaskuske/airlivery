@@ -9,7 +9,7 @@ const StyledErrorCount = styled.p`
   height: 1rem;
 `
 
-export default ({ errors }) => {
+export default function ErrorCount({ errors }) {
   if (!errors || errors.length < 2) {
     return <StyledErrorCount />
   }

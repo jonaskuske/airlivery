@@ -21,7 +21,7 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ options, selection, setSelection }) => {
+export default function ChoosePayment({ options, selection, setSelection }) {
   const { paymentMethods } = options
 
   return (

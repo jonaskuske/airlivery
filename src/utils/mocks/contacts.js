@@ -9,7 +9,7 @@ const fetchMockContacts = async () => {
   const { results } = await fetch(
     'https://randomuser.me/api/?results=20&inc=name,picture,location',
   )
-    .then(r => r.json())
+    .then((r) => r.json())
     .catch(() => ({ results: [] }))
 
   const mockContacts = results
@@ -23,12 +23,12 @@ const fetchMockContacts = async () => {
         city: capitalize(location.city),
       },
     }))
-    .filter(r => typeof r.adress.plz === 'number')
+    .filter((r) => typeof r.adress.plz === 'number')
 
   return mockContacts
 }
 
-fetchMockContacts().then(contacts => {
+fetchMockContacts().then((contacts) => {
   // only add contacts if none have been added yet
   const { getAllContacts } = contactsSelectors
   if (getAllContacts(store.getState()).length > 5) return
@@ -36,7 +36,7 @@ fetchMockContacts().then(contacts => {
   store.dispatch(contactsActions.addContactsToList(contacts))
 })
 
-export default [
+const contacts = [
   {
     name: 'Jonas Kuske',
     image: jonasImage,
@@ -72,3 +72,5 @@ export default [
     },
   },
 ]
+
+export default contacts

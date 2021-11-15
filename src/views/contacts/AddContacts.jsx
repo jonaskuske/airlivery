@@ -15,7 +15,7 @@ const StyledContact = styled(Contact)`
   margin-top: 1rem;
 `
 
-export default class extends React.Component {
+export default class AddContacts extends React.Component {
   state = { query: '' }
   setQuery = ({ target }) => this.setState({ query: target.value })
 
@@ -25,10 +25,10 @@ export default class extends React.Component {
 
     let filteredContacts = contacts
     if (query)
-      filteredContacts = contacts.filter(contact => {
+      filteredContacts = contacts.filter((contact) => {
         return (
           includesString(contact.name, query) ||
-          Object.values(contact.adress).filter(str =>
+          Object.values(contact.adress).filter((str) =>
             includesString(str, query),
           ).length
         )

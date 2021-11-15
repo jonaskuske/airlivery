@@ -39,7 +39,7 @@ class PayPal extends React.Component {
   }
   handleChange = ({ target }) => this.setState({ value: target.value })
   toggleForm = () => {
-    this.setState(prevState => ({ showForm: !prevState.showForm }))
+    this.setState((prevState) => ({ showForm: !prevState.showForm }))
   }
 
   showAlert = () => this.setState({ showAlert: true })

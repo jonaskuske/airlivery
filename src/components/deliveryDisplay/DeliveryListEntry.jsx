@@ -41,7 +41,9 @@ const EntryTextTruncated = styled(EntryText)`
   white-space: nowrap;
   text-overflow: ellipsis;
 `
-export default ({ entry: { type, from, to, date, number, name } }) => {
+export default function DeliveryListEntry({
+  entry: { type, from, to, date, number, name },
+}) {
   const isFrom = type === 'from'
 
   return (

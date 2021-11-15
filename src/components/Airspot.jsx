@@ -54,7 +54,7 @@ class Airspot extends React.Component {
   }
 
   state = { showForm: false }
-  toggleForm = () => this.setState(prev => ({ showForm: !prev.showForm }))
+  toggleForm = () => this.setState((prev) => ({ showForm: !prev.showForm }))
 
   render() {
     const { airspot, edit, onRemove } = this.props

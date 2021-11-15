@@ -13,6 +13,6 @@ const StyledButton = styled(Fab)`
   }
 `
 
-export default ({ children, ...props }) => (
-  <StyledButton {...props}>{children}</StyledButton>
-)
+export default function MicroFloatingActionButton({ children, ...props }) {
+  return <StyledButton {...props}>{children}</StyledButton>
+}

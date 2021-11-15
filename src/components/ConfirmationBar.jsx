@@ -22,7 +22,7 @@ const Header = withTheme(styled.header`
   color: ${({ theme }) => theme.palette.background.default};
 `)
 
-export default ({ onConfirm }) => {
+export default function ConfirmationBar({ onConfirm }) {
   return (
     <HeaderContainer>
       <Header className="max-width">

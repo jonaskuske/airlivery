@@ -22,7 +22,7 @@ const StyledUserImageInner = styled.div`
     border-radius: 50%;
   }
 `
-export default ({ image, ...props }) => {
+export default function UserImage({ image, ...props }) {
   if (!image) image = defaultAvatar
 
   return (

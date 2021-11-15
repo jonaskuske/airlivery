@@ -56,10 +56,7 @@ const PaymentInfo = ({ paymentMethods, edit, addPaymentMethod }) => {
 
 const { addPaymentMethod } = paymentMethodsActions
 const mapStateToProps = () => ({})
-const mapDispatchToProps = dispatch => ({
-  addPaymentMethod: method => dispatch(addPaymentMethod(method)),
+const mapDispatchToProps = (dispatch) => ({
+  addPaymentMethod: (method) => dispatch(addPaymentMethod(method)),
 })
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PaymentInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentInfo)

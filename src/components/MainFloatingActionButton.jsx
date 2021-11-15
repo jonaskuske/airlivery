@@ -11,8 +11,10 @@ const StyledButton = styled(Fab)`
   }
 `
 
-export default ({ children, ...props }) => (
-  <StyledButton color="primary" {...props}>
-    {children}
-  </StyledButton>
-)
+export default function MainFloatingActionButton({ children, ...props }) {
+  return (
+    <StyledButton color="primary" {...props}>
+      {children}
+    </StyledButton>
+  )
+}

@@ -13,7 +13,7 @@ const Result = withTheme(styled.p`
     border-bottom: 2px solid ${theme.palette.primary.dark};
   `};
 `)
-export default class extends React.Component {
+export default class Search extends React.Component {
   state = { query: '' }
 
   setQuery = ({ target }) => this.setState({ query: target.value })

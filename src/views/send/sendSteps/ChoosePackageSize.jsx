@@ -41,7 +41,11 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ setSelection, options, selection }) => {
+export default function ChoosePackageSize({
+  setSelection,
+  options,
+  selection,
+}) {
   const { packageSizes } = options
   return (
     <div>

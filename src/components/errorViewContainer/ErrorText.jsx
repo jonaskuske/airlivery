@@ -12,7 +12,7 @@ const StyledErrorCode = styled.span`
   opacity: 0.7;
 `
 
-export default ({ error }) => {
+export default function ErrorText({ error }) {
   const {
     code = '0x000a',
     message = 'Fehler',

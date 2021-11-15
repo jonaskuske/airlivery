@@ -1,5 +1,7 @@
 const getAllPaymentMethods = ({ payments }) => payments.methods || []
 
-export default {
+const obj = {
   getAllPaymentMethods,
 }
+
+export default obj

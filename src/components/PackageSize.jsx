@@ -39,7 +39,7 @@ const StyledSizeName = styled.p`
   font-size: 2.5rem;
   margin: 0;
 `
-export default ({ packageSize, square = true }) => {
+export default function PackageSize({ packageSize, square = true }) {
   const { sizeName, price, weight, sizes } = packageSize
   const { width, height, depth } = sizes
   const [euro, cents = ''] = price.toString().split('.')

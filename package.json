@@ -7,16 +7,16 @@
     "@material-ui/icons": "^4.2.1",
     "card-react": "^1.2.7",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
+    "react": "^17.0.2",
     "react-countdown-clock": "^2.6.0",
     "react-document-title": "^2.0.3",
-    "react-dom": "^16.9.0",
+    "react-dom": "^17.0.2",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.1",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "^4.0.3",
     "redux": "^4.0.4",
-    "redux-persist": "^5.10.0",
-    "styled-components": "^4.3.2"
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,30 +26,29 @@
     "lint": "eslint ./ --fix --ext js,jsx",
     "precommit": "lint-staged",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
-    "@types/jest": "^24.0.18",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "husky": "^3.0.4",
-    "jest-enzyme": "^7.1.0",
-    "lint-staged": "^9.2.5",
-    "prettier": "^1.18.2",
-    "react-test-renderer": "^16.9.0"
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.12",
+    "@types/jest": "^26.0.24",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.0",
+    "jest-enzyme": "^7.1.2",
+    "lint-staged": "^12.0.2",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "^17.0.2"
   },
   "lint-staged": {
     "*.{js,jsx,json,css,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "eslintIgnore": [

@@ -9,9 +9,9 @@ const RemainingTime = styled.div`
   align-items: center;
 `
 
-export default class extends React.Component {
+export default class DroneLanded extends React.Component {
   state = { showConfirm: false }
-  toggleConfirm = () => this.setState(p => ({ showConfirm: !p.showConfirm }))
+  toggleConfirm = () => this.setState((p) => ({ showConfirm: !p.showConfirm }))
 
   render() {
     const { delivery, onComplete } = this.props

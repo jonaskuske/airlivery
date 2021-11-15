@@ -9,7 +9,7 @@ const StyledErrorButtons = styled.div`
   padding-bottom: 0.5rem;
 `
 
-export default props => {
+export default function ErrorButtons(props) {
   const { onClick, error } = props
   return (
     <StyledErrorButtons>

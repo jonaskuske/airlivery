@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { withTheme } from '@material-ui/core'
 
-const Button = withTheme(styled.button`
+const StyledButton = withTheme(styled.button`
   background: none;
   border: none;
   color: currentColor;
@@ -14,8 +14,10 @@ const Button = withTheme(styled.button`
   }
 `)
 
-export default ({ onClick, children, ...props }) => (
-  <Button onClick={onClick} {...props}>
-    {children}
-  </Button>
-)
+export default function Button({ onClick, children, ...props }) {
+  return (
+    <StyledButton onClick={onClick} {...props}>
+      {children}
+    </StyledButton>
+  )
+}

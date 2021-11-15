@@ -17,13 +17,13 @@ const StyledEditActions = styled.div`
   }
 `
 
-export default class extends React.Component {
+export default class EditActions extends React.Component {
   constructor(props) {
     super(props)
     this.imageInput = React.createRef()
   }
 
-  handleChange = async evt => {
+  handleChange = async (evt) => {
     const { imageInput, props } = this
     const image = await readImageFromInput(evt)
     imageInput.current.value = ''

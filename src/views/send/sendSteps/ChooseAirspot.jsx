@@ -33,7 +33,7 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ options, selection, setSelection }) => {
+export default function ChooseAirspot({ options, selection, setSelection }) {
   const { airspots } = options
 
   return (

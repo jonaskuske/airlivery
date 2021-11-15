@@ -1,22 +1,24 @@
 import types from './types'
 
-const addContact = contact => ({
+const addContact = (contact) => ({
   type: types.ADD_CONTACT,
   contact,
 })
 
-const removeContact = contact => ({
+const removeContact = (contact) => ({
   type: types.REMOVE_CONTACT,
   contact,
 })
 
-const addContactsToList = contacts => ({
+const addContactsToList = (contacts) => ({
   type: types.ADD_CONTACTS_TO_LIST,
   contacts,
 })
 
-export default {
+const obj = {
   addContact,
   removeContact,
   addContactsToList,
 }
+
+export default obj

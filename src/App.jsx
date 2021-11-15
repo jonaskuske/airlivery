@@ -35,7 +35,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isMobile: state.layout.mobile,
 })
 

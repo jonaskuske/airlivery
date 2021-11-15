@@ -12,7 +12,7 @@ const StyledFormControlLabel = styled(FormControlLabel)`
   }
 `
 
-export default class extends React.Component {
+export default class Confirmation extends React.Component {
   state = { agb: false, privacy: false }
 
   handleAgbChange = ({ target }) => this.setState({ agb: target.checked })

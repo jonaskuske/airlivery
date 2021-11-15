@@ -28,12 +28,12 @@ const Main = styled.main`
 class Account extends React.Component {
   state = { editMode: false, infoType: 'personal' }
   toggleEditMode = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       editMode: !prevState.editMode,
     }))
   }
   toggleType = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       infoType: prevState.infoType === 'personal' ? 'payment' : 'personal',
     }))
   }
@@ -80,21 +80,18 @@ class Account extends React.Component {
 
 const { getAllPaymentMethods } = paymentMethodsSelectors
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   paymentMethods: getAllPaymentMethods(state),
   user: userSelectors.getUser(state),
   airspots: airspotsSelectors.getAllAirspots(state),
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: {
-    removeAirspot: a => dispatch(airspotsActions.removeAirspot(a)),
-    addAirspot: a => dispatch(airspotsActions.addAirspot(a)),
-    updateUser: u => dispatch(userActions.updateUser(u)),
+    removeAirspot: (a) => dispatch(airspotsActions.removeAirspot(a)),
+    addAirspot: (a) => dispatch(airspotsActions.addAirspot(a)),
+    updateUser: (u) => dispatch(userActions.updateUser(u)),
   },
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Account)
+export default connect(mapStateToProps, mapDispatchToProps)(Account)

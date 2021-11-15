@@ -4,7 +4,8 @@ export function generateId(a) {
     : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, generateId)
 }
 
-export const wait = time => new Promise(resolve => setTimeout(resolve, time))
+export const wait = (time) =>
+  new Promise((resolve) => setTimeout(resolve, time))
 
 export const includesString = (str1 = '', str2, exact) => {
   if (!(typeof str1 === 'string') && str1.toString) {
@@ -15,16 +16,16 @@ export const includesString = (str1 = '', str2, exact) => {
   else return str1.includes(str2)
 }
 
-export const capitalize = str => {
+export const capitalize = (str) => {
   if (!str) return ''
   str = str.toString()
   return str
     .split(/\s|-/g)
-    .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
     .join(' ')
 }
 
-export const createPropertyComparer = prop => {
+export const createPropertyComparer = (prop) => {
   return (a, b) => {
     const propA = a[prop].toUpperCase()
     const propB = b[prop].toUpperCase()
@@ -39,10 +40,10 @@ export const createPropertyComparer = prop => {
   }
 }
 
-export const readFile = file => {
-  return new Promise(res => {
+export const readFile = (file) => {
+  return new Promise((res) => {
     const reader = new FileReader()
-    reader.addEventListener('load', f => res(f.target.result))
+    reader.addEventListener('load', (f) => res(f.target.result))
     reader.readAsDataURL(file)
   })
 }

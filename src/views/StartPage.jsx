@@ -38,14 +38,11 @@ const StartPage = ({ user, deliveries }) => (
   </div>
 )
 
-const {
-  getDeliveriesFromUser,
-  getDeliveriesToUser,
-  getAllDeliveries,
-} = deliveriesSelectors
+const { getDeliveriesFromUser, getDeliveriesToUser, getAllDeliveries } =
+  deliveriesSelectors
 const { getUser } = userSelectors
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: getUser(state),
   deliveries: {
     all: getAllDeliveries(state),

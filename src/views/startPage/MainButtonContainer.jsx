@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import MainButton from './/MainButton'
 
@@ -36,29 +36,31 @@ const Container = styled.div`
   }
 `
 
-export default withRouter(({ history }) => {
+export default function MainButtonContainer() {
+  const navigate = useNavigate()
+
   return (
     <Container>
       <MainButton
         image={IconTrack}
         text="Sendung verfolgen"
-        onClick={() => history.push('/sendungsverfolgung')}
+        onClick={() => navigate('/sendungsverfolgung')}
       />
       <MainButton
         image={IconSend}
         text="Paket versenden"
-        onClick={() => history.push('/senden')}
+        onClick={() => navigate('/senden')}
       />
       <MainButton
         image={IconReceive}
         text="Adressbuch zeigen"
-        onClick={() => history.push('/adressbuch')}
+        onClick={() => navigate('/adressbuch')}
       />
       <MainButton
         image={IconAvatar}
         text="Profil verwalten"
-        onClick={() => history.push('/account')}
+        onClick={() => navigate('/account')}
       />
     </Container>
   )
-})
+}

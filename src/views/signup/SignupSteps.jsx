@@ -5,7 +5,7 @@ import Confirmation from './signupSteps/Confirmation'
 
 const steps = [PersonalInfo, RegulatoryInfo, Confirmation]
 
-export default ({ activeStep, ...props }) => {
+export default function SignupSteps({ activeStep, ...props }) {
   return steps.map((Component, index) => (
     <Component
       key={index}

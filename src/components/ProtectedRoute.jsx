@@ -1,31 +1,22 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { authSelectors } from '../state/auth'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: authSelectors.getAuthState(state),
 })
 
-const Inner = connect(mapStateToProps)(
-  ({ isAuth, component: Component, ...props }) => {
+const RequireAuth = connect(mapStateToProps)(
+  ({ isAuth, children, ...props }) => {
+    const location = useLocation()
+
     return isAuth ? (
-      <Component {...props} />
+      children
     ) : (
-      <Redirect
-        to={{ pathname: '/einloggen', state: { from: props.location } }}
-      />
+      <Navigate replace to="/einloggen" state={{ from: location }} />
     )
   },
 )
 
-const ProtectedRoute = ({ component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={props => <Inner component={component} {...props} />}
-    />
-  )
-}
-
-export default ProtectedRoute
+export default RequireAuth

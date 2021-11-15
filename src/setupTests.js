@@ -9,3 +9,5 @@ global.matchMedia = jest.fn(() => ({
   addListener: jest.fn(),
   removeListener: jest.fn(),
 }))
+
+global.scrollTo = jest.fn()

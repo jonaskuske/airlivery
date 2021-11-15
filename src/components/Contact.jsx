@@ -66,7 +66,13 @@ const DeleteButton = styled(ActionButton)`
   }
 `
 
-export default ({ contact, onDelete, onAdd, allowInteractions, ...props }) => {
+export default function Contact({
+  contact,
+  onDelete,
+  onAdd,
+  allowInteractions,
+  ...props
+}) {
   const { name, adress, image } = contact
   return (
     <StyledContact {...props}>

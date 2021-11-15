@@ -1,5 +1,7 @@
-const getAllAirspots = state => (state.airspots.length ? state.airspots : [])
+const getAllAirspots = (state) => (state.airspots.length ? state.airspots : [])
 
-export default {
+const obj = {
   getAllAirspots,
 }
+
+export default obj

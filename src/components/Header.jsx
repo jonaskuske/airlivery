@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
 `
-const Header = styled.header`
+const HeaderEl = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,25 +48,27 @@ const HeaderLinkLogo = withTheme(styled(HeaderLink)`
     height: auto;
   }
 `)
-export default () => (
-  <HeaderContainer>
-    <Header className="max-width">
-      <HeaderPartial>
-        <HeaderLinkLogo to="/">
-          <Drone />
-          <span>airlivery</span>
-        </HeaderLinkLogo>
-        <HeaderLink to="/senden">Senden</HeaderLink>
-        <HeaderLink to="/about">About</HeaderLink>
-      </HeaderPartial>
+export default function Header() {
+  return (
+    <HeaderContainer>
+      <HeaderEl className="max-width">
+        <HeaderPartial>
+          <HeaderLinkLogo to="/">
+            <Drone />
+            <span>airlivery</span>
+          </HeaderLinkLogo>
+          <HeaderLink to="/senden">Senden</HeaderLink>
+          <HeaderLink to="/about">About</HeaderLink>
+        </HeaderPartial>
 
-      <HeaderPartial style={{ justifyContent: 'flex-end' }}>
-        <LoginState />
-        <Link to="/hilfe">Hilfe</Link>
-        <IconButton component={Link} to="/suche">
-          <Search />
-        </IconButton>
-      </HeaderPartial>
-    </Header>
-  </HeaderContainer>
-)
+        <HeaderPartial style={{ justifyContent: 'flex-end' }}>
+          <LoginState />
+          <Link to="/hilfe">Hilfe</Link>
+          <IconButton component={Link} to="/suche">
+            <Search />
+          </IconButton>
+        </HeaderPartial>
+      </HeaderEl>
+    </HeaderContainer>
+  )
+}

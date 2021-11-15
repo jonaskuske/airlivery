@@ -20,8 +20,10 @@ const Icon = styled.a`
   }
 `
 
-export default props => (
-  <Icon href={props.href || '/#'} color={props.color}>
-    {props.children}
-  </Icon>
-)
+export default function SocialImage(props) {
+  return (
+    <Icon href={props.href || '/#'} color={props.color}>
+      {props.children}
+    </Icon>
+  )
+}

@@ -26,7 +26,7 @@ const airspotsReducer = (state = initialState, { type, airspot }) => {
     case types.ADD_AIRSPOT:
       return [...state, airspot]
     case types.REMOVE_AIRSPOT:
-      return state.filter(a => a !== airspot)
+      return state.filter((a) => a !== airspot)
     default:
       return state
   }

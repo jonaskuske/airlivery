@@ -5,7 +5,7 @@ import { userSelectors } from '../../state/user'
 import { Link } from 'react-router-dom'
 import auth from '../../utils/auth'
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   user: userSelectors.getUser(state),
 })

@@ -1,5 +1,3 @@
 const SET_MOBILE_LAYOUT = 'setMobileLayout'
-
-export default {
-  SET_MOBILE_LAYOUT,
-}
+const obj = { SET_MOBILE_LAYOUT }
+export default obj

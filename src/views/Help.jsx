@@ -6,7 +6,7 @@ const Subtitle = withTheme(styled.h2`
   color: ${({ theme }) => theme.palette.primary.main};
 `)
 
-export default () => {
+export default function Help() {
   return (
     <main className="max-width">
       <h1>Hilfe</h1>

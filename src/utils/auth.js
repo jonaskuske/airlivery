@@ -7,7 +7,7 @@ const { getKnownUsers } = authSelectors
 export const login = ({ user, password }) => {
   const users = getKnownUsers(store.getState())
   const matchingUser = users.find(
-    u =>
+    (u) =>
       u.password === password &&
       (u.name === user.trim() || u.email === user.trim()),
   )
@@ -26,7 +26,5 @@ export const logout = () => {
   store.dispatch(userActions.removeActiveUser())
 }
 
-export default {
-  login,
-  logout,
-}
+const obj = { login, logout }
+export default obj

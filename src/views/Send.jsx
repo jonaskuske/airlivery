@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import DocumentTitle from 'react-document-title'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DotsMobileStepper from '../components/DotsMobileStepper'
 import SendSteps from './send/SendSteps'
@@ -45,14 +45,14 @@ class Send extends React.Component {
   }
 
   setSelection = (type, val) => {
-    this.setState(prev => ({ selection: { ...prev.selection, [type]: val } }))
+    this.setState((prev) => ({ selection: { ...prev.selection, [type]: val } }))
   }
-  onBack = () => this.setState(prev => ({ activeStep: prev.activeStep - 1 }))
+  onBack = () => this.setState((prev) => ({ activeStep: prev.activeStep - 1 }))
   onNext = () => {
     if (this.state.activeStep > 3) {
       const btn = document.getElementById('cart-confirm')
       btn && btn.scrollIntoView({ behavior: 'smooth' })
-    } else this.setState(prev => ({ activeStep: prev.activeStep + 1 }))
+    } else this.setState((prev) => ({ activeStep: prev.activeStep + 1 }))
   }
   onDone = () => this.setState({ completed: true })
 
@@ -81,16 +81,12 @@ class Send extends React.Component {
         </DocumentTitle>
       )
     } else {
-      return (
-        <Redirect
-          to={{ pathname: 'aktive-sendung', state: { delivery: selection } }}
-        />
-      )
+      return <Navigate to="/aktive-sendung" state={{ delivery: selection }} />
     }
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   contacts: contactsSelectors.getAddedContacts(state),
   airspots: airspotsSelectors.getAllAirspots(state),
   paymentMethods: paymentMethodsSelectors.getAllPaymentMethods(state),

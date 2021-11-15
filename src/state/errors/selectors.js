@@ -1,5 +1,7 @@
-const getUnseenErrors = state => state.errors.filter(err => !err.seen)
+const getUnseenErrors = (state) => state.errors.filter((err) => !err.seen)
 
-export default {
+const obj = {
   getUnseenErrors,
 }
+
+export default obj

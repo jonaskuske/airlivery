@@ -6,11 +6,11 @@ import App from './App'
 import './assets/styles'
 import registerServiceWorker from './utils/registerServiceWorker'
 import './assets/styles'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { layoutActions } from './state/layout'
 import { PersistGate } from 'redux-persist/integration/react'
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       light: '#a4e1ff',
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
 })
 
 const mediaQuery = window.matchMedia('(max-width: 900px)')
-const queryHandler = query => {
+const queryHandler = (query) => {
   const isMobile = query.matches
   store.dispatch(layoutActions.setMobileLayout(isMobile))
 }
@@ -38,9 +38,9 @@ queryHandler(mediaQuery)
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <App />
-      </MuiThemeProvider>
+      </ThemeProvider>
     </PersistGate>
   </Provider>,
   document.getElementById('root'),

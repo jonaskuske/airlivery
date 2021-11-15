@@ -31,7 +31,11 @@ const StyledLabel = styled.label`
   cursor: pointer;
 `
 
-export default ({ selection, options, setSelection }) => {
+export default function ChooseDestination({
+  selection,
+  options,
+  setSelection,
+}) {
   const { contacts } = options
 
   return (

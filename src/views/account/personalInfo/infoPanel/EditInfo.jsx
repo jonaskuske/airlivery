@@ -51,7 +51,7 @@ class EditInfo extends React.Component {
   }
   handleNameChange = ({ target }) => this.setState({ name: target.value })
   handleAdressChange = ({ target }) => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       adress: { ...prevState.adress, [target.name]: target.value },
     }))
   }

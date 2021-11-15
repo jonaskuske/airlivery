@@ -1,6 +1,6 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import ProtectedRoute from './ProtectedRoute'
+import { Route, Routes } from 'react-router-dom'
+import RequireAuth from './ProtectedRoute'
 
 import Main from '../views/Main'
 import Send from '../views/Send'
@@ -20,26 +20,56 @@ import Search from '../views/Search'
 import Track from '../views/Track'
 import ErrorView from './ErrorViewContainer'
 
-export default () => {
+export default function PageContainer() {
   return (
     <div className="page-container">
       <ErrorView />
-      <Route path="/" exact component={Main} />
-      <Route path="/einloggen" component={Login} />
-      <Route path="/registrieren" component={Signup} />
-      <ProtectedRoute path="/senden" component={Send} />
-      <ProtectedRoute path="/lieferungen" component={Deliveries} />
-      <ProtectedRoute path="/aktive-sendung" component={ActiveDelivery} />
-      <ProtectedRoute path="/account" component={Account} />
-      <ProtectedRoute path="/adressbuch" component={Contacts} />
-      <Route path="/einstellungen" component={Settings} />
-      <Route path="/about" component={About} />
-      <Route path="/hilfe" component={Help} />
-      <Route path="/suche" component={Search} />
-      <Route path="/sendungsverfolgung" component={Track} />
-      <Route path="/impressum" component={Imprint} />
-      <Route path="/datenschutz" component={Privacy} />
-      <Route path="/rechtliches" component={LegalOverview} />
+      <Routes>
+        <Route path="/" exact element={<Main />} />
+        <Route path="/einloggen" element={<Login />} />
+        <Route path="/registrieren" element={<Signup />} />
+        <Route
+          path="/senden"
+          element={
+            <RequireAuth>
+              <Send />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/lieferungen"
+          element={
+            <RequireAuth>
+              <Deliveries />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/aktive-sendung"
+          element={
+            <RequireAuth>
+              <ActiveDelivery />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <RequireAuth>
+              <Account />
+            </RequireAuth>
+          }
+        />
+        <Route path="/adressbuch" element={<Contacts />} />
+        <Route path="/einstellungen" element={<Settings />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/hilfe" element={<Help />} />
+        <Route path="/suche" element={<Search />} />
+        <Route path="/sendungsverfolgung" element={<Track />} />
+        <Route path="/impressum" element={<Imprint />} />
+        <Route path="/datenschutz" element={<Privacy />} />
+        <Route path="/rechtliches" element={<LegalOverview />} />
+      </Routes>
     </div>
   )
 }

@@ -15,12 +15,9 @@ const Deliveries = ({ deliveries }) => {
   )
 }
 
-const {
-  getAllDeliveries,
-  getDeliveriesFromUser,
-  getDeliveriesToUser,
-} = deliveriesSelectors
-const mapStateToProps = state => ({
+const { getAllDeliveries, getDeliveriesFromUser, getDeliveriesToUser } =
+  deliveriesSelectors
+const mapStateToProps = (state) => ({
   deliveries: {
     all: getAllDeliveries(state),
     from: getDeliveriesFromUser(state),

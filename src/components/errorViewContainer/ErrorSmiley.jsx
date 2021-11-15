@@ -16,8 +16,10 @@ const StyledErrorSmily = styled.div`
   }
 `
 
-export default () => (
-  <StyledErrorSmily>
-    <SadFace />
-  </StyledErrorSmily>
-)
+export default function ErrorSmiley() {
+  return (
+    <StyledErrorSmily>
+      <SadFace />
+    </StyledErrorSmily>
+  )
+}

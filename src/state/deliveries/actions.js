@@ -1,10 +1,12 @@
 import types from './types'
 
-const addDelivery = delivery => ({
+const addDelivery = (delivery) => ({
   type: types.ADD_DELIVERY,
   delivery,
 })
 
-export default {
+const obj = {
   addDelivery,
 }
+
+export default obj

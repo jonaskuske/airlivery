@@ -7,8 +7,7 @@ const showError = () =>
     type: 'addError',
     error: {
       message: 'Leider ist ein Fehler aufgetreten.',
-      note:
-        'Dies ist nur ein Test. Du kannst diese Meldung mit gutem Gewissen ignorieren.',
+      note: 'Dies ist nur ein Test. Du kannst diese Meldung mit gutem Gewissen ignorieren.',
     },
   })
 
@@ -22,7 +21,7 @@ const HeroContainer = styled.div`
     height: 25vh;
   }
 `
-const HeroImage = styled.div`
+const HeroImageDiv = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -63,18 +62,22 @@ const HeroTitle = styled.p`
   }
 `
 
-export default ({ image, title, subtitle, smallSubtitle }) => (
-  <HeroContainer onClick={showError}>
-    <HeroImage image={image} />
+export default function HeroImage({ image, title, subtitle, smallSubtitle }) {
+  return (
+    <HeroContainer onClick={showError}>
+      <HeroImageDiv image={image} />
 
-    {title && (
-      <HeroTitleContainer className="max-width">
-        <HeroTitle>
-          {title}
-          <br />
-          <span style={smallSubtitle && { fontSize: '0.9em' }}>{subtitle}</span>
-        </HeroTitle>
-      </HeroTitleContainer>
-    )}
-  </HeroContainer>
-)
+      {title && (
+        <HeroTitleContainer className="max-width">
+          <HeroTitle>
+            {title}
+            <br />
+            <span style={smallSubtitle && { fontSize: '0.9em' }}>
+              {subtitle}
+            </span>
+          </HeroTitle>
+        </HeroTitleContainer>
+      )}
+    </HeroContainer>
+  )
+}

@@ -4,7 +4,7 @@ import SignupSteps from './signup/SignupSteps'
 import Success from './signup/Success'
 import { connect } from 'react-redux'
 import { authActions, authSelectors } from '../state/auth'
-import { Redirect } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 import image from '../assets/images/generic-user.png'
 
@@ -29,7 +29,7 @@ class Signup extends React.Component {
     },
   }
 
-  onBack = () => this.setState(prev => ({ activeStep: prev.activeStep - 1 }))
+  onBack = () => this.setState((prev) => ({ activeStep: prev.activeStep - 1 }))
   onNext = () => {
     let formValidated = false
     const { activeStep } = this.state
@@ -46,7 +46,7 @@ class Signup extends React.Component {
     }
 
     if (formValidated)
-      this.setState(prev => ({
+      this.setState((prev) => ({
         showFormErrors: false,
         activeStep: prev.activeStep + 1,
       }))
@@ -63,7 +63,7 @@ class Signup extends React.Component {
       value.city
     ) {
       const existsAlready = this.props.knownUsers
-        .map(user => user.name)
+        .map((user) => user.name)
         .includes(`${value.firstName} ${value.lastName}`)
       this.setState({ userNameWarning: existsAlready })
 
@@ -77,11 +77,11 @@ class Signup extends React.Component {
     } else return false
   }
   handleValueChange = ({ target }) => {
-    this.setState(prev => ({
+    this.setState((prev) => ({
       value: { ...prev.value, [target.name]: target.value },
     }))
   }
-  onConfirm = e => {
+  onConfirm = (e) => {
     e && e.preventDefault()
 
     const { value } = this.state
@@ -104,15 +104,10 @@ class Signup extends React.Component {
     this.setState({ done: true })
   }
   render() {
-    const {
-      activeStep,
-      value,
-      done,
-      showFormErrors,
-      userNameWarning,
-    } = this.state
+    const { activeStep, value, done, showFormErrors, userNameWarning } =
+      this.state
 
-    if (this.props.isAuth) return <Redirect to={{ pathname: '/' }} />
+    if (this.props.isAuth) return <Navigate replace to="/" />
 
     return (
       <main className="max-width">
@@ -145,15 +140,12 @@ class Signup extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: authSelectors.getAuthState(state),
   knownUsers: authSelectors.getKnownUsers(state),
 })
-const mapDispatchToProps = dispatch => ({
-  registerUser: u => dispatch(authActions.addKnownUser(u)),
+const mapDispatchToProps = (dispatch) => ({
+  registerUser: (u) => dispatch(authActions.addKnownUser(u)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

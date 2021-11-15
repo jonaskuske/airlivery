@@ -1,4 +1,4 @@
-export default [
+const packageSizes = [
   {
     sizeName: 'XS',
     price: 2.5,
@@ -24,3 +24,5 @@ export default [
     sizes: { width: 60, height: 40, depth: 60 },
   },
 ]
+
+export default packageSizes

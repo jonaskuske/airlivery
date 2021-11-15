@@ -19,7 +19,7 @@ const Status = withTheme(styled.p`
   font-weight: 600;
   color: ${({ theme }) => theme.palette.primary.main};
 `)
-export default class extends React.Component {
+export default class Track extends React.Component {
   state = { query: '' }
 
   setQuery = ({ target }) => this.setState({ query: target.value })

@@ -1,5 +1,7 @@
 const ADD_DELIVERY = 'addDelivery'
 
-export default {
+const obj = {
   ADD_DELIVERY,
 }
+
+export default obj

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { login } from '../utils/auth'
 import { userActions } from '../state/user'
 import { connect } from 'react-redux'
-import { Redirect, Link } from 'react-router-dom'
+import { Navigate, Link, useLocation } from 'react-router-dom'
 import { authSelectors } from '../state/auth'
 
 const Main = styled.main`
@@ -52,7 +52,7 @@ class Login extends React.Component {
   setUser = ({ target }) => this.setState({ user: target.value })
   setPassword = ({ target }) => this.setState({ password: target.value })
 
-  tryLogin = e => {
+  tryLogin = (e) => {
     e.preventDefault()
 
     const { user, password } = this.state
@@ -64,7 +64,7 @@ class Login extends React.Component {
     const { user, password, failedLogin } = this.state
     const { from } = location.state || { from: { pathname: '/' } }
 
-    if (isAuth) return <Redirect to={from} />
+    if (isAuth) return <Navigate replace to={from} />
 
     return (
       <Main className="max-width">
@@ -100,14 +100,16 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+function LoginWithLocation(props) {
+  const location = useLocation()
+  return <Login {...props} location={location} />
+}
+
+const mapStateToProps = (state) => ({
   isAuth: authSelectors.getAuthState(state),
 })
-const mapDispatchToProps = dispatch => ({
-  setUser: u => dispatch(userActions.setActiveUser(u)),
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (u) => dispatch(userActions.setActiveUser(u)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginWithLocation)

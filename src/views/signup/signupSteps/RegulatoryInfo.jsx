@@ -15,7 +15,12 @@ const StyledTextField = styled(TextField)`
   }
 `
 
-export default ({ handleValueChange, value, showFormErrors, ...props }) => {
+export default function RegulatoryInfo({
+  handleValueChange,
+  value,
+  showFormErrors,
+  ...props
+}) {
   return (
     <Container {...props}>
       <Subtitle>Kontaktdaten</Subtitle>

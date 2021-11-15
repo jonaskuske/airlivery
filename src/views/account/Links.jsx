@@ -13,9 +13,11 @@ const StyledLinkContainer = withTheme(styled.div`
   margin: 0.7rem 0 1.2rem 0;
 `)
 
-export default props => (
-  <StyledLinkContainer>
-    <Link to="/adressbuch">Zum Adressbuch</Link>
-    <Link to="/lieferungen">Zur Lieferübersicht</Link>
-  </StyledLinkContainer>
-)
+export default function Links(props) {
+  return (
+    <StyledLinkContainer>
+      <Link to="/adressbuch">Zum Adressbuch</Link>
+      <Link to="/lieferungen">Zur Lieferübersicht</Link>
+    </StyledLinkContainer>
+  )
+}

@@ -43,7 +43,7 @@ const authReducer = (state = initialState, { type, user }) => {
     case types.REMOVE_KNOWN_USER:
       return {
         ...state,
-        knownUsers: state.knownUsers.filter(u => u !== user),
+        knownUsers: state.knownUsers.filter((u) => u !== user),
       }
     default:
       return state

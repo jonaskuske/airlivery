@@ -67,9 +67,15 @@ const ButtonText = withTheme(styled.p`
   color: ${({ theme }) => theme.palette.primary.main};
 `)
 
-export default ({ onClick, text = 'Main Button', ...props }) => (
-  <ButtonContainer onClick={onClick} title={text}>
-    <Button aria-label={text} {...props} />
-    <ButtonText>{text}</ButtonText>
-  </ButtonContainer>
-)
+export default function MainButton({
+  onClick,
+  text = 'Main Button',
+  ...props
+}) {
+  return (
+    <ButtonContainer onClick={onClick} title={text}>
+      <Button aria-label={text} {...props} />
+      <ButtonText>{text}</ButtonText>
+    </ButtonContainer>
+  )
+}

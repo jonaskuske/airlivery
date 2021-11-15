@@ -1,7 +1,7 @@
 import React from 'react'
 import DeliveryListEntry from './DeliveryListEntry'
 
-export default ({ deliveries }) => {
+export default function DeliveryList({ deliveries }) {
   return (
     <div>
       {deliveries.length ? (

@@ -37,12 +37,9 @@ const PaymentMethod = ({
 
 const { updatePaymentMethod, removePaymentMethod } = paymentMethodsActions
 const mapStateToProps = () => ({})
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   updatePaymentMethod: (prev, m) => dispatch(updatePaymentMethod(prev, m)),
-  removePaymentMethod: method => dispatch(removePaymentMethod(method)),
+  removePaymentMethod: (method) => dispatch(removePaymentMethod(method)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(PaymentMethod)
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentMethod)

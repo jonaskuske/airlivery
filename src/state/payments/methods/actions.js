@@ -1,10 +1,10 @@
 import types from './types'
 
-const addPaymentMethod = method => ({
+const addPaymentMethod = (method) => ({
   type: types.ADD_PAYMENT_METHOD,
   method: { ...method, forceEdit: true },
 })
-const removePaymentMethod = method => ({
+const removePaymentMethod = (method) => ({
   type: types.REMOVE_PAYMENT_METHOD,
   method,
 })
@@ -14,8 +14,10 @@ const updatePaymentMethod = (originalMethod, method) => ({
   method: { ...method, forceEdit: false },
 })
 
-export default {
+const obj = {
   addPaymentMethod,
   removePaymentMethod,
   updatePaymentMethod,
 }
+
+export default obj

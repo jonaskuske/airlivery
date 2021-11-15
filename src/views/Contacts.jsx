@@ -20,15 +20,11 @@ const Title = styled.h1`
 class Contacts extends React.Component {
   state = { addView: false }
 
-  toggleView = () => this.setState(prev => ({ addView: !prev.addView }))
+  toggleView = () => this.setState((prev) => ({ addView: !prev.addView }))
 
   render() {
-    const {
-      addedContacts,
-      unaddedContacts,
-      deleteContact,
-      addContact,
-    } = this.props
+    const { addedContacts, unaddedContacts, deleteContact, addContact } =
+      this.props
 
     const { addView } = this.state
 
@@ -60,16 +56,13 @@ class Contacts extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   addedContacts: contactsSelectors.getAddedContacts(state),
   unaddedContacts: contactsSelectors.getUnaddedContacts(state),
 })
-const mapDispatchToProps = dispatch => ({
-  deleteContact: contact => dispatch(contactsActions.removeContact(contact)),
-  addContact: contact => dispatch(contactsActions.addContact(contact)),
+const mapDispatchToProps = (dispatch) => ({
+  deleteContact: (contact) => dispatch(contactsActions.removeContact(contact)),
+  addContact: (contact) => dispatch(contactsActions.addContact(contact)),
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Contacts)
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts)

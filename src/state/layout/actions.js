@@ -1,10 +1,10 @@
 import types from './types'
 
-const setMobileLayout = isMobile => ({
+const setMobileLayout = (isMobile) => ({
   type: types.SET_MOBILE_LAYOUT,
   mobile: isMobile,
 })
-
-export default {
+const obj = {
   setMobileLayout,
 }
+export default obj

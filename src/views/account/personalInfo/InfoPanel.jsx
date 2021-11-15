@@ -29,7 +29,7 @@ const HiddenPanel = styled(Panel)`
   }
 `
 
-export default ({ user, edit, actions }) => {
+export default function InfoPanel({ user, edit, actions }) {
   if (!edit) {
     return (
       <InformationContainer>

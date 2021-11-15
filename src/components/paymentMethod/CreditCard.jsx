@@ -37,7 +37,7 @@ const StyledTextField = styled(StatefulTextField)`
   }
 `
 
-export default class extends React.Component {
+export default class CreditCard extends React.Component {
   constructor(props) {
     super(props)
     this.state.showForm = props.card.forceEdit
@@ -55,7 +55,7 @@ export default class extends React.Component {
   }
 
   toggleForm = () => {
-    this.setState(prevState => ({ showForm: !prevState.showForm }))
+    this.setState((prevState) => ({ showForm: !prevState.showForm }))
   }
 
   showAlert = () => this.setState({ showAlert: true })

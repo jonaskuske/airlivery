@@ -19,7 +19,7 @@ const AirspotContainer = styled.div`
   }
 `
 
-export default ({ airspots, edit, actions }) => {
+export default function AirSpotsList({ airspots, edit, actions }) {
   return (
     <AirspotContainer>
       <h3>Deine Airspots</h3>

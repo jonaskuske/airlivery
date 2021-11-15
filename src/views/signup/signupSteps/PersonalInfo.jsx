@@ -50,12 +50,12 @@ const StyledTextField = styled(TextField)`
   }
 `
 
-export default class extends React.Component {
+export default class PersonalInfo extends React.Component {
   state = { iconButton: false }
 
   imageRef = React.createRef()
 
-  handleImageChange = async evt => {
+  handleImageChange = async (evt) => {
     const { imageRef, props } = this
     const image = await readImageFromInput(evt)
     imageRef.current.value = ''
@@ -65,7 +65,7 @@ export default class extends React.Component {
   }
   componentDidMount() {
     this.mediaQuery = window.matchMedia('(max-width: 350px)')
-    this.queryHandler = q => this.setState({ iconButton: q.matches })
+    this.queryHandler = (q) => this.setState({ iconButton: q.matches })
     this.queryHandler(this.mediaQuery)
     this.mediaQuery.addListener(this.queryHandler)
   }

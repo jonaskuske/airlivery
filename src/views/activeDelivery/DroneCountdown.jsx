@@ -10,13 +10,13 @@ const Notice = styled.p`
   font-size: 85%;
 `
 
-export default ({
+export default function DroneCountdown({
   delivery,
   countdownTime,
   countdownColor,
   onCountdownClick,
   onCountdownComplete,
-}) => {
+}) {
   return (
     <React.Fragment>
       <h2>Ankunft der Abhol-Drohne in</h2>
@@ -41,10 +41,12 @@ export default ({
         </b>
         <br />
         <br />
-        Bitte stelle sicher, dass der Airspot nicht blockiert ist.<br />Da die
-        Drohne nicht in der Luft warten kann, falls eine Landung nicht möglich
-        ist, muss sie in so einem Fall umkehren.<br />Für die unnötige Strecke
-        wird dann eine kleine Servicegebühr berechnet.
+        Bitte stelle sicher, dass der Airspot nicht blockiert ist.
+        <br />
+        Da die Drohne nicht in der Luft warten kann, falls eine Landung nicht
+        möglich ist, muss sie in so einem Fall umkehren.
+        <br />
+        Für die unnötige Strecke wird dann eine kleine Servicegebühr berechnet.
       </p>
     </React.Fragment>
   )

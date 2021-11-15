@@ -4,14 +4,14 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
 
 const noop = () => {}
 
-export default ({
+export default function DotsMobileStepper({
   steps = 5,
   onBack = noop,
   onNext = noop,
   activeStep = 0,
   alwaysAllowNext = false,
   ...props
-}) => {
+}) {
   const isLastStep = activeStep === steps - 1
 
   return (

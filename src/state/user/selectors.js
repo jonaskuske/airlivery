@@ -1,5 +1,5 @@
-const getUser = state => state.user
+const getUser = (state) => state.user
 
-export default {
-  getUser,
-}
+const obj = { getUser }
+
+export default obj

@@ -10,7 +10,7 @@ const FooterContainer = styled.div`
   border-top: 2px solid lightgray;
   padding: 2rem 0 1rem 0;
 `
-const Footer = styled.footer`
+const FooterEl = styled.footer`
   min-height: 5rem;
   display: flex;
   justify-content: space-between;
@@ -45,21 +45,23 @@ const imprintItems = [
   { name: 'Impressum', href: '/impressum' },
 ]
 
-export default () => (
-  <FooterContainer>
-    <Footer className="max-width">
-      <ImprintContainer>
-        {imprintItems.map(item => (
-          <Link to={item.href || '/#'} key={item.href || item}>
-            {item.name || item}
-          </Link>
-        ))}
-      </ImprintContainer>
-      <SocialContainer>
-        <SocialIcon color="#4C00FF">f</SocialIcon>
-        <SocialIcon color="#FF0000">G+</SocialIcon>
-        <SocialIcon color="#649AEB">🕊</SocialIcon>
-      </SocialContainer>
-    </Footer>
-  </FooterContainer>
-)
+export default function Footer() {
+  return (
+    <FooterContainer>
+      <FooterEl className="max-width">
+        <ImprintContainer>
+          {imprintItems.map((item) => (
+            <Link to={item.href || '/#'} key={item.href || item}>
+              {item.name || item}
+            </Link>
+          ))}
+        </ImprintContainer>
+        <SocialContainer>
+          <SocialIcon color="#4C00FF">f</SocialIcon>
+          <SocialIcon color="#FF0000">G+</SocialIcon>
+          <SocialIcon color="#649AEB">🕊</SocialIcon>
+        </SocialContainer>
+      </FooterEl>
+    </FooterContainer>
+  )
+}

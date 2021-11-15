@@ -13,7 +13,7 @@ const Container = styled.div`
 const Sum = styled.p`
   font-size: 130%;
 `
-export default ({ selection, onDone }) => {
+export default function Cart({ selection, onDone }) {
   const { contact, packageSize, airspot, paymentMethod } = selection
   const { price } = packageSize
   const [euro, cents = ''] = price.toString().split('.')
@@ -22,7 +22,8 @@ export default ({ selection, onDone }) => {
     <Container>
       <h2>Angaben prüfen</h2>
       <p>
-        Überprüfe noch einmal deine Auswahl.<br />
+        Überprüfe noch einmal deine Auswahl.
+        <br />
         Alles korrekt? Dann schließe den Vorgang zahlungspflichtig ab.
       </p>
       <p>

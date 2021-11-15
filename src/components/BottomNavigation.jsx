@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Home, AccountCircle } from '@material-ui/icons'
 import { Send, Drone } from './icons'
@@ -17,41 +17,39 @@ const Navigation = styled(BottomNavigation)`
   }
 `
 
-export default withRouter(
-  class BottomNav extends React.Component {
-    routes = [
-      { icon: Home, href: '/', name: 'Start' },
-      { icon: Send, href: '/senden', name: 'Senden' },
-      { icon: Drone, href: '/about', name: 'About' },
-      { icon: AccountCircle, href: '/account', name: 'Profil' },
-    ]
+export default function BottomNav() {
+  const location = useLocation()
 
-    matchRoutes = pathname => {
-      return this.routes.reduce((prev, { href, name }) => {
-        if (href === pathname) return name
-        else if (href !== '/' && pathname.startsWith(href)) return name
-        else return prev
-      }, '')
-    }
+  const routes = [
+    { icon: Home, href: '/', name: 'Start' },
+    { icon: Send, href: '/senden', name: 'Senden' },
+    { icon: Drone, href: '/about', name: 'About' },
+    { icon: AccountCircle, href: '/account', name: 'Profil' },
+  ]
 
-    render() {
-      const { pathname } = this.props.history.location
-      const value = this.matchRoutes(pathname)
+  const matchRoutes = (pathname) => {
+    return routes.reduce((prev, { href, name }) => {
+      if (href === pathname) return name
+      else if (href !== '/' && pathname.startsWith(href)) return name
+      else return prev
+    }, '')
+  }
 
-      return (
-        <Navigation value={value}>
-          {this.routes.map(route => (
-            <BottomNavigationAction
-              label={route.name}
-              value={route.name}
-              icon={<route.icon />}
-              component={Link}
-              to={route.href}
-              key={route.name}
-            />
-          ))}
-        </Navigation>
-      )
-    }
-  },
-)
+  const { pathname } = location
+  const value = matchRoutes(pathname)
+
+  return (
+    <Navigation value={value}>
+      {routes.map((route) => (
+        <BottomNavigationAction
+          label={route.name}
+          value={route.name}
+          icon={<route.icon />}
+          component={Link}
+          to={route.href}
+          key={route.name}
+        />
+      ))}
+    </Navigation>
+  )
+}

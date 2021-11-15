@@ -11,7 +11,7 @@ const StyledHeader = styled.p`
 const StyledRow = styled.p`
   margin: 0.4rem 0;
 `
-export default ({ user, children, ...props }) => {
+export default function Panel({ user, children, ...props }) {
   const { adress, phone, email } = user
   return (
     <StyledInformationPanel {...props}>

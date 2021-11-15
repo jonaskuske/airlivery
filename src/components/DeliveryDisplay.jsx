@@ -8,10 +8,10 @@ const StyledDeliveryDisplay = styled.div`
   /* background: #efefef; */
 `
 
-export default class extends React.Component {
+export default class DeliveryDisplay extends React.Component {
   state = { filter: 'all' }
 
-  handleChange = filter => this.setState({ filter })
+  handleChange = (filter) => this.setState({ filter })
 
   render() {
     const { filter } = this.state
