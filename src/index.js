@@ -6,32 +6,10 @@ import App from './App'
 import './assets/styles'
 import registerServiceWorker from './utils/registerServiceWorker'
 import './assets/styles'
-import {
-  createTheme,
-  ThemeProvider,
-  StyledEngineProvider,
-} from '@mui/material/styles'
-import { grey } from '@mui/material/colors'
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { layoutActions } from './state/layout'
 import { PersistGate } from 'redux-persist/integration/react'
-
-const theme = createTheme({
-  palette: {
-    grey: { main: grey[300] },
-    primary: {
-      light: '#a4e1ff',
-      main: '#6eaffb',
-      dark: '#3280c8',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#6eff88',
-      main: '#00ff55',
-      dark: '#00ca1b',
-      contrastText: '#000',
-    },
-  },
-})
+import { theme } from './assets/styles/theme'
 
 const mediaQuery = window.matchMedia('(max-width: 900px)')
 const queryHandler = (query) => {
