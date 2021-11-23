@@ -1,6 +1,6 @@
 import React from 'react'
-import { TextField, Button, IconButton } from '@material-ui/core'
-import { Delete, Edit } from '@material-ui/icons'
+import { TextField, Button, IconButton } from '@mui/material'
+import { Delete, Edit } from '@mui/icons-material'
 import styled from 'styled-components'
 import UserImage from '../../../components/UserImage'
 import { readImageFromInput } from '../../../utils'
@@ -105,7 +105,10 @@ export default class PersonalInfo extends React.Component {
             <UserImage image={value.profilePicture} />
             <InputRow>
               {iconButton ? (
-                <IconButton onClick={() => this.imageRef.current.click()}>
+                <IconButton
+                  onClick={() => this.imageRef.current.click()}
+                  size="large"
+                >
                   <Edit />
                 </IconButton>
               ) : (
@@ -120,6 +123,7 @@ export default class PersonalInfo extends React.Component {
                     target: { name: 'profilePicture', value: '' },
                   })
                 }
+                size="large"
               >
                 <Delete />
               </IconButton>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TextField } from '@material-ui/core'
+import { TextField } from '@mui/material'
 
 const StyledEditInfo = styled.form`
   margin-top: 2rem;
@@ -16,7 +16,7 @@ const InputRow = styled.div`
 `
 const StyledTextField = styled(TextField)`
   && {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 `
 const TextFieldStreetNumber = styled(StyledTextField)`
@@ -68,7 +68,7 @@ class EditInfo extends React.Component {
       <React.Fragment>
         <h3>Deine Daten</h3>
         <StyledEditInfo>
-          <TextField
+          <StyledTextField
             required={true}
             label="Name"
             value={name}

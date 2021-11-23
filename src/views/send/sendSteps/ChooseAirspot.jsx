@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Airspot from '../../../components/Airspot'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 
 const StyledAirspotContainer = styled.form`
   display: flex;

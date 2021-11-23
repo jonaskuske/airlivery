@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 
 const RadioGroup = styled.form`
   margin: 0;

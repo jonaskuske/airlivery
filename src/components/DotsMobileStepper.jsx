@@ -1,6 +1,6 @@
 import React from 'react'
-import { MobileStepper, Button } from '@material-ui/core'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
+import { MobileStepper, Button } from '@mui/material'
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
 
 const noop = () => {}
 

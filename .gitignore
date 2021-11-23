@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+/.firebase
+firebase-debug.log
+
 # production
 /build
 /storybook-static

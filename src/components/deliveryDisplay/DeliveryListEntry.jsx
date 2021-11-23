@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ArrowDropUp, ArrowDropDown } from '@material-ui/icons'
+import { ArrowDropUp, ArrowDropDown } from '@mui/icons-material'
 
 const StyledEntry = styled.div`
   display: flex;

@@ -2,8 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import LoginState from './header/LoginState'
-import { Search } from '@material-ui/icons'
-import { IconButton, withTheme } from '@material-ui/core'
+import { Search } from '@mui/icons-material'
+import { IconButton } from '@mui/material'
+import withTheme from '@mui/styles/withTheme'
 import { Drone } from './icons'
 
 const HeaderContainer = styled.div`
@@ -64,7 +65,7 @@ export default function Header() {
         <HeaderPartial style={{ justifyContent: 'flex-end' }}>
           <LoginState />
           <Link to="/hilfe">Hilfe</Link>
-          <IconButton component={Link} to="/suche">
+          <IconButton component={Link} to="/suche" size="large">
             <Search />
           </IconButton>
         </HeaderPartial>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Contact from '../../../components/Contact'
 import styled from 'styled-components'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 
 const StyledForm = styled.form`
   display: flex;

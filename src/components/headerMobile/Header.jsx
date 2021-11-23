@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import logo from '../../assets/icons/drone.svg'
-import { MoreVert, Search } from '@material-ui/icons'
-import { IconButton, Menu, MenuItem } from '@material-ui/core'
+import { MoreVert, Search } from '@mui/icons-material'
+import { IconButton, Menu, MenuItem } from '@mui/material'
 import { connect } from 'react-redux'
 import auth from '../../utils/auth'
 
@@ -51,10 +51,10 @@ function HeaderMobile({ isFixed, hide, transition, isAuth }) {
           airlivery
         </HeaderPartial>
         <HeaderPartial>
-          <IconButton component={Link} to="/suche">
+          <IconButton component={Link} to="/suche" size="large">
             <Search />
           </IconButton>
-          <IconButton onClick={handleClick}>
+          <IconButton onClick={handleClick} size="large">
             <MoreVert />
           </IconButton>
           <Menu

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import UserImage from './UserImage'
-import { Delete, Add } from '@material-ui/icons'
+import { Delete, Add } from '@mui/icons-material'
 import ActionButton from '../components/MicroFloatingActionButton'
 
 const StyledContact = styled.div`

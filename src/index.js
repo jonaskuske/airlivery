@@ -6,12 +6,18 @@ import App from './App'
 import './assets/styles'
 import registerServiceWorker from './utils/registerServiceWorker'
 import './assets/styles'
-import { createTheme, ThemeProvider } from '@material-ui/core/styles'
+import {
+  createTheme,
+  ThemeProvider,
+  StyledEngineProvider,
+} from '@mui/material/styles'
+import { grey } from '@mui/material/colors'
 import { layoutActions } from './state/layout'
 import { PersistGate } from 'redux-persist/integration/react'
 
 const theme = createTheme({
   palette: {
+    grey: { main: grey[300] },
     primary: {
       light: '#a4e1ff',
       main: '#6eaffb',
@@ -38,9 +44,11 @@ queryHandler(mediaQuery)
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </StyledEngineProvider>
     </PersistGate>
   </Provider>,
   document.getElementById('root'),

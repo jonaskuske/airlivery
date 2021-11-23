@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PaymentMethod from '../../../components/PaymentMethod'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 
 const StyledPaymentContainer = styled.div`
   > div {

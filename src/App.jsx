@@ -7,7 +7,7 @@ import HeaderNavigation from './components/Header'
 import HeaderMobile from './components/HeaderMobile'
 import BottomNavigation from './components/BottomNavigation'
 import Footer from './components/Footer'
-import { CssBaseline } from '@material-ui/core'
+import { CssBaseline } from '@mui/material'
 import PageContainer from './components/PageContainer'
 
 class App extends Component {

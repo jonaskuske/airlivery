@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Fab } from '@material-ui/core'
+import { Fab } from '@mui/material'
 
 const StyledButton = styled(Fab)`
   && {
@@ -11,10 +11,6 @@ const StyledButton = styled(Fab)`
   }
 `
 
-export default function MainFloatingActionButton({ children, ...props }) {
-  return (
-    <StyledButton color="primary" {...props}>
-      {children}
-    </StyledButton>
-  )
-}
+export default React.forwardRef(function MainFloatingActionButton(props, ref) {
+  return <StyledButton color="primary" {...props} ref={ref} />
+})

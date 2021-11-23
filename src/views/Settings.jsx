@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, withTheme } from '@material-ui/core'
+import { Button } from '@mui/material'
+import withTheme from '@mui/styles/withTheme'
 import { connect } from 'react-redux'
 import { userSelectors } from '../state/user'
 import { authActions, authSelectors } from '../state/auth'

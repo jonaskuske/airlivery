@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 import Contact from '../../../components/Contact'
 import PaymentMethod from '../../../components/PaymentMethod'
 import Airspot from '../../../components/Airspot'

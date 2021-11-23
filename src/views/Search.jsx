@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { TextField, withTheme } from '@material-ui/core'
+import { TextField } from '@mui/material'
+
+import withTheme from '@mui/styles/withTheme'
 
 const Main = styled.main`
   display: flex;

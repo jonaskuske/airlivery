@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation, Link } from 'react-router-dom'
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
-import { Home, AccountCircle } from '@material-ui/icons'
+import { BottomNavigation, BottomNavigationAction } from '@mui/material'
+import { Home, AccountCircle } from '@mui/icons-material'
 import { Send, Drone } from './icons'
 import styled from 'styled-components'
 

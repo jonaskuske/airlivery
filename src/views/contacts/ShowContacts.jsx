@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { TextField, InputAdornment } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
+import { TextField, InputAdornment } from '@mui/material'
+import { Search } from '@mui/icons-material'
 import Contact from '../../components/Contact'
 import { includesString, createPropertyComparer } from '../../utils'
 

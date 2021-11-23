@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
-import { AccountCircle, Payment } from '@material-ui/icons'
+import { Button } from '@mui/material'
+import { AccountCircle, Payment } from '@mui/icons-material'
 import styled from 'styled-components'
 
 const StyledInfoTypeSwitcher = styled.div`
@@ -17,13 +17,13 @@ const ButtonText = styled.span`
   margin-right: 0.5rem;
 `
 
-const InfoTypeSwitcher = ({ onClick, infoType }) => {
+export default function InfoTypeSwitcher({ onClick, infoType }) {
   return (
     <StyledInfoTypeSwitcher>
       <Button
         variant="contained"
         size="small"
-        color={infoType === 'payment' ? 'default' : 'primary'}
+        color={infoType === 'payment' ? 'grey' : 'primary'}
         onClick={onClick}
       >
         <ButtonText>Persönlich</ButtonText>
@@ -32,7 +32,7 @@ const InfoTypeSwitcher = ({ onClick, infoType }) => {
       <Button
         variant="contained"
         size="small"
-        color={infoType === 'payment' ? 'primary' : 'default'}
+        color={infoType === 'payment' ? 'primary' : 'grey'}
         onClick={onClick}
       >
         <ButtonText>Zahlung</ButtonText>
@@ -41,5 +41,3 @@ const InfoTypeSwitcher = ({ onClick, infoType }) => {
     </StyledInfoTypeSwitcher>
   )
 }
-
-export default InfoTypeSwitcher

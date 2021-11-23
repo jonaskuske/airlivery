@@ -8,7 +8,7 @@ import InfoTypeSwitcher from './account/InfoTypeSwitcher'
 import Links from './account/Links'
 import PersonalInfo from './account/PersonalInfo'
 import PaymentInfo from './account/PaymentInfo'
-import { Zoom } from '@material-ui/core'
+import { Zoom } from '@mui/material'
 import EditButton from './account/EditButton'
 
 import { userSelectors } from '../state/user'

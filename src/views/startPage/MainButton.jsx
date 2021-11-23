@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import IconLink from '../../assets/icons/link.svg'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 
 const ButtonContainer = styled.div`
   width: 100%;

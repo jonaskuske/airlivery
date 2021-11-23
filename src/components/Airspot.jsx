@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Zoom } from '@material-ui/core'
+import { Zoom } from '@mui/material'
 import MicroButton from './MicroFloatingActionButton'
-import { Delete, Edit } from '@material-ui/icons'
+import { Delete, Edit } from '@mui/icons-material'
 
 import defaultMap from '../assets/images/map.jpg'
 

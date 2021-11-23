@@ -7,7 +7,7 @@ import {
   DialogContentText,
   DialogTitle,
   Slide,
-} from '@material-ui/core'
+} from '@mui/material'
 
 const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" {...props} ref={ref} />

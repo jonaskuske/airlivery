@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { withTheme, IconButton } from '@material-ui/core'
-import { Check } from '@material-ui/icons'
+import { IconButton } from '@mui/material'
+import withTheme from '@mui/styles/withTheme'
+import { Check } from '@mui/icons-material'
 
 const HeaderContainer = withTheme(styled.div`
   top: 0;
@@ -26,7 +27,7 @@ export default function ConfirmationBar({ onConfirm }) {
   return (
     <HeaderContainer>
       <Header className="max-width">
-        <IconButton color="inherit" onClick={onConfirm}>
+        <IconButton color="inherit" onClick={onConfirm} size="large">
           <Check />
         </IconButton>
       </Header>

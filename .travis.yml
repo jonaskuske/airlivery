@@ -1,13 +1,13 @@
 ---
 after_success:
-  - 'test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && SKIP_PREFLIGHT_CHECK=true npm run build && npm i -g firebase-tools && firebase deploy --non-interactive --token $FIREBASE_TOKEN'
+  - 'test $TRAVIS_BRANCH = master && test $TRAVIS_PULL_REQUEST = false && yarn build && yarn global add firebase-tools && firebase deploy --non-interactive --token $FIREBASE_TOKEN'
 cache:
   directories:
     - node_modules
 install:
-  - 'npm install'
+  - 'yarn install --frozen-lockfile'
 language: node_js
 node_js:
   - 'lts/*'
 script:
-  - 'SKIP_PREFLIGHT_CHECK=true npm test'
+  - 'yarn test'

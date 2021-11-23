@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Zoom, withTheme } from '@material-ui/core'
-import { Edit, Delete, Check } from '@material-ui/icons'
+import { Zoom } from '@mui/material'
+import withTheme from '@mui/styles/withTheme'
+import { Edit, Delete, Check } from '@mui/icons-material'
 import MicroButton from '../MicroFloatingActionButton'
 
 const StyledHeader = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { withTheme } from '@material-ui/core'
+import withTheme from '@mui/styles/withTheme'
 import PackageSize from '../../../components/PackageSize'
 
 const StyledPackageContainer = styled.form`
