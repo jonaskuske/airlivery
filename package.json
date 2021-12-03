@@ -50,6 +50,7 @@
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0",
     "react-test-renderer": "^17.0.2",
+    "workbox-cacheable-response": "^6.4.2",
     "workbox-core": "^6.4.2",
     "workbox-expiration": "^6.4.2",
     "workbox-precaching": "^6.4.2",
