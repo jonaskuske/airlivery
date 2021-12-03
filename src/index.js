@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store, { persistor } from './store'
 import App from './App'
 import './assets/styles'
-import registerServiceWorker from './utils/registerServiceWorker'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './assets/styles'
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles'
 import { layoutActions } from './state/layout'
@@ -32,4 +32,21 @@ ReactDOM.render(
   document.getElementById('root'),
 )
 
-registerServiceWorker()
+serviceWorkerRegistration.register({
+  onUpdate(registration) {
+    if (registration && registration.waiting) {
+      let preventDevToolsReloadLoop = false
+
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        // Ensure refresh is only called once.
+        // This works around a bug in "force update on reload".
+        if (preventDevToolsReloadLoop) return
+        preventDevToolsReloadLoop = true
+
+        window.location.reload()
+      })
+
+      registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+    }
+  },
+})
