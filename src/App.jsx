@@ -16,7 +16,7 @@ class App extends Component {
 
     return (
       <DocumentTitle title="airlivery">
-        <Router>
+        <Router basename="/airlivery">
           <ScrollToTop>
             <div className="app">
               <React.Fragment>

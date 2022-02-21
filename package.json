@@ -2,6 +2,7 @@
   "name": "airlivery",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jonaskuske.github.io/airlivery",
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@^5.1.0"
   },
