@@ -24,6 +24,8 @@ jobs:
     - run: yarn install --immutable
     - run: yarn build
     - run: yarn test
+    - run: cp ./build/index.html ./build/404.html
+      if: ${{ github.ref == 'refs/heads/master' }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/heads/master' }}
