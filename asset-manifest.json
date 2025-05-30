@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/airlivery/static/css/main.a6e8bbaa.css",
-    "main.js": "/airlivery/static/js/main.a7910712.js",
+    "main.js": "/airlivery/static/js/main.64418773.js",
     "static/media/jonas.jpg": "/airlivery/static/media/jonas.8bf4afc4e56c37eadeae.jpg",
     "static/media/drone-hero.jpg": "/airlivery/static/media/drone-hero.00eabb6f0bb8454aa8cb.jpg",
     "static/media/woman.jpg": "/airlivery/static/media/woman.619e21096a31b97f34e5.jpg",
@@ -17,10 +17,10 @@
     "static/media/track2.svg": "/airlivery/static/media/track2.14a3c3dd504e9f9fa968fada697e9bcb.svg",
     "index.html": "/airlivery/index.html",
     "main.a6e8bbaa.css.map": "/airlivery/static/css/main.a6e8bbaa.css.map",
-    "main.a7910712.js.map": "/airlivery/static/js/main.a7910712.js.map"
+    "main.64418773.js.map": "/airlivery/static/js/main.64418773.js.map"
   },
   "entrypoints": [
     "static/css/main.a6e8bbaa.css",
-    "static/js/main.a7910712.js"
+    "static/js/main.64418773.js"
   ]
 }
